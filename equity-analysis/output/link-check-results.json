@@ -1,0 +1,242 @@
+[
+  {
+    "url": "https://www.gov.cn/",
+    "status": "200",
+    "effective": "https://www.gov.cn/",
+    "ok": true
+  },
+  {
+    "url": "https://www.chinatax.gov.cn/",
+    "status": "200",
+    "effective": "https://www.chinatax.gov.cn/",
+    "ok": true
+  },
+  {
+    "url": "https://www.irs.gov/",
+    "status": "200",
+    "effective": "https://www.irs.gov/",
+    "ok": true
+  },
+  {
+    "url": "https://www.csrc.gov.cn/",
+    "status": "200",
+    "effective": "https://www.csrc.gov.cn/",
+    "ok": true
+  },
+  {
+    "url": "https://www.safe.gov.cn/",
+    "status": "200",
+    "effective": "https://www.safe.gov.cn/",
+    "ok": true
+  },
+  {
+    "url": "https://www.hkex.com.hk/",
+    "status": "200",
+    "effective": "https://www.hkex.com.hk/?sc_lang=en",
+    "ok": true
+  },
+  {
+    "url": "https://www.hkex.com.hk/",
+    "status": "200",
+    "effective": "https://www.hkex.com.hk/?sc_lang=en",
+    "ok": true
+  },
+  {
+    "url": "https://www.sse.com.cn/",
+    "status": "200",
+    "effective": "https://www.sse.com.cn/",
+    "ok": true
+  },
+  {
+    "url": "https://www.szse.cn/",
+    "status": "200",
+    "effective": "https://www.szse.cn/index/index.html",
+    "ok": true
+  },
+  {
+    "url": "https://www.sec.gov/",
+    "status": "403",
+    "effective": "https://www.sec.gov/",
+    "ok": false
+  },
+  {
+    "url": "https://pcaobus.org/",
+    "status": "200",
+    "effective": "https://pcaobus.org/",
+    "ok": true
+  },
+  {
+    "url": "https://www.congress.gov/",
+    "status": "403",
+    "effective": "https://www.congress.gov/",
+    "ok": false
+  },
+  {
+    "url": "https://www.hkex.com.hk/News/Market-Consultations/2011-to-2015/August-2014-Weighted-Voting-Rights?sc_lang=en",
+    "status": "503",
+    "effective": "https://www.hkex.com.hk/News/Market-Consultations/2011-to-2015/August-2014-Weighted-Voting-Rights?sc_lang=en",
+    "ok": false
+  },
+  {
+    "url": "https://www.hkex.com.hk/News/Regulatory-Announcements/2015/150619news?sc_lang=en",
+    "status": "503",
+    "effective": "https://www.hkex.com.hk/News/Regulatory-Announcements/2015/150619news?sc_lang=en",
+    "ok": false
+  },
+  {
+    "url": "https://en-rules.hkex.com.hk/rulebook/chapter-8a-weighted-voting-rights",
+    "status": "200",
+    "effective": "https://en-rules.hkex.com.hk/rulebook/chapter-8a-weighted-voting-rights",
+    "ok": true
+  },
+  {
+    "url": "https://www.sse.com.cn/assortment/stock/innovative/rules/c/c_20180615_4574528.shtml",
+    "status": "200",
+    "effective": "https://www.sse.com.cn/assortment/stock/innovative/rules/c/c_20180615_4574528.shtml",
+    "ok": true
+  },
+  {
+    "url": "https://investor.szse.cn/thematic/chinext/article/t20201012_582018.html",
+    "status": "200",
+    "effective": "https://investor.szse.cn/thematic/chinext/article/t20201012_582018.html",
+    "ok": true
+  },
+  {
+    "url": "https://www.hkexnews.hk/",
+    "status": "503",
+    "effective": "https://www.hkexnews.hk/",
+    "ok": false
+  },
+  {
+    "url": "https://www.hkexnews.hk/",
+    "status": "503",
+    "effective": "https://www.hkexnews.hk/",
+    "ok": false
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1288776/000119312505058688/d10k.htm",
+    "status": "403",
+    "effective": "https://www.sec.gov/Archives/edgar/data/1288776/000119312505058688/d10k.htm",
+    "ok": false
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000012/meta-20241231.htm",
+    "status": "403",
+    "effective": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000012/meta-20241231.htm",
+    "ok": false
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1564408/000119312517029199/d270216ds1.htm",
+    "status": "403",
+    "effective": "https://www.sec.gov/Archives/edgar/data/1564408/000119312517029199/d270216ds1.htm",
+    "ok": false
+  },
+  {
+    "url": "https://wenshu.court.gov.cn/",
+    "status": "200",
+    "effective": "https://wenshu.court.gov.cn/",
+    "ok": true
+  },
+  {
+    "url": "https://www.court.gov.cn/shenpan/xiangqing/104292.html",
+    "status": "403",
+    "effective": "https://www.court.gov.cn/shenpan/xiangqing/104292.html",
+    "ok": false
+  },
+  {
+    "url": "https://gongbao.court.gov.cn/Details/ef6f13f5aa3b6bb74517eb93c5e6fa.html",
+    "status": "502",
+    "effective": "https://gongbao.court.gov.cn/Details/ef6f13f5aa3b6bb74517eb93c5e6fa.html",
+    "ok": false
+  },
+  {
+    "url": "https://gongbao.court.gov.cn/Details/4160870caf7987f0e4fb3f7376e5fa.html",
+    "status": "502",
+    "effective": "https://gongbao.court.gov.cn/Details/4160870caf7987f0e4fb3f7376e5fa.html",
+    "ok": false
+  },
+  {
+    "url": "https://bjfc.bjcourt.gov.cn/cac/1719218683836.html",
+    "status": "200",
+    "effective": "https://bjfc.bjcourt.gov.cn/cac/1719218683836.html",
+    "ok": true
+  },
+  {
+    "url": "https://www.zwjkey.com/minshangfaxue/minshangfaxue/2023-05-10/10982.html",
+    "status": "200",
+    "effective": "https://www.zwjkey.com/minshangfaxue/minshangfaxue/2023-05-10/10982.html",
+    "ok": true
+  },
+  {
+    "url": "https://www.itjuzi.com/",
+    "status": "412",
+    "effective": "https://www.itjuzi.com/",
+    "ok": false
+  },
+  {
+    "url": "https://www.xiniudata.com/",
+    "status": "200",
+    "effective": "https://www.xiniudata.com/",
+    "ok": true
+  },
+  {
+    "url": "https://news.pedaily.cn/202505/549162.shtml",
+    "status": "200",
+    "effective": "https://news.pedaily.cn/202505/549162.shtml",
+    "ok": true
+  },
+  {
+    "url": "https://nvca.org/2026-nvca-yearbook/",
+    "status": "200",
+    "effective": "https://nvca.org/2026-nvca-yearbook/",
+    "ok": true
+  },
+  {
+    "url": "https://nvca.org/research/pitchbook-nvca-venture-monitor/",
+    "status": "200",
+    "effective": "https://nvca.org/pitchbook-nvca-venture-monitor/",
+    "ok": true
+  },
+  {
+    "url": "https://www.cbinsights.com/research/report/venture-trends-2025/",
+    "status": "403",
+    "effective": "https://www.cbinsights.com/research/report/venture-trends-2025/",
+    "ok": false
+  },
+  {
+    "url": "https://www.crunchbase.com/",
+    "status": "200",
+    "effective": "https://www.crunchbase.com/",
+    "ok": true
+  },
+  {
+    "url": "https://www.cbinsights.com/",
+    "status": "403",
+    "effective": "https://www.cbinsights.com/",
+    "ok": false
+  },
+  {
+    "url": "https://www.caixin.com/",
+    "status": "200",
+    "effective": "https://www.caixin.com/",
+    "ok": true
+  },
+  {
+    "url": "https://www.latepost.com/",
+    "status": "200",
+    "effective": "https://www.latepost.com/",
+    "ok": true
+  },
+  {
+    "url": "https://www.bloomberg.com/asia",
+    "status": "403",
+    "effective": "https://www.bloomberg.com/asia",
+    "ok": false
+  },
+  {
+    "url": "https://www.ftchinese.com/",
+    "status": "200",
+    "effective": "https://www.ftchinese.com/",
+    "ok": true
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "url": "file:///Users/zhayingying/Desktop/调研/visual-report-workspace/projects/equity-cognition-framework/dist/equity-full-report/index.html",
+  "errors": [],
+  "sections": [
+    {
+      "name": "top",
+      "selector": "#s0-map",
+      "count": 1,
+      "box": {
+        "x": 322,
+        "y": -0.5,
+        "width": 1216,
+        "height": 1368.40625
+      }
+    },
+    {
+      "name": "s3-5",
+      "selector": "#s3-5",
+      "count": 1,
+      "box": {
+        "x": 322,
+        "y": -582.03125,
+        "width": 1216,
+        "height": 2263.65625
+      }
+    },
+    {
+      "name": "s9-2",
+      "selector": "#s9-2",
+      "count": 1,
+      "box": {
+        "x": 322,
+        "y": -1097.578125,
+        "width": 1216,
+        "height": 3294.734375
+      }
+    },
+    {
+      "name": "s10-2",
+      "selector": "#s10-2",
+      "count": 1,
+      "box": {
+        "x": 322,
+        "y": -7959.59375,
+        "width": 1216,
+        "height": 17020.109375
+      }
+    }
+  ]
+}
