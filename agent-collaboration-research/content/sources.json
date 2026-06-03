@@ -99,12 +99,28 @@
       "use": "Agent-to-user event protocol、前端交互参考"
     },
     {
+      "id": "ag-ui-docs",
+      "grade": "A",
+      "category": "frontend",
+      "title": "AG-UI Overview",
+      "url": "https://docs.ag-ui.com/",
+      "use": "AG-UI 事件协议、agentic frontend 连接方式"
+    },
+    {
       "id": "copilotkit",
       "grade": "A",
       "category": "frontend",
       "title": "CopilotKit",
       "url": "https://github.com/CopilotKit/CopilotKit",
       "use": "Agentic frontend / generative UI 开源栈"
+    },
+    {
+      "id": "copilotkit-docs",
+      "grade": "A",
+      "category": "frontend",
+      "title": "CopilotKit Docs",
+      "url": "https://docs.copilotkit.ai/",
+      "use": "CopilotChat、CopilotSidebar、generative UI、shared state 前端形态"
     },
     {
       "id": "rowboat",
@@ -209,6 +225,22 @@
       "title": "AutoGen Studio",
       "url": "https://arxiv.org/abs/2408.15247",
       "use": "多 Agent 可视化 authoring/debugging UI 设计原则"
+    },
+    {
+      "id": "autogen-studio-blog",
+      "grade": "A",
+      "category": "frontend",
+      "title": "AutoGen Studio blog",
+      "url": "https://autogenhub.github.io/autogen/blog/2023/12/01/AutoGenStudio/",
+      "use": "point-and-click、drag-and-drop、playground/gallery 多 Agent Studio 形态"
+    },
+    {
+      "id": "langsmith-studio-docs",
+      "grade": "A",
+      "category": "frontend",
+      "title": "LangSmith Studio",
+      "url": "https://docs.langchain.com/langsmith/studio",
+      "use": "Graph mode、Chat mode、trace/eval/prompt debugging UI"
     },
     {
       "id": "stanford-cs224g",

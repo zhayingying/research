@@ -45,6 +45,29 @@
     });
   }
 
+  function decorateConclusionCells() {
+    const classByLayer = {
+      protocol: "conclusion-protocol",
+      sdk: "conclusion-sdk",
+      framework: "conclusion-framework",
+      app: "conclusion-product"
+    };
+
+    rows.forEach((row) => {
+      const cell = row.children[6];
+      if (!cell || cell.querySelector(".conclusion-chip")) {
+        return;
+      }
+
+      const text = cell.innerHTML.trim();
+      const layerClass = classByLayer[row.dataset.layer] || "conclusion-framework";
+      const isRisk = /还没有形成|不是开源|不计入|早期|要补/.test(cell.innerText);
+      const chipClass = isRisk ? "conclusion-risk" : layerClass;
+      cell.classList.add("conclusion-cell");
+      cell.innerHTML = `<span class="conclusion-chip ${chipClass}">${text}</span>`;
+    });
+  }
+
   function applyRepoFilters() {
     const term = normalize(repoSearch && repoSearch.value);
     const layer = layerFilter ? layerFilter.value : "all";
@@ -114,6 +137,7 @@
   });
 
   decorateStarCells();
+  decorateConclusionCells();
   applyRepoFilters();
   initNavObserver();
 })();

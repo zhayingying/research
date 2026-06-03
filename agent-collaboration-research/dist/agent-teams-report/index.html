@@ -121,6 +121,14 @@
           <div class="result-count" id="repoCount" aria-live="polite">显示全部条目</div>
         </div>
 
+        <div class="table-legend" aria-label="项目表颜色说明">
+          <span><i class="legend-swatch conclusion-protocol"></i>蓝色: 协议 / 互操作</span>
+          <span><i class="legend-swatch conclusion-sdk"></i>绿色: SDK / runtime</span>
+          <span><i class="legend-swatch conclusion-framework"></i>赭色: 编排框架 / 工程机制</span>
+          <span><i class="legend-swatch conclusion-product"></i>紫色: 产品 / 前端形态</span>
+          <span><i class="legend-swatch conclusion-risk"></i>红色: 风险 / 早期 / 非开源提醒</span>
+        </div>
+
         <div class="table-wrap">
           <table class="data-table" id="repoTable">
             <caption>开源项目按 GitHub stars 排序；Tencent Marvis 作为闭源产品基准，不参与开源排名。</caption>
@@ -536,6 +544,49 @@
       <section class="section" id="courses">
         <div class="section-kicker">06 / Courses</div>
         <h2>国外高校课程</h2>
+        <p>
+          课程这部分不要只看“有没有 multi-agent”四个字。更有用的读法是：这些课分别覆盖 Agent Teams 的不同能力层。Stanford 更偏系统构建和自我进化，Berkeley 更偏 agent 研究谱系和高级能力，CMU 更偏 autonomous agents 的工程框架，MIT 更偏企业应用架构。
+        </p>
+
+        <div class="course-guide">
+          <article>
+            <span class="guide-tag">先学这门</span>
+            <h3><a href="https://web.stanford.edu/class/cs224g/">Stanford CS224G</a></h3>
+            <p>这门课最像“怎么把 LLM 应用真的做出来”。它关注 building 和 scaling，所以适合理解 agentic workflow 为什么不能只靠 prompt，而要有数据、评估、部署、状态和成本控制。</p>
+            <p><b>对应 Agent Teams:</b> 从单 Agent 应用升级到可维护 workflow 的底座。</p>
+          </article>
+          <article>
+            <span class="guide-tag">进化机制</span>
+            <h3><a href="https://cs329a.stanford.edu/">Stanford CS329A</a></h3>
+            <p>这门课看的是 self-improving agents：agent 如何通过 verifier、memory、test-time compute、feedback loop 变得更强。它回答的是“Agent Teams 运行一段时间后，怎么不只是重复犯错”。</p>
+            <p><b>对应 Agent Teams:</b> eval、memory、skill 更新、失败样本回灌。</p>
+          </article>
+          <article>
+            <span class="guide-tag">全景入门</span>
+            <h3><a href="https://rdi.berkeley.edu/llm-agents/f24">UC Berkeley LLM Agents</a></h3>
+            <p>这门课覆盖 LLM agents 的大图景：planning、tool use、memory、multi-agent collaboration、evaluation 和 safety。它适合建立“agent 到底有哪些模块”的完整地图。</p>
+            <p><b>对应 Agent Teams:</b> 角色分工、工具调用、协作模式、评估和安全边界。</p>
+          </article>
+          <article>
+            <span class="guide-tag">高级能力</span>
+            <h3><a href="https://rdi.berkeley.edu/adv-llm-agents/sp25">UC Berkeley Advanced LLM Agents</a></h3>
+            <p>这门课更进阶，重点是 reasoning、planning、tool use 和 program verification。它适合用来判断一个 multi-agent 系统是否真的有复杂任务能力，而不是只会把任务拆成多个聊天窗口。</p>
+            <p><b>对应 Agent Teams:</b> 复杂推理、计划修正、工具可靠性、可验证输出。</p>
+          </article>
+          <article>
+            <span class="guide-tag">工程框架</span>
+            <h3><a href="https://www.cmu-agents.com/">CMU 11-768</a></h3>
+            <p>CMU 这门课直接叫 AI Agents，重点是 autonomous agents、frameworks 和 training methods。它更像从系统角度看 agent：环境、行动、反馈、学习和部署。</p>
+            <p><b>对应 Agent Teams:</b> agent 生命周期、环境交互、框架设计和可靠性。</p>
+          </article>
+          <article>
+            <span class="guide-tag">应用架构</span>
+            <h3><a href="https://professional.mit.edu/course-catalog/ai-system-architecture-and-large-language-model-applications">MIT AI System Architecture</a></h3>
+            <p>MIT 这门更偏企业应用和系统架构，不是纯研究课。它适合看 LLM/agent 如何落进真实组织：需求、架构、集成、治理和交付。</p>
+            <p><b>对应 Agent Teams:</b> 从 demo 到组织级应用的架构和治理。</p>
+          </article>
+        </div>
+
         <div class="course-table">
           <div class="course-row head">
             <span>学校</span><span>课程</span><span>覆盖点</span><span>价值</span>
@@ -585,34 +636,69 @@
         <p>
           Agent Teams 的前端不应该只是聊天框。用户需要看到<mark class="hl hl-product">谁在做、为什么做、证据是什么</mark>，也需要看到<mark class="hl hl-risk">哪里失败、成本多少、是否需要人介入</mark>。
         </p>
-        <div class="frontend-grid">
-          <article>
-            <h3><a href="https://github.com/ag-ui-protocol/ag-ui">AG-UI</a></h3>
-            <p>参考点: event stream、state delta、tool call、generative UI、human approval。适合定义 agent backend 到前端的协议层。</p>
+
+        <div class="visual-gallery" aria-label="Agent Teams 前端长相速览">
+          <article class="visual-card">
+            <div class="ui-thumb thumb-agui" role="img" aria-label="AG-UI event protocol UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h3><a href="https://docs.ag-ui.com/">AG-UI</a></h3>
+            <p><b>长相:</b> 不是完整产品 UI，而是事件协议层。典型前端会呈现 streaming message、tool call、state delta、human approval 事件。</p>
+            <p><b>可借鉴:</b> 把 agent 后端事件标准化，让聊天、画布、表单、审批卡都能读同一条事件流。</p>
           </article>
-          <article>
-            <h3><a href="https://github.com/CopilotKit/CopilotKit">CopilotKit</a></h3>
-            <p>参考点: in-app copilot、agent state sync、action cards、前端工具调用。适合产品内嵌 agent team。</p>
+
+          <article class="visual-card">
+            <div class="ui-thumb thumb-copilot" role="img" aria-label="CopilotKit sidebar and generative UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h3><a href="https://docs.copilotkit.ai/">CopilotKit</a></h3>
+            <p><b>长相:</b> 产品页面右侧/内嵌 copilot，主区是业务 UI，侧边是聊天、action card、生成式组件和人工确认。</p>
+            <p><b>可借鉴:</b> 适合做“产品内 Agent Teams”，让 agent 在用户已有工作台里行动，而不是另开一个聊天应用。</p>
           </article>
-          <article>
-            <h3><a href="https://github.com/rowboatlabs/rowboat">Rowboat</a></h3>
-            <p>参考点: prompt 到 agent graph、mocked tools、运行测试、可视化 builder。适合 agent team authoring UI。</p>
+
+          <article class="visual-card">
+            <div class="ui-thumb thumb-rowboat" role="img" aria-label="Rowboat memory coworker UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h3><a href="https://www.rowboatlabs.com/">Rowboat</a></h3>
+            <p><b>长相:</b> 本地优先 coworker 工作台，左侧记忆/文件库，中间对话和任务，右侧是可检查的 Markdown/知识资产。</p>
+            <p><b>可借鉴:</b> 把 agent 产出落成可编辑资产，而不是只停留在一次性聊天记录里。</p>
           </article>
-          <article>
-            <h3><a href="https://arxiv.org/abs/2408.15247">AutoGen Studio</a></h3>
-            <p>参考点: drag-and-drop workflow、interactive evaluation、debugging gallery。适合无代码/低代码 agent workflow。</p>
+
+          <article class="visual-card">
+            <div class="ui-thumb thumb-autogen" role="img" aria-label="AutoGen Studio workflow builder UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h3><a href="https://autogenhub.github.io/autogen/blog/2023/12/01/AutoGenStudio/">AutoGen Studio</a></h3>
+            <p><b>长相:</b> 无代码/低代码 workflow builder：左侧组件库，中间拖拽 agent 节点和连线，右侧配置模型、工具和参数。</p>
+            <p><b>可借鉴:</b> 适合让非底层工程人员配置多 Agent workflow，并用 gallery/playground 做测试。</p>
           </article>
-          <article>
-            <h3><a href="https://smith.langchain.com/">LangSmith / LangGraph Studio</a></h3>
-            <p>参考点: trace、run tree、state graph、debugging。适合工程团队观测和回归。</p>
+
+          <article class="visual-card">
+            <div class="ui-thumb thumb-langsmith" role="img" aria-label="LangSmith Studio graph trace UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h3><a href="https://docs.langchain.com/langsmith/studio">LangSmith / LangGraph Studio</a></h3>
+            <p><b>长相:</b> Agent IDE + trace 面板。Graph mode 看节点、边、状态和中间结果；Chat mode 用于快速试 agent 行为。</p>
+            <p><b>可借鉴:</b> 调试复杂 Agent Teams 时，必须能看 node traversed、intermediate state、trace、dataset/eval。</p>
           </article>
-          <article>
+
+          <article class="visual-card">
+            <div class="ui-thumb thumb-canvas" role="img" aria-label="Open Multi-Agent Canvas UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
             <h3><a href="https://github.com/CopilotKit/open-multi-agent-canvas">Open Multi-Agent Canvas</a></h3>
-            <p>参考点: 多 Agent 对话画布、MCP 服务器接入、动态 conversation。适合把团队协作从单列聊天变成工作台。</p>
+            <p><b>长相:</b> 多 Agent 聊天画布，一个动态 conversation 管多个 agent，并能配置 MCP servers。</p>
+            <p><b>可借鉴:</b> 适合把多 agent 从线性聊天扩展成“会话 + agent roster + MCP 配置”的工作台。</p>
           </article>
-          <article>
+
+          <article class="visual-card">
+            <div class="ui-thumb thumb-marvis" role="img" aria-label="Tencent Marvis OS level assistant UI sketch">
+              <span></span><span></span><span></span><span></span>
+            </div>
             <h3><a href="https://marvis.qq.com/">Tencent Marvis 马维斯</a></h3>
-            <p>参考点: OS-level agent workspace、桌面/移动跨端操控、File/Computer/App/Browser/Search agent 分工、隐私模式和敏感动作确认。适合作为消费级 Agent Teams 的产品形态对照。</p>
+            <p><b>长相:</b> OS-level assistant：中心任务入口，周围接文件、应用、浏览器、搜索和设备控制，敏感动作出现确认卡。</p>
+            <p><b>可借鉴:</b> 消费级 Agent Teams 要把系统权限、端云切换、隐私模式、跨端控制做成用户可理解的 UI。</p>
           </article>
         </div>
 

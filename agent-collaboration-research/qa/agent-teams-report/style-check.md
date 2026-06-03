@@ -11,6 +11,7 @@
 - GitHub 项目表增加 caption、筛选结果计数和 stars 迷你条。
 - 导航增加当前章节高亮。
 - 补充 print 样式和移动端单列降级。
+- Frontend 章节增加项目界面缩略示意，覆盖 AG-UI、CopilotKit、Rowboat、AutoGen Studio、LangSmith / LangGraph Studio、Open Multi-Agent Canvas、Tencent Marvis。
 
 ## 验证
 
