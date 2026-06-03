@@ -419,6 +419,238 @@ h2 {
   color: var(--muted);
 }
 
+.comparison-intro {
+  margin-top: 26px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--red);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.comparison-intro strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+}
+
+.comparison-intro p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.layer-map {
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) 28px minmax(170px, 1fr) 28px minmax(170px, 1fr) 28px minmax(170px, 1fr);
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+
+.layer-node {
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.layer-node span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.layer-node strong {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.layer-node p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.layer-node.protocol {
+  border-top: 5px solid var(--blue);
+}
+
+.layer-node.sdk {
+  border-top: 5px solid var(--green);
+}
+
+.layer-node.framework {
+  border-top: 5px solid var(--amber);
+}
+
+.layer-node.product {
+  border-top: 5px solid var(--violet);
+}
+
+.layer-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 24px;
+}
+
+.matrix-wrap {
+  overflow-x: auto;
+  margin-top: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.compare-matrix {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.compare-matrix caption {
+  caption-side: top;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  background: #f1e8da;
+  color: var(--muted);
+  text-align: left;
+  font-size: 13px;
+}
+
+.compare-matrix th,
+.compare-matrix td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid rgba(216, 203, 185, 0.65);
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare-matrix th:last-child,
+.compare-matrix td:last-child {
+  border-right: 0;
+}
+
+.compare-matrix thead th {
+  background: var(--paper-deep);
+  color: #3c4147;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.compare-matrix tbody th {
+  width: 160px;
+  color: var(--ink);
+  font-weight: 820;
+}
+
+.score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 26px;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 820;
+}
+
+.score.high {
+  border-color: rgba(61, 118, 81, 0.4);
+  background: rgba(61, 118, 81, 0.13);
+  color: #2f6141;
+}
+
+.score.med {
+  border-color: rgba(169, 107, 43, 0.42);
+  background: rgba(169, 107, 43, 0.14);
+  color: #70481e;
+}
+
+.score.low {
+  border-color: rgba(95, 111, 124, 0.32);
+  background: rgba(95, 111, 124, 0.1);
+  color: #56636c;
+}
+
+.score-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 720;
+}
+
+.score-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.78);
+}
+
+.score-legend .score {
+  width: 30px;
+  height: 22px;
+  font-style: normal;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.scenario-grid article {
+  position: relative;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.scenario-rank {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.scenario-grid h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-serif);
+  font-size: 21px;
+}
+
+.scenario-grid p {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.scenario-grid p:last-child {
+  margin-bottom: 0;
+}
+
+.scenario-grid b {
+  color: var(--ink);
+}
+
 .controls {
   display: flex;
   flex-wrap: wrap;
