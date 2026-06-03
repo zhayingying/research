@@ -1,0 +1,19 @@
+{
+  "title": "Agent Teams 协同生态知识框架 2026",
+  "author": "ziye",
+  "generatedAt": "2026-06-03",
+  "style": "editorial-paper",
+  "engine": "token-report",
+  "entry": "index.html",
+  "assets": {
+    "css": ["styles/report.css"],
+    "js": ["scripts/report.js"]
+  },
+  "scope": [
+    "A2A / Agent-to-Agent",
+    "Multi-Agent collaboration",
+    "Claude Agent SDK / OpenAI Agents SDK / Google ADK / Codex CLI / Pi",
+    "papers, communities, courses, frontend references",
+    "table-first knowledge framework"
+  ]
+}
