@@ -1,0 +1,36 @@
+{
+  "title": "Agent Teams / A2A 协同生态深度调研",
+  "author": "ziye",
+  "createdAt": "2026-06-04",
+  "project_slug": "agent-collaboration-research",
+  "report_slug": "agent-teams-report",
+  "run_id": "20260604-agent-teams-style-pass",
+  "workspace_root": "/Users/zhayingying/Desktop/code/github_code/research/agent-collaboration-research",
+  "style": "editorial-paper",
+  "engine": "token-report",
+  "modules": [
+    "kpi-tile-grid",
+    "matrix-table",
+    "insight-card-grid",
+    "annotated-timeline"
+  ],
+  "responsive_viewports": {
+    "desktop": "1440x900",
+    "tablet": "820x1180",
+    "mobile": "390x844"
+  },
+  "entry": "index.html",
+  "assets": {
+    "css": [
+      "styles/theme-fonts.css",
+      "styles/theme.css",
+      "styles/report.css"
+    ],
+    "js": [
+      "scripts/report.js"
+    ],
+    "data": [
+      "content.json"
+    ]
+  }
+}

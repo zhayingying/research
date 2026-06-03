@@ -1,0 +1,294 @@
+{
+  "author": "ziye",
+  "collectedAt": "2026-06-04",
+  "sources": [
+    {
+      "id": "a2a-google-blog",
+      "grade": "A",
+      "category": "protocol",
+      "title": "Announcing the Agent2Agent Protocol (A2A)",
+      "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+      "use": "A2A 定义、企业互操作定位、伙伴生态"
+    },
+    {
+      "id": "a2a-github",
+      "grade": "A",
+      "category": "github",
+      "title": "a2aproject/A2A",
+      "url": "https://github.com/a2aproject/A2A",
+      "use": "A2A 官方开源协议仓库、SDK 入口"
+    },
+    {
+      "id": "openai-agents",
+      "grade": "A",
+      "category": "sdk",
+      "title": "OpenAI Agents SDK",
+      "url": "https://github.com/openai/openai-agents-python",
+      "use": "OpenAI 多 Agent workflow SDK、handoffs、guardrails、tracing"
+    },
+    {
+      "id": "openai-guide",
+      "grade": "A",
+      "category": "guide",
+      "title": "A practical guide to building agents",
+      "url": "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/",
+      "use": "从单 Agent 到多 Agent 的升级条件与 guardrail 思路"
+    },
+    {
+      "id": "anthropic-multi-agent-research",
+      "grade": "A",
+      "category": "engineering",
+      "title": "How we built our multi-agent research system",
+      "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+      "use": "生产级 multi-agent research 的 lead/subagent 架构、测试和成本信号"
+    },
+    {
+      "id": "claude-agent-sdk",
+      "grade": "A",
+      "category": "sdk",
+      "title": "anthropics/claude-agent-sdk-python",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python",
+      "use": "Claude Agent SDK 官方 Python 仓库"
+    },
+    {
+      "id": "google-adk",
+      "grade": "A",
+      "category": "sdk",
+      "title": "Google Agent Development Kit",
+      "url": "https://adk.dev/",
+      "use": "Google ADK 生态、Gemini 优化、model/deployment agnostic 说明"
+    },
+    {
+      "id": "langgraph",
+      "grade": "A",
+      "category": "github",
+      "title": "langchain-ai/langgraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "use": "状态图、multi-agent workflow、长期运行 agent"
+    },
+    {
+      "id": "crewai",
+      "grade": "A",
+      "category": "github",
+      "title": "crewAIInc/crewAI",
+      "url": "https://github.com/crewAIInc/crewAI",
+      "use": "Role-based multi-agent orchestration"
+    },
+    {
+      "id": "autogen",
+      "grade": "A",
+      "category": "github",
+      "title": "microsoft/autogen",
+      "url": "https://github.com/microsoft/autogen",
+      "use": "Microsoft 多 Agent conversation 框架"
+    },
+    {
+      "id": "microsoft-agent-framework",
+      "grade": "A",
+      "category": "github",
+      "title": "microsoft/agent-framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "use": "AutoGen/Semantic Kernel 之后的 Microsoft agent framework 方向"
+    },
+    {
+      "id": "ag-ui",
+      "grade": "A",
+      "category": "frontend",
+      "title": "AG-UI Protocol",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "use": "Agent-to-user event protocol、前端交互参考"
+    },
+    {
+      "id": "copilotkit",
+      "grade": "A",
+      "category": "frontend",
+      "title": "CopilotKit",
+      "url": "https://github.com/CopilotKit/CopilotKit",
+      "use": "Agentic frontend / generative UI 开源栈"
+    },
+    {
+      "id": "rowboat",
+      "grade": "A",
+      "category": "frontend",
+      "title": "rowboatlabs/rowboat",
+      "url": "https://github.com/rowboatlabs/rowboat",
+      "use": "OpenAI Agents SDK 上的多 Agent IDE / workflow UI"
+    },
+    {
+      "id": "tencent-marvis-official",
+      "grade": "A",
+      "category": "product",
+      "title": "Marvis 马维斯 - 腾讯 Marvis 官网",
+      "url": "https://marvis.qq.com/",
+      "use": "腾讯 OS-level AI 助手产品入口，用作闭源产品形态参考"
+    },
+    {
+      "id": "tencent-marvis-techpedia",
+      "grade": "B",
+      "category": "product",
+      "title": "腾讯云开发者社区：Marvis 技术百科",
+      "url": "https://cloud.tencent.com/developer/techpedia/2612",
+      "use": "1 主 Agent + 5 副 Agent、端云协同、隐私模式、安全确认等架构信息"
+    },
+    {
+      "id": "mast",
+      "grade": "A",
+      "category": "paper",
+      "title": "Why Do Multi-Agent LLM Systems Fail?",
+      "url": "https://arxiv.org/abs/2503.13657",
+      "use": "MAS 失败分类: specification/design、misalignment、verification/termination"
+    },
+    {
+      "id": "scaling-agent-systems",
+      "grade": "A",
+      "category": "paper",
+      "title": "Towards a Science of Scaling Agent Systems",
+      "url": "https://arxiv.org/abs/2512.08296",
+      "use": "单/多 Agent 架构 scaling 原则、180 配置实验、错误放大和协调收益边界"
+    },
+    {
+      "id": "co-scientist",
+      "grade": "A",
+      "category": "paper",
+      "title": "Towards an AI co-scientist",
+      "url": "https://arxiv.org/abs/2502.18864",
+      "use": "Google/Gemini 多 Agent 科学假设生成系统"
+    },
+    {
+      "id": "deepmind-coscientist",
+      "grade": "A",
+      "category": "paper",
+      "title": "Co-Scientist: A multi-agent AI partner to accelerate research",
+      "url": "https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/",
+      "use": "Google DeepMind/Nature 版 Co-Scientist 最新研究说明"
+    },
+    {
+      "id": "magentic-one",
+      "grade": "A",
+      "category": "paper",
+      "title": "Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks",
+      "url": "https://arxiv.org/abs/2411.04468",
+      "use": "Orchestrator + worker agents + ledger 的代表性系统"
+    },
+    {
+      "id": "autogen-paper",
+      "grade": "A",
+      "category": "paper",
+      "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+      "url": "https://arxiv.org/abs/2308.08155",
+      "use": "多 Agent conversation framework 基础论文"
+    },
+    {
+      "id": "collaborative-gym",
+      "grade": "A",
+      "category": "paper",
+      "title": "Collaborative Gym",
+      "url": "https://arxiv.org/abs/2412.15701",
+      "use": "human-agent collaboration 评估框架"
+    },
+    {
+      "id": "ace",
+      "grade": "A",
+      "category": "paper",
+      "title": "Agentic Context Engineering",
+      "url": "https://arxiv.org/abs/2510.04618",
+      "use": "Agent context / memory / playbook 的自我改进框架"
+    },
+    {
+      "id": "agentmaster",
+      "grade": "A",
+      "category": "paper",
+      "title": "AgentMaster",
+      "url": "https://arxiv.org/abs/2507.21105",
+      "use": "A2A + MCP 多协议 multi-agent 案例"
+    },
+    {
+      "id": "autogen-studio",
+      "grade": "A",
+      "category": "frontend",
+      "title": "AutoGen Studio",
+      "url": "https://arxiv.org/abs/2408.15247",
+      "use": "多 Agent 可视化 authoring/debugging UI 设计原则"
+    },
+    {
+      "id": "stanford-cs224g",
+      "grade": "A",
+      "category": "course",
+      "title": "Stanford CS224G: Building and Scaling LLM Applications",
+      "url": "https://web.stanford.edu/class/cs224g/",
+      "use": "Agentic workflows & multi-agent systems 课程证据"
+    },
+    {
+      "id": "stanford-cs329a",
+      "grade": "A",
+      "category": "course",
+      "title": "Stanford CS329A: Self-Improving AI Agents",
+      "url": "https://cs329a.stanford.edu/",
+      "use": "self-improving agents、verifiers、test-time compute、memory 课程"
+    },
+    {
+      "id": "berkeley-llm-agents",
+      "grade": "A",
+      "category": "course",
+      "title": "UC Berkeley CS294/194-196 Large Language Model Agents",
+      "url": "https://rdi.berkeley.edu/llm-agents/f24",
+      "use": "LLM agents、multi-agent collaboration、eval/safety 课程"
+    },
+    {
+      "id": "berkeley-adv-agents",
+      "grade": "A",
+      "category": "course",
+      "title": "UC Berkeley CS294/194-280 Advanced Large Language Model Agents",
+      "url": "https://rdi.berkeley.edu/adv-llm-agents/sp25",
+      "use": "reasoning、planning、tool use、program verification 进阶课程"
+    },
+    {
+      "id": "cmu-ai-agents",
+      "grade": "A",
+      "category": "course",
+      "title": "CMU 11-768: AI Agents",
+      "url": "https://www.cmu-agents.com/",
+      "use": "LLM-based autonomous agents、frameworks、training methods"
+    },
+    {
+      "id": "hn-a2a",
+      "grade": "B",
+      "category": "hn",
+      "title": "HN: The Agent2Agent Protocol (A2A)",
+      "url": "https://news.ycombinator.com/item?id=43631381",
+      "use": "A2A 高讨论度和 adoption friction 信号"
+    },
+    {
+      "id": "hn-rowboat",
+      "grade": "B",
+      "category": "hn",
+      "title": "HN: Rowboat",
+      "url": "https://news.ycombinator.com/item?id=43763967",
+      "use": "多 Agent IDE / visual builder 关注度"
+    },
+    {
+      "id": "hn-ag-ui",
+      "grade": "B",
+      "category": "hn",
+      "title": "HN: AG-UI Protocol",
+      "url": "https://news.ycombinator.com/item?id=43974484",
+      "use": "Agent frontend protocol 关注度"
+    },
+    {
+      "id": "reddit-ai-agents",
+      "grade": "B",
+      "category": "reddit",
+      "title": "r/AI_Agents multi-agent discussion",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1s42qnr/are_multiagent_systems_actually_better_than_a/",
+      "use": "实践者对 single vs multi-agent 的近期讨论"
+    },
+    {
+      "id": "reddit-llmdevs",
+      "grade": "B",
+      "category": "reddit",
+      "title": "r/LLMDevs: Are multi-agent systems actually better",
+      "url": "https://www.reddit.com/r/LLMDevs/comments/1t6031y/are_multiagent_systems_actually_better_than/",
+      "use": "生产经验视角: typed contracts、eval、month-6 reality"
+    }
+  ]
+}

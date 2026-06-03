@@ -1,0 +1,195 @@
+{
+  "author": "ziye",
+  "collectedAt": "2026-06-04",
+  "coreQuestion": "一个 Agent-to-Agent / Multi-Agent 协同系统什么时候值得从单 Agent 升级为 Agent Teams，并且它应该用什么协议、SDK、运行框架、评估机制和前端交互形态来支撑持续进化。",
+  "productBenchmarks": [
+    {
+      "product": "Tencent Marvis 马维斯",
+      "layer": "closed OS-level AI assistant",
+      "company": "Tencent",
+      "publicLaunch": "2026-05-20",
+      "platforms": "Windows, macOS, Android; iOS planned",
+      "architecture": "1 main agent plus 5 specialist agents: File, Computer, App, Browser, Search",
+      "modelRouting": "cloud-local routing; efficiency mode uses cloud models, privacy mode runs locally",
+      "reportUse": "产品形态、安全确认、端云协同、桌面/跨端 GUI agent 参考；不是开源 SDK 或 GitHub 项目"
+    }
+  ],
+  "repoSnapshot": [
+    {
+      "project": "openai/codex",
+      "layer": "coding agent runtime",
+      "stars": 88281,
+      "language": "Rust",
+      "pushedAt": "2026-06-03",
+      "sdk": "Codex CLI/runtime, not a public high-star Codex SDK"
+    },
+    {
+      "project": "OpenHands/OpenHands",
+      "layer": "coding agent app",
+      "stars": 75734,
+      "language": "Python",
+      "pushedAt": "2026-06-03",
+      "sdk": "model-agnostic; Claude/OpenAI integrations"
+    },
+    {
+      "project": "FoundationAgents/MetaGPT",
+      "layer": "multi-agent framework",
+      "stars": 68494,
+      "language": "Python",
+      "pushedAt": "2026-01-21",
+      "sdk": "own framework; LLM provider adapters"
+    },
+    {
+      "project": "earendil-works/pi",
+      "layer": "coding agent toolkit",
+      "stars": 59337,
+      "language": "TypeScript",
+      "pushedAt": "2026-06-03",
+      "sdk": "Pi coding-agent toolkit/runtime"
+    },
+    {
+      "project": "microsoft/autogen",
+      "layer": "multi-agent framework",
+      "stars": 58664,
+      "language": "Python",
+      "pushedAt": "2026-04-15",
+      "sdk": "Microsoft AutoGen; migrating/related to Microsoft Agent Framework"
+    },
+    {
+      "project": "crewAIInc/crewAI",
+      "layer": "multi-agent framework",
+      "stars": 52763,
+      "language": "Python",
+      "pushedAt": "2026-06-03",
+      "sdk": "CrewAI framework; model-provider adapters"
+    },
+    {
+      "project": "run-llama/llama_index",
+      "layer": "RAG/agent framework",
+      "stars": 49881,
+      "language": "Python",
+      "pushedAt": "2026-05-29",
+      "sdk": "LlamaIndex agents/workflows"
+    },
+    {
+      "project": "agno-agi/agno",
+      "layer": "agent platform",
+      "stars": 40494,
+      "language": "Python",
+      "pushedAt": "2026-06-03",
+      "sdk": "Agno agent framework"
+    },
+    {
+      "project": "langchain-ai/langgraph",
+      "layer": "stateful orchestration",
+      "stars": 33760,
+      "language": "Python",
+      "pushedAt": "2026-06-03",
+      "sdk": "LangGraph; LangChain ecosystem"
+    },
+    {
+      "project": "CopilotKit/CopilotKit",
+      "layer": "agent frontend",
+      "stars": 31924,
+      "language": "TypeScript",
+      "pushedAt": "2026-06-03",
+      "sdk": "CopilotKit + AG-UI"
+    },
+    {
+      "project": "microsoft/semantic-kernel",
+      "layer": "enterprise agent SDK",
+      "stars": 28044,
+      "language": "C#",
+      "pushedAt": "2026-05-29",
+      "sdk": "Semantic Kernel / Microsoft ecosystem"
+    },
+    {
+      "project": "huggingface/smolagents",
+      "layer": "agent framework",
+      "stars": 27685,
+      "language": "Python",
+      "pushedAt": "2026-06-02",
+      "sdk": "smolagents; code-agent orientation"
+    },
+    {
+      "project": "openai/openai-agents-python",
+      "layer": "agent SDK",
+      "stars": 26883,
+      "language": "Python",
+      "pushedAt": "2026-05-31",
+      "sdk": "OpenAI Agents SDK"
+    },
+    {
+      "project": "mastra-ai/mastra",
+      "layer": "TypeScript agent framework",
+      "stars": 24714,
+      "language": "TypeScript",
+      "pushedAt": "2026-06-03",
+      "sdk": "Mastra; Vercel AI SDK/model adapters"
+    },
+    {
+      "project": "a2aproject/A2A",
+      "layer": "A2A protocol",
+      "stars": 24109,
+      "language": "Shell",
+      "pushedAt": "2026-06-02",
+      "sdk": "A2A official protocol plus Python/JS/Java/Go/.NET/Rust SDKs"
+    },
+    {
+      "project": "openai/swarm",
+      "layer": "educational multi-agent framework",
+      "stars": 21570,
+      "language": "Python",
+      "pushedAt": "2026-04-15",
+      "sdk": "OpenAI experimental/educational predecessor"
+    },
+    {
+      "project": "google/adk-python",
+      "layer": "agent SDK",
+      "stars": 19972,
+      "language": "Python",
+      "pushedAt": "2026-06-03",
+      "sdk": "Google ADK; Gemini optimized, model/deployment agnostic"
+    },
+    {
+      "project": "SWE-agent/SWE-agent",
+      "layer": "software engineering agent",
+      "stars": 19409,
+      "language": "Python",
+      "pushedAt": "2026-06-01",
+      "sdk": "own agent harness"
+    },
+    {
+      "project": "pydantic/pydantic-ai",
+      "layer": "typed agent framework",
+      "stars": 17488,
+      "language": "Python",
+      "pushedAt": "2026-06-03",
+      "sdk": "Pydantic AI"
+    },
+    {
+      "project": "camel-ai/camel",
+      "layer": "multi-agent society framework",
+      "stars": 17110,
+      "language": "Python",
+      "pushedAt": "2026-06-02",
+      "sdk": "CAMEL framework"
+    },
+    {
+      "project": "anthropics/claude-agent-sdk-python",
+      "layer": "agent SDK",
+      "stars": 7176,
+      "language": "Python",
+      "pushedAt": "2026-06-02",
+      "sdk": "Claude Agent SDK"
+    },
+    {
+      "project": "rowboatlabs/rowboat",
+      "layer": "multi-agent IDE/UI",
+      "stars": 14880,
+      "language": "TypeScript",
+      "pushedAt": "2026-06-03",
+      "sdk": "OpenAI Agents SDK plus MCP"
+    }
+  ]
+}

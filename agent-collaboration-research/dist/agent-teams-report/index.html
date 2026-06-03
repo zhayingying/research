@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="ziye" />
+    <title>Agent Teams / A2A 协同生态深度调研</title>
+    <link rel="stylesheet" href="styles/theme-fonts.css" />
+    <link rel="stylesheet" href="styles/theme.css" />
+    <link rel="stylesheet" href="styles/report.css" />
+  </head>
+  <body>
+    <header class="report-hero" id="top">
+      <div class="hero-meta">
+        <span>作者: ziye</span>
+        <span>采集日期: 2026-06-04</span>
+        <span>范围: GitHub / arXiv / HN / Reddit / X / 高校课程 / 产品 UI</span>
+      </div>
+      <h1>Agent Teams / A2A 协同生态深度调研</h1>
+      <p class="hero-lede">
+        这份报告回答一个问题：一个 <mark class="hl hl-protocol">Agent-to-Agent / Multi-Agent 协同系统</mark> 什么时候值得从单 Agent 升级为 Agent Teams，并且它应该用什么协议、SDK、运行框架、评估机制和前端交互形态来支撑持续进化。
+      </p>
+      <div class="metrics-strip" aria-label="报告覆盖范围">
+        <div class="metric-tile">
+          <span class="metric-number">22</span>
+          <span class="metric-label">GitHub 开源条目</span>
+        </div>
+        <div class="metric-tile">
+          <span class="metric-number">1</span>
+          <span class="metric-label">闭源产品基准</span>
+        </div>
+        <div class="metric-tile">
+          <span class="metric-number">8</span>
+          <span class="metric-label">核心问题域</span>
+        </div>
+        <div class="metric-tile">
+          <span class="metric-number">3</span>
+          <span class="metric-label">协议 / SDK / 产品层</span>
+        </div>
+      </div>
+      <div class="highlight-legend" aria-label="颜色图例">
+        <span><i class="legend-dot protocol"></i>协议</span>
+        <span><i class="legend-dot sdk"></i>SDK / runtime</span>
+        <span><i class="legend-dot framework"></i>框架 / 机制</span>
+        <span><i class="legend-dot product"></i>产品 / 前端</span>
+        <span><i class="legend-dot risk"></i>风险 / 成本</span>
+      </div>
+      <div class="hero-grid" aria-label="核心结论">
+        <article>
+          <strong>协议层</strong>
+          <span><mark class="hl hl-protocol">A2A</mark> 负责 agent 间互操作；<mark class="hl hl-framework">MCP</mark> 负责 tool/context 接入；<mark class="hl hl-product">AG-UI</mark> 负责 agent 到前端的事件流。</span>
+        </article>
+        <article>
+          <strong>运行层</strong>
+          <span>真正可用的 Agent Teams 更像分布式系统：<mark class="hl hl-framework">合同、状态、trace、eval、预算、停止条件</mark>都要显式化。</span>
+        </article>
+        <article>
+          <strong>有效边界</strong>
+          <span>多 Agent 只在<mark class="hl hl-positive">可并行、可隔离、可验证</mark>的任务上有稳定收益；顺序推理任务会被<mark class="hl hl-risk">协调税</mark>拖垮。</span>
+        </article>
+      </div>
+    </header>
+
+    <nav class="sticky-nav" aria-label="报告导航">
+      <a href="#question">问题定义</a>
+      <a href="#ecosystem">GitHub 生态</a>
+      <a href="#framework">运行框架</a>
+      <a href="#papers">论文</a>
+      <a href="#community">社区</a>
+      <a href="#courses">课程</a>
+      <a href="#frontend">前端参考</a>
+      <a href="#sources">证据源</a>
+    </nav>
+
+    <main>
+      <section class="section" id="question">
+        <div class="section-kicker">01 / Question</div>
+        <h2>先把核心问题定义清楚</h2>
+        <p>
+          你的问题不是“有哪些多 Agent 项目”。更准确的研究问题是：在 2026 年的开源、论文和产品生态里，<mark class="hl hl-product">Agent Teams 是否已经形成可复用的工程范式</mark>；如果形成了，它由哪些协议和 SDK 组成，什么时候比单 Agent 更强，如何长期进化。
+        </p>
+        <div class="question-map">
+          <div class="map-node root">Agent Teams 是否成立</div>
+          <div class="map-branch">
+            <div>生态层<br /><span>A2A / MCP / AG-UI / SDK</span></div>
+            <div>运行层<br /><span>状态 / 分工 / 边界 / 停止条件</span></div>
+            <div>进化层<br /><span>eval / trace / cost / memory</span></div>
+            <div>证据层<br /><span>GitHub / paper / HN / Reddit / courses</span></div>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>本报告的判断标准</strong>
+          <p>
+            GitHub 用 <mark class="hl hl-data">stars + pushedAt + license + 技术层级</mark> 判断；论文用 arXiv/OpenReview/Nature/官方研究博客判断；HN/Reddit/X 只作为社区信号，不当作事实源；课程只认高校官方页面。
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="ecosystem">
+        <div class="section-kicker">02 / GitHub</div>
+        <h2>活跃开源项目分层</h2>
+        <p>
+          2026 年还活跃的项目可以分成三层：<mark class="hl hl-protocol">协议层</mark>、<mark class="hl hl-sdk">SDK/运行层</mark>、<mark class="hl hl-product">应用/前端层</mark>。A2A 是协议，不等于完整 agent runtime；OpenAI Agents SDK、Claude Agent SDK、Google ADK、Pi/Codex 这类是 runtime/toolkit；LangGraph、CrewAI、AutoGen、Mastra 等负责 orchestration。腾讯 Marvis 另作为闭源 OS-level 产品基准纳入，不计入 GitHub 开源排名。
+        </p>
+
+        <div class="controls" aria-label="项目筛选">
+          <label>
+            搜索
+            <input id="repoSearch" type="search" placeholder="项目、语言、SDK、用途" />
+          </label>
+          <label>
+            层级
+            <select id="layerFilter">
+              <option value="all">全部</option>
+              <option value="protocol">协议</option>
+              <option value="sdk">SDK / runtime</option>
+              <option value="framework">编排框架</option>
+              <option value="app">应用 / 前端</option>
+            </select>
+          </label>
+          <div class="result-count" id="repoCount" aria-live="polite">显示全部条目</div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table" id="repoTable">
+            <caption>开源项目按 GitHub stars 排序；Tencent Marvis 作为闭源产品基准，不参与开源排名。</caption>
+            <thead>
+              <tr>
+                <th>层级</th>
+                <th>项目</th>
+                <th>Stars</th>
+                <th>技术栈</th>
+                <th>2026 活跃</th>
+                <th>SDK / 协议判断</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-layer="app" data-sdk="codex runtime rust">
+                <td><span class="pill app">coding runtime</span></td>
+                <td><a href="https://github.com/openai/codex">openai/codex</a></td>
+                <td>88.3k</td>
+                <td>Rust</td>
+                <td>2026-06-03</td>
+                <td>Codex CLI/runtime；不是公开高星 Codex SDK</td>
+                <td>代码 Agent 生态核心仓库，可作为 coding agent runtime 参考。</td>
+              </tr>
+              <tr data-layer="app" data-sdk="model agnostic coding agent">
+                <td><span class="pill app">coding app</span></td>
+                <td><a href="https://github.com/OpenHands/OpenHands">OpenHands/OpenHands</a></td>
+                <td>75.7k</td>
+                <td>Python</td>
+                <td>2026-06-03</td>
+                <td>模型无关，集成 Claude/OpenAI 等</td>
+                <td>完整软件工程 agent app；关注 sandbox、任务生命周期和安全边界。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="own framework llm provider adapters">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/FoundationAgents/MetaGPT">FoundationAgents/MetaGPT</a></td>
+                <td>68.5k</td>
+                <td>Python</td>
+                <td>2026-01-21</td>
+                <td>自有 multi-agent framework</td>
+                <td>“软件公司”式角色协作代表，偏流程模板和团队角色。</td>
+              </tr>
+              <tr data-layer="sdk" data-sdk="pi coding agent toolkit typescript">
+                <td><span class="pill sdk">SDK / runtime</span></td>
+                <td><a href="https://github.com/earendil-works/pi">earendil-works/pi</a></td>
+                <td>59.3k</td>
+                <td>TypeScript</td>
+                <td>2026-06-03</td>
+                <td>Pi coding-agent toolkit/runtime</td>
+                <td>Pi 生态已出现 skills、MCP adapter、messenger、GUI 等周边；适合作 coding agent harness 观察对象。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="microsoft autogen agent framework semantic kernel">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/microsoft/autogen">microsoft/autogen</a></td>
+                <td>58.7k</td>
+                <td>Python</td>
+                <td>2026-04-15</td>
+                <td>AutoGen；与 Microsoft Agent Framework / Semantic Kernel 汇合</td>
+                <td>多 Agent conversation 的经典框架，论文和 Studio 都是重要参考。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="crewai">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/crewAIInc/crewAI">crewAIInc/crewAI</a></td>
+                <td>52.8k</td>
+                <td>Python</td>
+                <td>2026-06-03</td>
+                <td>CrewAI framework</td>
+                <td>role/task/crew/process 心智模型清晰，上手快；生产化要补 eval、trace 和状态边界。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="llamaindex rag workflows agents">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/run-llama/llama_index">run-llama/llama_index</a></td>
+                <td>49.9k</td>
+                <td>Python</td>
+                <td>2026-05-29</td>
+                <td>LlamaIndex agents/workflows</td>
+                <td>RAG + workflow + agent 的成熟生态，适合知识密集型 agent teams。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="agno agent platform">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/agno-agi/agno">agno-agi/agno</a></td>
+                <td>40.5k</td>
+                <td>Python</td>
+                <td>2026-06-03</td>
+                <td>Agno agent platform</td>
+                <td>轻量 agent platform，适合快速搭 tool-using agents。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="langgraph langchain state graph">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a></td>
+                <td>33.8k</td>
+                <td>Python</td>
+                <td>2026-06-03</td>
+                <td>LangGraph / LangChain</td>
+                <td>状态图、checkpoint、循环、handoff 明确；适合需要可控生命周期的 agent team。</td>
+              </tr>
+              <tr data-layer="app" data-sdk="copilotkit ag-ui frontend">
+                <td><span class="pill app">frontend</span></td>
+                <td><a href="https://github.com/CopilotKit/CopilotKit">CopilotKit/CopilotKit</a></td>
+                <td>31.9k</td>
+                <td>TypeScript</td>
+                <td>2026-06-03</td>
+                <td>CopilotKit + AG-UI</td>
+                <td>Agent Teams 前端重点参考：event stream、shared state、generative UI、human-in-loop。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="semantic kernel microsoft">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/microsoft/semantic-kernel">microsoft/semantic-kernel</a></td>
+                <td>28.0k</td>
+                <td>C#</td>
+                <td>2026-05-29</td>
+                <td>Semantic Kernel / Microsoft ecosystem</td>
+                <td>企业集成和 .NET/C# 场景强；与 AutoGen/Agent Framework 方向相关。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="huggingface smolagents code agents">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/huggingface/smolagents">huggingface/smolagents</a></td>
+                <td>27.7k</td>
+                <td>Python</td>
+                <td>2026-06-02</td>
+                <td>smolagents</td>
+                <td>Code-agent 方向强，适合把工具执行显式化。</td>
+              </tr>
+              <tr data-layer="sdk" data-sdk="openai agents sdk handoffs guardrails tracing">
+                <td><span class="pill sdk">SDK</span></td>
+                <td><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a></td>
+                <td>26.9k</td>
+                <td>Python</td>
+                <td>2026-05-31</td>
+                <td>OpenAI Agents SDK</td>
+                <td>核心 primitive 是 Agent、handoff、guardrail、tool、trace；生产多 Agent SDK 的强参考。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="mastra vercel ai sdk typescript">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/mastra-ai/mastra">mastra-ai/mastra</a></td>
+                <td>24.7k</td>
+                <td>TypeScript</td>
+                <td>2026-06-03</td>
+                <td>Mastra；底层对接 Vercel AI SDK / model providers</td>
+                <td>TS agent framework 的代表，适合前后端同栈产品化。</td>
+              </tr>
+              <tr data-layer="protocol" data-sdk="a2a protocol python js java go dotnet rust">
+                <td><span class="pill protocol">protocol</span></td>
+                <td><a href="https://github.com/a2aproject/A2A">a2aproject/A2A</a></td>
+                <td>24.1k</td>
+                <td>Spec + SDKs</td>
+                <td>2026-06-02</td>
+                <td>A2A official: Python、JS/TS、Java、Go、.NET、Rust SDKs</td>
+                <td>Agent-to-agent 互操作主线；适合跨厂商/跨组织 agent discover/auth/stream/coordinate。</td>
+              </tr>
+              <tr data-layer="sdk" data-sdk="google adk gemini a2a mcp">
+                <td><span class="pill sdk">SDK</span></td>
+                <td><a href="https://github.com/google/adk-python">google/adk-python</a></td>
+                <td>20.0k</td>
+                <td>Python</td>
+                <td>2026-06-03</td>
+                <td>Google ADK；Gemini 优化，兼容 A2A/MCP 生态</td>
+                <td>Google agent stack 的官方 SDK，和 A2A 组合价值高。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="pydantic typed agents">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/pydantic/pydantic-ai">pydantic/pydantic-ai</a></td>
+                <td>17.5k</td>
+                <td>Python</td>
+                <td>2026-06-03</td>
+                <td>Pydantic AI</td>
+                <td>typed contracts 是 multi-agent handoff 的核心，Pydantic AI 值得关注。</td>
+              </tr>
+              <tr data-layer="framework" data-sdk="camel multi-agent society">
+                <td><span class="pill framework">framework</span></td>
+                <td><a href="https://github.com/camel-ai/camel">camel-ai/camel</a></td>
+                <td>17.1k</td>
+                <td>Python</td>
+                <td>2026-06-02</td>
+                <td>CAMEL framework</td>
+                <td>多 Agent society / role-playing 路线代表，研究和仿真场景强。</td>
+              </tr>
+              <tr data-layer="sdk" data-sdk="claude agent sdk python typescript">
+                <td><span class="pill sdk">SDK</span></td>
+                <td><a href="https://github.com/anthropics/claude-agent-sdk-python">anthropics/claude-agent-sdk-python</a></td>
+                <td>7.2k</td>
+                <td>Python</td>
+                <td>2026-06-02</td>
+                <td>Claude Agent SDK；TS SDK 约 1.5k stars</td>
+                <td>适合把 Claude Code 能力程序化；多 Agent 周边项目还在早期。</td>
+              </tr>
+              <tr data-layer="app" data-sdk="rowboat openai agents sdk mcp ui">
+                <td><span class="pill app">IDE / UI</span></td>
+                <td><a href="https://github.com/rowboatlabs/rowboat">rowboatlabs/rowboat</a></td>
+                <td>14.9k</td>
+                <td>TypeScript / Python</td>
+                <td>2026-06-03</td>
+                <td>OpenAI Agents SDK + MCP</td>
+                <td>把 agent graph、chat copilot、tool/mocked test 放进一个 builder UI，是前端参考重点。</td>
+              </tr>
+              <tr data-layer="app" data-sdk="tencent marvis os level ai assistant closed product cloud local file computer app browser search">
+                <td><span class="pill app">closed product</span></td>
+                <td><a href="https://marvis.qq.com/">Tencent Marvis 马维斯</a></td>
+                <td>N/A</td>
+                <td>OS-level assistant / Windows、macOS、Android</td>
+                <td>2026-05-20 上线</td>
+                <td>非开源 SDK；产品形态为 1 主 Agent + File、Computer、App、Browser、Search 5 个副 Agent</td>
+                <td>应作为桌面级 Agent Teams 产品基准：端云协同、隐私模式、系统级权限确认、跨端 GUI 操控。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note-grid">
+          <article>
+            <h3>Codex SDK 判断</h3>
+            <p>GitHub 高星生态里可确认的是 <a href="https://github.com/openai/codex">openai/codex</a> CLI/runtime；“Codex SDK”作为公开高星多 Agent SDK 还没有形成主流。搜索结果里多是很小的实验仓库。</p>
+          </article>
+          <article>
+            <h3>Claude Agent SDK 判断</h3>
+            <p>官方 Python/TypeScript SDK 活跃，但高星 multi-agent 应用多数仍使用 LangGraph/CrewAI/AutoGen/OpenAI SDK 等通用框架；Claude SDK 更像 Claude Code 能力的程序化入口。</p>
+          </article>
+          <article>
+            <h3>Pi 判断</h3>
+            <p>Pi 本体是高星 TypeScript coding-agent toolkit，周边出现 skills、MCP adapter、messenger、GUI、permission extension，说明它在 agent harness 生态里活跃。</p>
+          </article>
+          <article>
+            <h3>Tencent Marvis 判断</h3>
+            <p>Marvis 不是开源框架，而是腾讯应用宝团队推出的 OS-level AI 助手。它的价值在产品架构参考：1 主 Agent 调度 5 个系统/文件/应用/浏览器/搜索副 Agent，端云协同与本地隐私模式并存，敏感操作要求用户确认。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="framework">
+        <div class="section-kicker">03 / Operating Model</div>
+        <h2>真正的 Agent Teams 运行和进化框架</h2>
+        <p>
+          采用 <mark class="hl hl-risk">R&gt;C 判断</mark>：多 Agent 的收益必须大于协作成本。工程上，它应该被当作一个有合同、有状态、有审计、有回归测试的分布式工作流，而不是一组角色 prompt。
+        </p>
+
+        <div class="architecture" role="img" aria-label="Agent Teams framework diagram">
+          <div class="arch-row">
+            <div class="arch-box user">Goal / Brief</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-box orchestrator">Orchestrator</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-box workers">Specialist Agents</div>
+          </div>
+          <div class="arch-row">
+            <div class="arch-box blackboard">Shared Blackboard<br />facts / plan / decisions / locks</div>
+            <div class="arch-box contracts">Typed Contracts<br />input / output / owner / stop</div>
+            <div class="arch-box evals">Eval Harness<br />boundary tests / regression / judge</div>
+          </div>
+          <div class="arch-row">
+            <div class="arch-box observability">Trace + Cost<br />tool calls / handoffs / tokens</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-box memory">Memory / Skill Update</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-box release">Versioned Team</div>
+          </div>
+        </div>
+
+        <div class="lifecycle-grid">
+          <article>
+            <span class="step">1</span>
+            <h3>R&gt;C Gate</h3>
+            <p>先判断任务是否可并行、可隔离、可验收。单 Agent 能低成本完成时，不拆。</p>
+          </article>
+          <article>
+            <span class="step">2</span>
+            <h3>Brief Contract</h3>
+            <p>每个 agent 的目标、输出格式、工具/数据源、禁止触碰范围都要写成 contract。</p>
+          </article>
+          <article>
+            <span class="step">3</span>
+            <h3>State Discipline</h3>
+            <p>共享黑板只放事实、计划、决策和任务状态；不要靠巨大上下文传递隐性意图。</p>
+          </article>
+          <article>
+            <span class="step">4</span>
+            <h3>Boundary Evals</h3>
+            <p>每个 handoff 的 JSON/schema/output shape 都有回归集；评估边界比争论编排图更重要。</p>
+          </article>
+          <article>
+            <span class="step">5</span>
+            <h3>Independent Review</h3>
+            <p>审查 agent 和执行 agent 隔离上下文；引用、代码、成本、风险用独立 reviewer 检查。</p>
+          </article>
+          <article>
+            <span class="step">6</span>
+            <h3>Trace, Cost, Retrospective</h3>
+            <p>每轮保存 trace、tool call、token/cost、失败原因；复盘结果进入 skill/context/eval。</p>
+          </article>
+        </div>
+
+        <h3 class="subhead">单 Agent 生命周期</h3>
+        <div class="timeline">
+          <div><b>Define</b><span>目标、边界、成功标准、预算</span></div>
+          <div><b>Hydrate</b><span>加载任务上下文、工具、记忆、策略</span></div>
+          <div><b>Plan</b><span>分解任务，声明假设和风险</span></div>
+          <div><b>Act</b><span>工具调用、文件编辑、搜索、执行</span></div>
+          <div><b>Observe</b><span>读取结果、错误、trace、环境状态</span></div>
+          <div><b>Verify</b><span>测试、引用核验、schema/eval 检查</span></div>
+          <div><b>Handoff</b><span>只交付压缩事实、产物、剩余风险</span></div>
+          <div><b>Learn</b><span>更新 memory、skill、eval、禁区和模板</span></div>
+          <div><b>Retire</b><span>归档版本、失败样本和成本基线</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="papers">
+        <div class="section-kicker">04 / Papers</div>
+        <h2>顶尖论文和研究信号</h2>
+        <p>
+          论文侧最有价值的不是“又一个框架”，而是三类证据：<mark class="hl hl-positive">什么时候多 Agent 有收益</mark>、<mark class="hl hl-risk">为什么失败</mark>、<mark class="hl hl-framework">怎么让 agent 记忆/上下文持续进化</mark>。
+        </p>
+        <div class="paper-grid">
+          <article class="paper-card major">
+            <span>Scaling</span>
+            <h3><a href="https://arxiv.org/abs/2512.08296">Towards a Science of Scaling Agent Systems</a></h3>
+            <p>Google Research / DeepMind / MIT 等作者。180 个配置、5 种拓扑、3 个 LLM 家族。关键结论：并行任务上 centralized coordination 可显著提升；顺序推理任务中多 Agent 退化 39–70%；independent agents 会放大错误。</p>
+          </article>
+          <article class="paper-card major">
+            <span>Failure Taxonomy</span>
+            <h3><a href="https://arxiv.org/abs/2503.13657">Why Do Multi-Agent LLM Systems Fail?</a></h3>
+            <p>MAST 把失败归到 specification/design、inter-agent misalignment、verification/termination。它直接支持本报告的主张：问题常在边界和验证，不在“角色不够多”。</p>
+          </article>
+          <article class="paper-card major">
+            <span>Gemini / Science</span>
+            <h3><a href="https://arxiv.org/abs/2502.18864">Towards an AI co-scientist</a></h3>
+            <p>Google 系 multi-agent scientific discovery 系统，基于 Gemini 2.0；后续 DeepMind/Nature 版本继续强调生成、辩论、演化、排序和 supervisor。</p>
+          </article>
+          <article class="paper-card">
+            <span>Microsoft</span>
+            <h3><a href="https://arxiv.org/abs/2411.04468">Magentic-One</a></h3>
+            <p>Orchestrator + WebSurfer/FileSurfer/Coder/Terminal 等 worker，task ledger/progress ledger 是 Agent Teams 状态设计的重要参考。</p>
+          </article>
+          <article class="paper-card">
+            <span>Framework</span>
+            <h3><a href="https://arxiv.org/abs/2308.08155">AutoGen</a></h3>
+            <p>多 Agent conversation framework 基础论文，配合 AutoGen Studio 可观察 authoring/debugging UI 的演化。</p>
+          </article>
+          <article class="paper-card">
+            <span>Context</span>
+            <h3><a href="https://arxiv.org/abs/2510.04618">Agentic Context Engineering</a></h3>
+            <p>把 context 当作可演化 playbook，靠 execution feedback 更新，解决 brevity bias 和 context collapse。</p>
+          </article>
+          <article class="paper-card">
+            <span>A2A + MCP</span>
+            <h3><a href="https://arxiv.org/abs/2507.21105">AgentMaster</a></h3>
+            <p>把 A2A 和 MCP 同时用于多 Agent 检索/分析，是协议组合的早期学术案例。</p>
+          </article>
+          <article class="paper-card">
+            <span>Human-Agent</span>
+            <h3><a href="https://arxiv.org/abs/2412.15701">Collaborative Gym</a></h3>
+            <p>强调 agent、人、环境之间的异步协作评估，可用于设计 human-in-loop 的 Agent Teams。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="community">
+        <div class="section-kicker">05 / Community</div>
+        <h2>X / Hacker News / Reddit 信号</h2>
+
+        <div class="split">
+          <article>
+            <h3>X 上值得跟踪的 builder / 项目账号</h3>
+            <ul class="source-list">
+              <li><a href="https://x.com/hwchase17">@hwchase17</a> / <a href="https://x.com/LangChain">@LangChain</a>: LangGraph、agent memory、eval 方向。</li>
+              <li><a href="https://x.com/joaomdmoura">@joaomdmoura</a> / <a href="https://x.com/crewAIInc">@crewAIInc</a>: CrewAI、生产 workflow、企业化。</li>
+              <li><a href="https://x.com/CopilotKit">@CopilotKit</a>: AG-UI、agentic frontend、generative UI。</li>
+              <li><a href="https://x.com/OpenAIDevs">@OpenAIDevs</a>: Agents SDK、Codex、OpenAI agent stack。</li>
+              <li><a href="https://x.com/AnthropicAI">@AnthropicAI</a>: Claude Agent SDK、Claude Code、multi-agent research。</li>
+              <li><a href="https://x.com/googleaidevs">@googleaidevs</a> / <a href="https://x.com/GoogleDeepMind">@GoogleDeepMind</a>: A2A、ADK、Gemini agent research。</li>
+              <li><a href="https://x.com/sh_reya">@sh_reya</a>: evals、LLM systems、agent reliability。</li>
+            </ul>
+            <p class="small">X 平台检索受登录和搜索限制影响，这里按项目归属和可见帖子筛选成监控名单，不把 follower 数当作报告证据。</p>
+          </article>
+          <article>
+            <h3>Hacker News 高价值帖子</h3>
+            <ul class="source-list">
+              <li><a href="https://news.ycombinator.com/item?id=43631381">The Agent2Agent Protocol (A2A)</a>: 450 points / 280 comments，A2A adoption friction 和生态分歧最集中。</li>
+              <li><a href="https://news.ycombinator.com/item?id=43763967">Show HN: Rowboat</a>: 161 points / 51 comments，多 Agent visual builder 的真实兴趣信号。</li>
+              <li><a href="https://news.ycombinator.com/item?id=43974484">Show HN: AG-UI Protocol</a>: 36 points / 5 comments，agent frontend protocol 早期信号。</li>
+              <li><a href="https://news.ycombinator.com/item?id=44408285">OpenAI Agents SDK (TS)</a>: OpenAI TS SDK 多 Agent / voice 方向的 HN 入口。</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 class="subhead">Reddit 社区和讨论主题</h3>
+        <div class="community-grid">
+          <article>
+            <h4><a href="https://www.reddit.com/r/AI_Agents/">r/AI_Agents</a></h4>
+            <p>最直接的 agent builder 社区；近期核心争论是“multi-agent 是否只是复杂度”。</p>
+          </article>
+          <article>
+            <h4><a href="https://www.reddit.com/r/LLMDevs/">r/LLMDevs</a></h4>
+            <p>更偏工程经验，常出现 typed contract、eval、生产维护成本讨论。</p>
+          </article>
+          <article>
+            <h4><a href="https://www.reddit.com/r/LangChain/">r/LangChain</a></h4>
+            <p>LangGraph multi-agent、shared state、workflow graph 问题密集。</p>
+          </article>
+          <article>
+            <h4><a href="https://www.reddit.com/r/AutoGenAI/">r/AutoGenAI</a></h4>
+            <p>AutoGen / Microsoft Agent Framework 迁移、Studio、multi-agent samples。</p>
+          </article>
+          <article>
+            <h4><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a></h4>
+            <p>本地模型、coding agent、Claude/OpenAI/Codex 替代实现和性能讨论。</p>
+          </article>
+          <article>
+            <h4><a href="https://www.reddit.com/r/ClaudeAI/">r/ClaudeAI</a> / <a href="https://www.reddit.com/r/ClaudeCode/">r/ClaudeCode</a></h4>
+            <p>Claude Code、subagent、Agent SDK、并行 coding agent 的实践讨论。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="courses">
+        <div class="section-kicker">06 / Courses</div>
+        <h2>国外高校课程</h2>
+        <div class="course-table">
+          <div class="course-row head">
+            <span>学校</span><span>课程</span><span>覆盖点</span><span>价值</span>
+          </div>
+          <div class="course-row">
+            <span>Stanford</span>
+            <span><a href="https://web.stanford.edu/class/cs224g/">CS224G: Building and Scaling LLM Applications</a></span>
+            <span>Agentic workflows & multi-agent systems</span>
+            <span>最贴近应用构建和 scaling。</span>
+          </div>
+          <div class="course-row">
+            <span>Stanford</span>
+            <span><a href="https://cs329a.stanford.edu/">CS329A: Self-Improving AI Agents</a></span>
+            <span>self-improvement、verifiers、test-time compute、memory</span>
+            <span>对应 Agent Teams 的进化机制。</span>
+          </div>
+          <div class="course-row">
+            <span>UC Berkeley</span>
+            <span><a href="https://rdi.berkeley.edu/llm-agents/f24">CS294/194-196: Large Language Model Agents</a></span>
+            <span>LLM agents、multi-agent collaboration、eval/safety</span>
+            <span>公开课生态强，覆盖广。</span>
+          </div>
+          <div class="course-row">
+            <span>UC Berkeley</span>
+            <span><a href="https://rdi.berkeley.edu/adv-llm-agents/sp25">CS294/194-280: Advanced LLM Agents</a></span>
+            <span>reasoning、planning、tool use、program verification</span>
+            <span>进阶 agent 能力和验证方向。</span>
+          </div>
+          <div class="course-row">
+            <span>CMU</span>
+            <span><a href="https://www.cmu-agents.com/">11-768: AI Agents</a></span>
+            <span>autonomous agents、frameworks、training methods</span>
+            <span>偏系统实现和可靠性。</span>
+          </div>
+          <div class="course-row">
+            <span>MIT</span>
+            <span><a href="https://professional.mit.edu/course-catalog/ai-system-architecture-and-large-language-model-applications">AI System Architecture and LLM Applications</a></span>
+            <span>agentic AI solution、LLM app architecture</span>
+            <span>偏继续教育/系统架构，不是纯 multi-agent 研究课。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="frontend">
+        <div class="section-kicker">07 / Frontend</div>
+        <h2>Agent Teams 前端样式参考</h2>
+        <p>
+          Agent Teams 的前端不应该只是聊天框。用户需要看到<mark class="hl hl-product">谁在做、为什么做、证据是什么</mark>，也需要看到<mark class="hl hl-risk">哪里失败、成本多少、是否需要人介入</mark>。
+        </p>
+        <div class="frontend-grid">
+          <article>
+            <h3><a href="https://github.com/ag-ui-protocol/ag-ui">AG-UI</a></h3>
+            <p>参考点: event stream、state delta、tool call、generative UI、human approval。适合定义 agent backend 到前端的协议层。</p>
+          </article>
+          <article>
+            <h3><a href="https://github.com/CopilotKit/CopilotKit">CopilotKit</a></h3>
+            <p>参考点: in-app copilot、agent state sync、action cards、前端工具调用。适合产品内嵌 agent team。</p>
+          </article>
+          <article>
+            <h3><a href="https://github.com/rowboatlabs/rowboat">Rowboat</a></h3>
+            <p>参考点: prompt 到 agent graph、mocked tools、运行测试、可视化 builder。适合 agent team authoring UI。</p>
+          </article>
+          <article>
+            <h3><a href="https://arxiv.org/abs/2408.15247">AutoGen Studio</a></h3>
+            <p>参考点: drag-and-drop workflow、interactive evaluation、debugging gallery。适合无代码/低代码 agent workflow。</p>
+          </article>
+          <article>
+            <h3><a href="https://smith.langchain.com/">LangSmith / LangGraph Studio</a></h3>
+            <p>参考点: trace、run tree、state graph、debugging。适合工程团队观测和回归。</p>
+          </article>
+          <article>
+            <h3><a href="https://github.com/CopilotKit/open-multi-agent-canvas">Open Multi-Agent Canvas</a></h3>
+            <p>参考点: 多 Agent 对话画布、MCP 服务器接入、动态 conversation。适合把团队协作从单列聊天变成工作台。</p>
+          </article>
+          <article>
+            <h3><a href="https://marvis.qq.com/">Tencent Marvis 马维斯</a></h3>
+            <p>参考点: OS-level agent workspace、桌面/移动跨端操控、File/Computer/App/Browser/Search agent 分工、隐私模式和敏感动作确认。适合作为消费级 Agent Teams 的产品形态对照。</p>
+          </article>
+        </div>
+
+        <div class="ui-principles">
+          <h3>应采用的前端模块</h3>
+          <ol>
+            <li>Agent roster: 每个 agent 的 role、owner、权限、预算、当前状态。</li>
+            <li>Trace timeline: 每次 tool call、handoff、guardrail、human approval 都有时间线。</li>
+            <li>Graph + task ledger: 显示 dependency、blocked、running、done、failed。</li>
+            <li>Evidence drawer: 每个结论绑定 source、confidence、last verified date。</li>
+            <li>Cost and risk panel: token、延迟、失败次数、loop count、stop reason。</li>
+            <li>Eval dashboard: contract tests、regression cases、judge disagreement、近期失败样本。</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <div class="section-kicker">08 / Sources</div>
+        <h2>关键证据源</h2>
+        <div class="source-columns">
+          <div>
+            <h3>官方 / 论文</h3>
+            <ul class="source-list compact">
+              <li><a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">Google A2A announcement</a></li>
+              <li><a href="https://github.com/a2aproject/A2A">a2aproject/A2A</a></li>
+              <li><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">OpenAI Practical Guide</a></li>
+              <li><a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a></li>
+              <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system">Anthropic multi-agent research system</a></li>
+              <li><a href="https://github.com/anthropics/claude-agent-sdk-python">Claude Agent SDK Python</a></li>
+              <li><a href="https://adk.dev/">Google ADK</a></li>
+              <li><a href="https://arxiv.org/abs/2512.08296">Towards a Science of Scaling Agent Systems</a></li>
+              <li><a href="https://arxiv.org/abs/2503.13657">Why Do Multi-Agent LLM Systems Fail?</a></li>
+              <li><a href="https://arxiv.org/abs/2502.18864">Towards an AI co-scientist</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>社区 / UI / 课程</h3>
+            <ul class="source-list compact">
+              <li><a href="https://news.ycombinator.com/item?id=43631381">HN: The Agent2Agent Protocol</a></li>
+              <li><a href="https://news.ycombinator.com/item?id=43763967">HN: Rowboat</a></li>
+              <li><a href="https://github.com/ag-ui-protocol/ag-ui">AG-UI Protocol</a></li>
+              <li><a href="https://github.com/CopilotKit/CopilotKit">CopilotKit</a></li>
+              <li><a href="https://github.com/rowboatlabs/rowboat">Rowboat</a></li>
+              <li><a href="https://marvis.qq.com/">Tencent Marvis 马维斯</a></li>
+              <li><a href="https://cloud.tencent.com/developer/techpedia/2612">腾讯云 Marvis 技术百科</a></li>
+              <li><a href="https://web.stanford.edu/class/cs224g/">Stanford CS224G</a></li>
+              <li><a href="https://cs329a.stanford.edu/">Stanford CS329A</a></li>
+              <li><a href="https://rdi.berkeley.edu/llm-agents/f24">UC Berkeley LLM Agents</a></li>
+              <li><a href="https://rdi.berkeley.edu/adv-llm-agents/sp25">UC Berkeley Advanced LLM Agents</a></li>
+              <li><a href="https://www.cmu-agents.com/">CMU AI Agents</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="small">
+          完整 source ledger 见 <code>agent-collaboration-research/content/sources.json</code>。GitHub stars 和 pushedAt 来自 GitHub CLI/API 查询，时间点为 2026-06-04。
+        </p>
+      </section>
+    </main>
+
+    <footer class="report-footer">
+      <a href="#top">回到顶部</a>
+      <span>作者: ziye</span>
+      <span>HTML + CSS + JS 静态报告包</span>
+    </footer>
+
+    <script src="scripts/report.js"></script>
+  </body>
+</html>

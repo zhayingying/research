@@ -1,0 +1,29 @@
+:root {
+  --paper: #f6f1e7;
+  --paper-deep: #eee4d4;
+  --ink: #202327;
+  --muted: #626a73;
+  --line: #d8cbb9;
+  --panel: #fffdf8;
+  --blue: #285f91;
+  --green: #3d7651;
+  --red: #9f3f34;
+  --amber: #a96b2b;
+  --violet: #69588f;
+  --shadow: 0 18px 50px rgba(32, 35, 39, 0.09);
+  --hairline: rgba(32, 35, 39, 0.12);
+}
+
+::selection {
+  background: rgba(159, 63, 52, 0.18);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 5px;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--red), var(--amber), var(--green), var(--blue));
+}
