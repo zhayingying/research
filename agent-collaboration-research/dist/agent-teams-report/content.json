@@ -2,6 +2,251 @@
   "author": "ziye",
   "collectedAt": "2026-06-04",
   "coreQuestion": "一个 Agent-to-Agent / Multi-Agent 协同系统什么时候值得从单 Agent 升级为 Agent Teams，并且它应该用什么协议、SDK、运行框架、评估机制和前端交互形态来支撑持续进化。",
+  "researchWorkflow": {
+    "steps": [
+      "Scope",
+      "Plan",
+      "Retrieve",
+      "Evidence",
+      "Reflect",
+      "Compare",
+      "Package"
+    ],
+    "enhancements": [
+      {
+        "name": "Evidence Ledger",
+        "rule": "每个重大结论必须记录 claim、source、grade、采集日期、支撑问题和冲突备注。",
+        "qualityGate": "重大结论至少有 A/B 级来源；HN、Reddit、X 不单独支撑事实结论。"
+      },
+      {
+        "name": "Reflect Loop",
+        "rule": "每轮采集后检查来源缺口、冲突、维度不公平、闭源/开源混排和社区信号误用。",
+        "qualityGate": "发现 critical gap 时生成 delta query 并回到 Retrieve/Evidence 更新。"
+      },
+      {
+        "name": "Comparison First",
+        "rule": "先提供 layer map、capability matrix、scenario selection，再放 inventory table。",
+        "qualityGate": "横向比较使用稳定维度，所有颜色、强/中/弱和结论 chip 都有图例。"
+      }
+    ],
+    "ledgerPreview": [
+      {
+        "claim": "多 Agent 只在可并行、可验证任务上稳定收益",
+        "grade": "A",
+        "source": "Scaling Agents / Anthropic engineering",
+        "status": "answered"
+      },
+      {
+        "claim": "A2A 是互操作协议，不是完整 runtime",
+        "grade": "A",
+        "source": "Google A2A / a2aproject",
+        "status": "answered"
+      },
+      {
+        "claim": "Marvis 应作为产品基准，不进入开源排名",
+        "grade": "B",
+        "source": "Marvis 官网 / 腾讯云技术百科",
+        "status": "benchmarked"
+      }
+    ]
+  },
+  "comparisonDashboard": {
+    "purpose": "在完整能力矩阵之前，用视觉方式比较代表项目的能力曲线，避免读者只按 stars 或项目名判断。",
+    "items": [
+      {
+        "name": "A2A",
+        "type": "Protocol",
+        "bestFor": "跨组织 agent 发现、认证、消息和流式通信",
+        "metrics": {
+          "interoperability": 96,
+          "orchestration": 24,
+          "frontend": 18
+        }
+      },
+      {
+        "name": "OpenAI SDK",
+        "type": "Runtime",
+        "bestFor": "生产 workflow primitive 和可追踪多 agent 运行",
+        "metrics": {
+          "handoff": 90,
+          "guardrail": 84,
+          "trace": 88
+        }
+      },
+      {
+        "name": "LangGraph",
+        "type": "State graph",
+        "bestFor": "复杂状态、检查点、长任务和失败重放",
+        "metrics": {
+          "state": 96,
+          "loop": 90,
+          "evaluation": 82
+        }
+      },
+      {
+        "name": "CrewAI",
+        "type": "Role crew",
+        "bestFor": "角色清晰、任务固定的团队式流程",
+        "metrics": {
+          "role": 94,
+          "ease": 86,
+          "state": 34
+        }
+      },
+      {
+        "name": "CopilotKit",
+        "type": "Frontend",
+        "bestFor": "产品内 agent、generative UI 和审批交互",
+        "metrics": {
+          "uiEvent": 92,
+          "humanCollaboration": 88,
+          "stateSync": 76
+        }
+      },
+      {
+        "name": "Marvis",
+        "type": "OS product",
+        "bestFor": "消费级 OS agent 产品交互基准",
+        "metrics": {
+          "systemPermission": 92,
+          "crossDeviceExperience": 84,
+          "openSource": 10
+        }
+      }
+    ]
+  },
+  "operatingFrameworkVisual": {
+    "purpose": "把 Agent Teams 运行框架改成 SVG 系统图，明确 R>C gate、控制流、控制面和单 Agent 生命周期。",
+    "sections": [
+      {
+        "name": "R>C gate",
+        "visualRole": "入口质量门",
+        "meaning": "任务不可并行、不可验收或协调税高于收益时，不拆成 Agent Teams。"
+      },
+      {
+        "name": "Control flow",
+        "visualRole": "运行控制流",
+        "meaning": "Brief -> Contract -> Team -> Ledger -> Eval -> Update，保证任务从目标到回灌都有记录。"
+      },
+      {
+        "name": "Control plane",
+        "visualRole": "控制面堆栈",
+        "meaning": "Shared Blackboard、Typed Contracts、Eval Harness、Trace+Cost 共同约束团队运行。"
+      },
+      {
+        "name": "Evolution loop",
+        "visualRole": "进化回路",
+        "meaning": "Trace、Review、Skill、Eval 形成版本化反馈，把失败样本回灌到团队能力。"
+      },
+      {
+        "name": "Single-agent lifecycle",
+        "visualRole": "生命周期带",
+        "meaning": "Setup -> Execute -> Verify -> Improve，避免生命周期阶段被拆成平铺卡片。"
+      }
+    ]
+  },
+  "paperEvidenceFlow": {
+    "purpose": "把论文从平铺列表改成 SVG 证据流向图，展示论文来源如何流向机制判断和工程动作。",
+    "flows": [
+      {
+        "lane": "收益边界",
+        "papers": ["Science of Scaling Agent Systems"],
+        "engineeringImplication": "先判断任务是否可并行、可验证，再决定是否上多 Agent。"
+      },
+      {
+        "lane": "失败分类",
+        "papers": ["Why Do Multi-Agent LLM Systems Fail?", "Collaborative Gym"],
+        "engineeringImplication": "typed contract、验证、终止条件和 human-in-loop 状态是多 Agent 的硬约束。"
+      },
+      {
+        "lane": "团队结构",
+        "papers": ["AI co-scientist", "Magentic-One", "AutoGen"],
+        "engineeringImplication": "高价值团队需要 orchestrator、shared ledger、候选排序和可调试 workflow。"
+      },
+      {
+        "lane": "持续进化",
+        "papers": ["Agentic Context Engineering", "AgentMaster", "Collaborative Gym"],
+        "engineeringImplication": "memory、skill、协议和 human-in-loop 需要由执行反馈持续更新。"
+      }
+    ]
+  },
+  "communitySignalMap": {
+    "purpose": "把 X / Hacker News / Reddit 从链接列表改成 SVG 信号漏斗和主题网络图，区分发布监控、采用阻力和实践痛点。",
+    "signalTiers": [
+      {
+        "platform": "Hacker News",
+        "grade": "B / context",
+        "role": "识别 adoption blockers、开发者怀疑点和协议/产品发布声量。"
+      },
+      {
+        "platform": "Reddit",
+        "grade": "B-C / practice",
+        "role": "发现重复生产痛点、社区集群和具体 workflow 失败模式。"
+      },
+      {
+        "platform": "X",
+        "grade": "C / lead only",
+        "role": "追踪 builder、项目账号、发布节奏和后续采集入口。"
+      }
+    ],
+    "topicClusters": [
+      {
+        "cluster": "Protocol friction",
+        "sources": ["HN A2A", "HN AG-UI", "Google / CopilotKit accounts"],
+        "meaning": "跨系统互操作的边界和 runtime 责任仍是社区争论点。"
+      },
+      {
+        "cluster": "Workflow reliability",
+        "sources": ["r/LLMDevs", "r/LangChain", "r/AI_Agents"],
+        "meaning": "状态漂移、验证不足、停止条件和生产维护成本反复出现。"
+      },
+      {
+        "cluster": "Visible collaboration",
+        "sources": ["HN Rowboat", "HN AG-UI", "CopilotKit"],
+        "meaning": "前端需要展示状态、证据、审批和可编辑产物。"
+      },
+      {
+        "cluster": "Coding agents",
+        "sources": ["r/ClaudeCode", "r/LocalLLaMA", "OpenAI / Anthropic accounts"],
+        "meaning": "并行 coding agent 的关注点集中在权限、diff、测试和上下文管理。"
+      }
+    ]
+  },
+  "coursePathDiagram": {
+    "purpose": "把课程从课程清单改成 SVG 学习路径图，说明先学什么、为什么学、对应 Agent Teams 哪一层能力。",
+    "path": [
+      {
+        "step": "Build",
+        "course": "Stanford CS224G",
+        "mapsTo": "从单 Agent 应用升级到可维护 workflow 的底座"
+      },
+      {
+        "step": "Map",
+        "course": "UC Berkeley LLM Agents",
+        "mapsTo": "角色分工、工具调用、协作模式、评估和安全"
+      },
+      {
+        "step": "Framework",
+        "course": "CMU 11-768",
+        "mapsTo": "agent 生命周期、环境交互、框架设计和可靠性"
+      },
+      {
+        "step": "Advanced",
+        "course": "UC Berkeley Advanced LLM Agents",
+        "mapsTo": "复杂推理、计划修正、工具可靠性和可验证输出"
+      },
+      {
+        "step": "Improve",
+        "course": "Stanford CS329A",
+        "mapsTo": "eval、memory、skill 更新和失败样本回灌"
+      },
+      {
+        "step": "Architecture",
+        "course": "MIT AI System Architecture",
+        "mapsTo": "从 demo 到组织级应用的架构和治理"
+      }
+    ]
+  },
   "productBenchmarks": [
     {
       "product": "Tencent Marvis 马维斯",

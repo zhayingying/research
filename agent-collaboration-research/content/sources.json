@@ -1,6 +1,70 @@
 {
   "author": "ziye",
   "collectedAt": "2026-06-04",
+  "evidenceLedgerPolicy": {
+    "claimFields": [
+      "claim_id",
+      "claim",
+      "source_id",
+      "grade",
+      "supports_question",
+      "source_date",
+      "collected_on",
+      "contradiction_note"
+    ],
+    "gradeRule": "A 级和 B 级来源可以支撑重大结论；HN、Reddit、X 只能作为社区信号或监控名单，不能单独支撑事实结论。",
+    "reflectRule": "每轮采集后检查缺口、冲突、过期事实和不可公平比较项；发现 critical gap 时生成 delta query 并更新台账。",
+    "comparisonRule": "报告必须先给 layer map、capability matrix 或 scenario selection，再展示 inventory table。"
+  },
+  "claimLedger": [
+    {
+      "claim_id": "C1",
+      "claim": "Agent Teams 的收益边界在可并行、可隔离、可验证任务；顺序推理任务容易被协调税拖垮。",
+      "source_ids": [
+        "scaling-agent-systems",
+        "anthropic-multi-agent-research",
+        "mast"
+      ],
+      "grade": "A",
+      "supports_question": "Q2 Agent Teams 运行框架",
+      "contradiction_note": "社区里常见“多 agent 更聪明”的直觉，但论文和工程博客都显示收益依赖任务拓扑。"
+    },
+    {
+      "claim_id": "C2",
+      "claim": "A2A 主要解决 agent 间互操作，不等于完整 agent runtime 或 orchestration framework。",
+      "source_ids": [
+        "a2a-google-blog",
+        "a2a-github"
+      ],
+      "grade": "A",
+      "supports_question": "Q1 GitHub 开源项目与协议分层",
+      "contradiction_note": "不能把协议仓库和 LangGraph/CrewAI 等运行框架直接同层比较。"
+    },
+    {
+      "claim_id": "C3",
+      "claim": "Tencent Marvis 应作为 OS-level Agent Teams 产品基准，而不是 GitHub 开源排名条目。",
+      "source_ids": [
+        "tencent-marvis-official",
+        "tencent-marvis-techpedia"
+      ],
+      "grade": "B",
+      "supports_question": "Q8 Agent Teams 前端样式参考",
+      "contradiction_note": "官网支撑产品存在和形态，二手技术百科支撑 1 主 Agent + 5 副 Agent 等结构信息。"
+    },
+    {
+      "claim_id": "C4",
+      "claim": "X/Twitter 账号列表只适合作 builder monitor list，不适合作事实证据或影响力排名。",
+      "source_ids": [
+        "openai-agents",
+        "claude-agent-sdk",
+        "google-adk",
+        "copilotkit"
+      ],
+      "grade": "C",
+      "supports_question": "Q4 X/Twitter builder 监控",
+      "contradiction_note": "当前平台搜索受限，不使用 follower count 或单帖热度支撑结论。"
+    }
+  ],
   "sources": [
     {
       "id": "a2a-google-blog",

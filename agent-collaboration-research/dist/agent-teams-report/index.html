@@ -63,6 +63,7 @@
 
     <nav class="sticky-nav" aria-label="报告导航">
       <a href="#question">问题定义</a>
+      <a href="#research-flow">流程强化</a>
       <a href="#ecosystem">GitHub 生态</a>
       <a href="#framework">运行框架</a>
       <a href="#papers">论文</a>
@@ -96,8 +97,77 @@
         </div>
       </section>
 
+      <section class="section" id="research-flow">
+        <div class="section-kicker">02 / Workflow</div>
+        <h2>调研流程强化：证据台账、反思循环、横向比较</h2>
+        <p>
+          本次迭代把报告从“列出生态”升级成可审计的研究状态机：先建立 <mark class="hl hl-data">Evidence Ledger</mark>，再用 <mark class="hl hl-framework">Reflect Loop</mark> 找缺口，最后用 <mark class="hl hl-product">Comparison First</mark> 让读者先看横向判断，再看清单。
+        </p>
+
+        <div class="research-visual" aria-label="调研报告状态机可视化">
+          <div class="workflow-spine" aria-label="可复用调研流程">
+            <div class="spine-label">Reusable research flow</div>
+            <div class="spine-node"><b>Scope</b><span>问题边界</span></div>
+            <div class="spine-node"><b>Plan</b><span>问题树</span></div>
+            <div class="spine-node"><b>Retrieve</b><span>多平台采集</span></div>
+            <div class="spine-node"><b>Evidence</b><span>claim 绑定来源</span></div>
+            <div class="spine-node"><b>Reflect</b><span>缺口审计</span></div>
+            <div class="spine-node"><b>Compare</b><span>先矩阵后清单</span></div>
+            <div class="spine-node"><b>Package</b><span>报告与验证</span></div>
+          </div>
+
+          <div class="quality-gates" aria-label="三道质量门">
+            <div class="gate gate-evidence">
+              <span class="gate-number">01</span>
+              <strong>Evidence Ledger</strong>
+              <p>每个重大结论绑定 claim、source、grade、采集日期、支撑问题和冲突备注。</p>
+              <div class="gate-proof"><span>A/B 级来源</span><span>Claim ID</span><span>冲突备注</span></div>
+            </div>
+            <div class="gate gate-reflect">
+              <span class="gate-number">02</span>
+              <strong>Reflect Loop</strong>
+              <p>采集后检查缺一手来源、开源/闭源混排、弱证据支撑强结论、维度不公平。</p>
+              <div class="gate-proof"><span>Gap audit</span><span>Delta query</span><span>降级 caveat</span></div>
+            </div>
+            <div class="gate gate-compare">
+              <span class="gate-number">03</span>
+              <strong>Comparison First</strong>
+              <p>先展示 layer map、capability matrix、scenario selection，再进入 inventory。</p>
+              <div class="gate-proof"><span>稳定维度</span><span>颜色图例</span><span>选型结论</span></div>
+            </div>
+          </div>
+
+          <div class="evidence-bars" aria-label="关键结论证据强度">
+            <div class="evidence-title">
+              <strong>关键结论证据强度</strong>
+              <span>A=一手/论文/官方，B=可信二手，C=监控线索</span>
+            </div>
+            <div class="evidence-bar-row">
+              <span>多 Agent 收益边界</span>
+              <div class="evidence-bar"><i style="width: 92%"></i></div>
+              <b>A</b>
+            </div>
+            <div class="evidence-bar-row">
+              <span>A2A 是互操作协议</span>
+              <div class="evidence-bar"><i style="width: 88%"></i></div>
+              <b>A</b>
+            </div>
+            <div class="evidence-bar-row">
+              <span>Marvis 是产品基准</span>
+              <div class="evidence-bar medium"><i style="width: 64%"></i></div>
+              <b>B</b>
+            </div>
+            <div class="evidence-bar-row">
+              <span>X 账号只做监控名单</span>
+              <div class="evidence-bar weak"><i style="width: 38%"></i></div>
+              <b>C</b>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="ecosystem">
-        <div class="section-kicker">02 / GitHub</div>
+        <div class="section-kicker">03 / GitHub</div>
         <h2>活跃开源项目分层</h2>
         <p>
           2026 年还活跃的项目可以分成三层：<mark class="hl hl-protocol">协议层</mark>、<mark class="hl hl-sdk">SDK/运行层</mark>、<mark class="hl hl-product">应用/前端层</mark>。A2A 是协议，不等于完整 agent runtime；OpenAI Agents SDK、Claude Agent SDK、Google ADK、Pi/Codex 这类是 runtime/toolkit；LangGraph、CrewAI、AutoGen、Mastra 等负责 orchestration。腾讯 Marvis 另作为闭源 OS-level 产品基准纳入，不计入 GitHub 开源排名。
@@ -133,6 +203,60 @@
             <span>Product / UI</span>
             <strong>CopilotKit / Rowboat / Marvis</strong>
             <p>把 Agent Teams 变成用户能理解和控制的界面。</p>
+          </div>
+        </div>
+
+        <div class="comparison-dashboard" aria-label="代表项目能力对比仪表盘">
+          <div class="dashboard-copy">
+            <span class="dashboard-kicker">Visual comparison</span>
+            <h3>不要按 stars 选，按能力曲线选</h3>
+            <p>
+              同样叫 Agent Teams，实际解决的问题完全不同：A2A 强在互操作，LangGraph 强在状态机，CrewAI 强在角色分工，CopilotKit 强在前端协作，Marvis 强在消费级 OS 体验。
+            </p>
+          </div>
+          <div class="fit-lanes">
+            <article class="fit-card protocol">
+              <div class="fit-head"><b>A2A</b><span>Protocol</span></div>
+              <div class="fit-meter"><span>互操作</span><i style="--fit: 96%"></i></div>
+              <div class="fit-meter"><span>编排</span><i style="--fit: 24%"></i></div>
+              <div class="fit-meter"><span>前端</span><i style="--fit: 18%"></i></div>
+              <p>跨组织 agent 发现、认证、消息和流式通信。</p>
+            </article>
+            <article class="fit-card sdk">
+              <div class="fit-head"><b>OpenAI SDK</b><span>Runtime</span></div>
+              <div class="fit-meter"><span>Handoff</span><i style="--fit: 90%"></i></div>
+              <div class="fit-meter"><span>Guardrail</span><i style="--fit: 84%"></i></div>
+              <div class="fit-meter"><span>Trace</span><i style="--fit: 88%"></i></div>
+              <p>生产 workflow primitive，适合可追踪多 agent 运行。</p>
+            </article>
+            <article class="fit-card framework">
+              <div class="fit-head"><b>LangGraph</b><span>State graph</span></div>
+              <div class="fit-meter"><span>状态</span><i style="--fit: 96%"></i></div>
+              <div class="fit-meter"><span>循环</span><i style="--fit: 90%"></i></div>
+              <div class="fit-meter"><span>评测</span><i style="--fit: 82%"></i></div>
+              <p>复杂状态、检查点、长任务和失败重放。</p>
+            </article>
+            <article class="fit-card framework">
+              <div class="fit-head"><b>CrewAI</b><span>Role crew</span></div>
+              <div class="fit-meter"><span>角色</span><i style="--fit: 94%"></i></div>
+              <div class="fit-meter"><span>上手</span><i style="--fit: 86%"></i></div>
+              <div class="fit-meter"><span>状态</span><i style="--fit: 34%"></i></div>
+              <p>角色清晰、任务固定的团队式流程。</p>
+            </article>
+            <article class="fit-card product">
+              <div class="fit-head"><b>CopilotKit</b><span>Frontend</span></div>
+              <div class="fit-meter"><span>UI 事件</span><i style="--fit: 92%"></i></div>
+              <div class="fit-meter"><span>人机协作</span><i style="--fit: 88%"></i></div>
+              <div class="fit-meter"><span>状态同步</span><i style="--fit: 76%"></i></div>
+              <p>产品内 agent、generative UI 和审批交互。</p>
+            </article>
+            <article class="fit-card product">
+              <div class="fit-head"><b>Marvis</b><span>OS product</span></div>
+              <div class="fit-meter"><span>系统权限</span><i style="--fit: 92%"></i></div>
+              <div class="fit-meter"><span>跨端体验</span><i style="--fit: 84%"></i></div>
+              <div class="fit-meter"><span>开源性</span><i style="--fit: 10%"></i></div>
+              <p>产品交互基准，不参与开源框架排名。</p>
+            </article>
           </div>
         </div>
 
@@ -555,234 +679,363 @@
       </section>
 
       <section class="section" id="framework">
-        <div class="section-kicker">03 / Operating Model</div>
+        <div class="section-kicker">04 / Operating Model</div>
         <h2>真正的 Agent Teams 运行和进化框架</h2>
         <p>
           采用 <mark class="hl hl-risk">R&gt;C 判断</mark>：多 Agent 的收益必须大于协作成本。工程上，它应该被当作一个有合同、有状态、有审计、有回归测试的分布式工作流，而不是一组角色 prompt。
         </p>
 
-        <div class="architecture" role="img" aria-label="Agent Teams framework diagram">
-          <div class="arch-row">
-            <div class="arch-box user">Goal / Brief</div>
-            <div class="arch-arrow">→</div>
-            <div class="arch-box orchestrator">Orchestrator</div>
-            <div class="arch-arrow">→</div>
-            <div class="arch-box workers">Specialist Agents</div>
-          </div>
-          <div class="arch-row">
-            <div class="arch-box blackboard">Shared Blackboard<br />facts / plan / decisions / locks</div>
-            <div class="arch-box contracts">Typed Contracts<br />input / output / owner / stop</div>
-            <div class="arch-box evals">Eval Harness<br />boundary tests / regression / judge</div>
-          </div>
-          <div class="arch-row">
-            <div class="arch-box observability">Trace + Cost<br />tool calls / handoffs / tokens</div>
-            <div class="arch-arrow">→</div>
-            <div class="arch-box memory">Memory / Skill Update</div>
-            <div class="arch-arrow">→</div>
-            <div class="arch-box release">Versioned Team</div>
-          </div>
-        </div>
+        <figure class="diagram-frame framework-system-diagram" aria-label="Agent Teams 运行系统图">
+          <svg viewBox="0 0 1180 640" role="img" aria-labelledby="frameworkDiagramTitle frameworkDiagramDesc">
+            <title id="frameworkDiagramTitle">Agent Teams 运行系统图</title>
+            <desc id="frameworkDiagramDesc">R 大于 C 的入口判断决定任务是否进入多 Agent 流程；任务简报、执行合同、团队分工、共享台账、评估回归和能力更新由箭头连接；控制面和单 Agent 生命周期包裹整个流程。</desc>
+            <defs>
+              <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#285f91"></path>
+              </marker>
+              <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#3d7651"></path>
+              </marker>
+            </defs>
 
-        <div class="lifecycle-grid">
-          <article>
-            <span class="step">1</span>
-            <h3>R&gt;C Gate</h3>
-            <p>先判断任务是否可并行、可隔离、可验收。单 Agent 能低成本完成时，不拆。</p>
-          </article>
-          <article>
-            <span class="step">2</span>
-            <h3>Brief Contract</h3>
-            <p>每个 agent 的目标、输出格式、工具/数据源、禁止触碰范围都要写成 contract。</p>
-          </article>
-          <article>
-            <span class="step">3</span>
-            <h3>State Discipline</h3>
-            <p>共享黑板只放事实、计划、决策和任务状态；不要靠巨大上下文传递隐性意图。</p>
-          </article>
-          <article>
-            <span class="step">4</span>
-            <h3>Boundary Evals</h3>
-            <p>每个 handoff 的 JSON/schema/output shape 都有回归集；评估边界比争论编排图更重要。</p>
-          </article>
-          <article>
-            <span class="step">5</span>
-            <h3>Independent Review</h3>
-            <p>审查 agent 和执行 agent 隔离上下文；引用、代码、成本、风险用独立 reviewer 检查。</p>
-          </article>
-          <article>
-            <span class="step">6</span>
-            <h3>Trace, Cost, Retrospective</h3>
-            <p>每轮保存 trace、tool call、token/cost、失败原因；复盘结果进入 skill/context/eval。</p>
-          </article>
-        </div>
+            <rect class="svg-panel" x="20" y="24" width="250" height="166"></rect>
+            <text class="svg-kicker" x="42" y="58">入口判断 / GATE</text>
+            <text class="svg-title red" x="42" y="102">R &gt; C</text>
+            <text class="svg-copy" x="42" y="132">收益大于协调税才拆团队</text>
+            <line class="svg-meter-bg" x1="42" y1="156" x2="236" y2="156"></line>
+            <line class="svg-meter reward" x1="42" y1="156" x2="202" y2="156"></line>
+            <line class="svg-meter-bg" x1="42" y1="176" x2="236" y2="176"></line>
+            <line class="svg-meter cost" x1="42" y1="176" x2="148" y2="176"></line>
 
-        <h3 class="subhead">单 Agent 生命周期</h3>
-        <div class="timeline">
-          <div><b>Define</b><span>目标、边界、成功标准、预算</span></div>
-          <div><b>Hydrate</b><span>加载任务上下文、工具、记忆、策略</span></div>
-          <div><b>Plan</b><span>分解任务，声明假设和风险</span></div>
-          <div><b>Act</b><span>工具调用、文件编辑、搜索、执行</span></div>
-          <div><b>Observe</b><span>读取结果、错误、trace、环境状态</span></div>
-          <div><b>Verify</b><span>测试、引用核验、schema/eval 检查</span></div>
-          <div><b>Handoff</b><span>只交付压缩事实、产物、剩余风险</span></div>
-          <div><b>Learn</b><span>更新 memory、skill、eval、禁区和模板</span></div>
-          <div><b>Retire</b><span>归档版本、失败样本和成本基线</span></div>
-        </div>
+            <g class="main-flow">
+              <rect class="svg-node blue" x="330" y="36" width="128" height="82"></rect>
+              <text class="svg-step" x="348" y="64">01</text>
+              <text class="svg-node-title" x="348" y="92">任务简报</text>
+              <text class="svg-small" x="348" y="108">Brief: 目标 / 边界</text>
+              <line class="svg-arrow blue" x1="458" y1="77" x2="500" y2="77" marker-end="url(#arrow-blue)"></line>
+
+              <rect class="svg-node red" x="504" y="36" width="128" height="82"></rect>
+              <text class="svg-step" x="522" y="64">02</text>
+              <text class="svg-node-title" x="522" y="92">执行合同</text>
+              <text class="svg-small" x="522" y="108">Contract: 输入 / 停止</text>
+              <line class="svg-arrow blue" x1="632" y1="77" x2="674" y2="77" marker-end="url(#arrow-blue)"></line>
+
+              <rect class="svg-node amber" x="678" y="36" width="128" height="82"></rect>
+              <text class="svg-step" x="696" y="64">03</text>
+              <text class="svg-node-title" x="696" y="92">Agent 团队</text>
+              <text class="svg-small" x="696" y="108">Team: 角色分工</text>
+              <line class="svg-arrow blue" x1="806" y1="77" x2="848" y2="77" marker-end="url(#arrow-blue)"></line>
+
+              <rect class="svg-node green" x="852" y="36" width="128" height="82"></rect>
+              <text class="svg-step" x="870" y="64">04</text>
+              <text class="svg-node-title" x="870" y="92">共享台账</text>
+              <text class="svg-small" x="870" y="108">Ledger: 事实 / 决策</text>
+              <line class="svg-arrow blue" x1="980" y1="77" x2="1022" y2="77" marker-end="url(#arrow-blue)"></line>
+
+              <rect class="svg-node red" x="1026" y="36" width="128" height="82"></rect>
+              <text class="svg-step" x="1044" y="64">05</text>
+              <text class="svg-node-title" x="1044" y="92">评估回归</text>
+              <text class="svg-small" x="1044" y="108">Eval: 回归 / 裁判</text>
+            </g>
+
+            <line class="svg-arrow green" x1="1090" y1="118" x2="1090" y2="188" marker-end="url(#arrow-green)"></line>
+            <rect class="svg-node green" x="1006" y="196" width="148" height="88"></rect>
+            <text class="svg-step" x="1024" y="226">06</text>
+            <text class="svg-node-title" x="1024" y="254">能力更新</text>
+            <text class="svg-small" x="1024" y="270">Update: 记忆 / 技能</text>
+            <path class="svg-return" d="M1006 240 C790 330, 550 326, 392 126" marker-end="url(#arrow-green)"></path>
+
+            <g class="worker-cluster">
+              <line class="svg-branch" x1="742" y1="118" x2="742" y2="160"></line>
+              <line class="svg-branch" x1="552" y1="160" x2="932" y2="160"></line>
+              <rect class="svg-pill" x="480" y="182" width="142" height="48"></rect>
+              <text class="svg-small bold" x="502" y="212">研究 Agent</text>
+              <rect class="svg-pill" x="670" y="182" width="142" height="48"></rect>
+              <text class="svg-small bold" x="692" y="212">执行 Agent</text>
+              <rect class="svg-pill" x="860" y="182" width="142" height="48"></rect>
+              <text class="svg-small bold" x="882" y="212">审查 Agent</text>
+            </g>
+
+            <text class="svg-kicker" x="42" y="250">控制面 / CONTROL PLANE</text>
+            <rect class="svg-control amber" x="42" y="272" width="246" height="82"></rect>
+            <text class="svg-node-title" x="62" y="306">共享黑板</text>
+            <text class="svg-small" x="62" y="328">事实 / 计划 / 锁 / 决策</text>
+            <rect class="svg-control blue" x="316" y="272" width="246" height="82"></rect>
+            <text class="svg-node-title" x="336" y="306">类型化合同</text>
+            <text class="svg-small" x="336" y="328">输入 / 输出 / 负责人 / 停止</text>
+            <rect class="svg-control red" x="590" y="272" width="246" height="82"></rect>
+            <text class="svg-node-title" x="610" y="306">追踪与成本</text>
+            <text class="svg-small" x="610" y="328">工具调用 / 交接 / token</text>
+            <rect class="svg-control green" x="864" y="272" width="246" height="82"></rect>
+            <text class="svg-node-title" x="884" y="306">技能与评估循环</text>
+            <text class="svg-small" x="884" y="328">失败样本 -> 回归用例</text>
+
+            <text class="svg-kicker" x="42" y="420">单 Agent 生命周期</text>
+            <path class="svg-loop" d="M110 496 C230 392, 420 392, 540 496 S850 600, 980 496" marker-end="url(#arrow-green)"></path>
+            <circle class="svg-dot blue" cx="110" cy="496" r="46"></circle>
+            <text class="svg-circle-text" x="88" y="492">设置</text>
+            <text class="svg-circle-small" x="72" y="514">定义 / 计划</text>
+            <circle class="svg-dot amber" cx="392" cy="426" r="46"></circle>
+            <text class="svg-circle-text" x="370" y="422">执行</text>
+            <text class="svg-circle-small" x="354" y="444">行动 / 观察</text>
+            <circle class="svg-dot red" cx="674" cy="566" r="46"></circle>
+            <text class="svg-circle-text" x="652" y="562">验证</text>
+            <text class="svg-circle-small" x="636" y="584">测试 / 裁判</text>
+            <circle class="svg-dot green" cx="980" cy="496" r="46"></circle>
+            <text class="svg-circle-text" x="958" y="492">改进</text>
+            <text class="svg-circle-small" x="942" y="514">学习 / 淘汰</text>
+          </svg>
+          <figcaption>读法：上方是团队运行路径；中段是控制面；下方是单 Agent 生命周期。只有 R&gt;C gate 通过，才进入团队化。</figcaption>
+        </figure>
       </section>
 
       <section class="section" id="papers">
-        <div class="section-kicker">04 / Papers</div>
+        <div class="section-kicker">05 / Papers</div>
         <h2>顶尖论文和研究信号</h2>
         <p>
           论文侧最有价值的不是“又一个框架”，而是三类证据：<mark class="hl hl-positive">什么时候多 Agent 有收益</mark>、<mark class="hl hl-risk">为什么失败</mark>、<mark class="hl hl-framework">怎么让 agent 记忆/上下文持续进化</mark>。
         </p>
-        <div class="paper-grid">
-          <article class="paper-card major">
-            <span>Scaling</span>
-            <h3><a href="https://arxiv.org/abs/2512.08296">Towards a Science of Scaling Agent Systems</a></h3>
-            <p>Google Research / DeepMind / MIT 等作者。180 个配置、5 种拓扑、3 个 LLM 家族。关键结论：并行任务上 centralized coordination 可显著提升；顺序推理任务中多 Agent 退化 39–70%；independent agents 会放大错误。</p>
-          </article>
-          <article class="paper-card major">
-            <span>Failure Taxonomy</span>
-            <h3><a href="https://arxiv.org/abs/2503.13657">Why Do Multi-Agent LLM Systems Fail?</a></h3>
-            <p>MAST 把失败归到 specification/design、inter-agent misalignment、verification/termination。它直接支持本报告的主张：问题常在边界和验证，不在“角色不够多”。</p>
-          </article>
-          <article class="paper-card major">
-            <span>Gemini / Science</span>
-            <h3><a href="https://arxiv.org/abs/2502.18864">Towards an AI co-scientist</a></h3>
-            <p>Google 系 multi-agent scientific discovery 系统，基于 Gemini 2.0；后续 DeepMind/Nature 版本继续强调生成、辩论、演化、排序和 supervisor。</p>
-          </article>
-          <article class="paper-card">
-            <span>Microsoft</span>
-            <h3><a href="https://arxiv.org/abs/2411.04468">Magentic-One</a></h3>
-            <p>Orchestrator + WebSurfer/FileSurfer/Coder/Terminal 等 worker，task ledger/progress ledger 是 Agent Teams 状态设计的重要参考。</p>
-          </article>
-          <article class="paper-card">
-            <span>Framework</span>
-            <h3><a href="https://arxiv.org/abs/2308.08155">AutoGen</a></h3>
-            <p>多 Agent conversation framework 基础论文，配合 AutoGen Studio 可观察 authoring/debugging UI 的演化。</p>
-          </article>
-          <article class="paper-card">
-            <span>Context</span>
-            <h3><a href="https://arxiv.org/abs/2510.04618">Agentic Context Engineering</a></h3>
-            <p>把 context 当作可演化 playbook，靠 execution feedback 更新，解决 brevity bias 和 context collapse。</p>
-          </article>
-          <article class="paper-card">
-            <span>A2A + MCP</span>
-            <h3><a href="https://arxiv.org/abs/2507.21105">AgentMaster</a></h3>
-            <p>把 A2A 和 MCP 同时用于多 Agent 检索/分析，是协议组合的早期学术案例。</p>
-          </article>
-          <article class="paper-card">
-            <span>Human-Agent</span>
-            <h3><a href="https://arxiv.org/abs/2412.15701">Collaborative Gym</a></h3>
-            <p>强调 agent、人、环境之间的异步协作评估，可用于设计 human-in-loop 的 Agent Teams。</p>
-          </article>
-        </div>
+        <figure class="diagram-frame paper-evidence-diagram" aria-label="论文证据流向图">
+          <svg viewBox="0 0 1180 620" role="img" aria-labelledby="paperDiagramTitle paperDiagramDesc">
+            <title id="paperDiagramTitle">论文证据流向图</title>
+            <desc id="paperDiagramDesc">左侧论文来源流向中间的机制判断，再流向右侧工程动作，用来说明每类论文证据到底证明什么。</desc>
+            <defs>
+              <marker id="paper-arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#285f91"></path>
+              </marker>
+              <marker id="paper-arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#3d7651"></path>
+              </marker>
+              <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#9f3f34"></path>
+              </marker>
+            </defs>
+
+            <text class="svg-kicker" x="36" y="48">论文证据</text>
+            <text class="svg-kicker" x="438" y="48">证明什么</text>
+            <text class="svg-kicker" x="844" y="48">工程动作</text>
+
+            <g class="paper-sources">
+              <rect class="svg-paper-source green" x="34" y="78" width="310" height="72"></rect>
+              <text class="svg-node-title" x="54" y="108">Science of Scaling</text>
+              <text class="svg-small" x="54" y="130">并行收益 / 顺序退化</text>
+              <rect class="svg-paper-source red" x="34" y="190" width="310" height="72"></rect>
+              <text class="svg-node-title" x="54" y="220">Why Multi-Agent Fails</text>
+              <text class="svg-small" x="54" y="242">规格 / 对齐 / 验证 / 终止</text>
+              <rect class="svg-paper-source amber" x="34" y="302" width="310" height="72"></rect>
+              <text class="svg-node-title" x="54" y="332">AI co-scientist</text>
+              <text class="svg-small" x="54" y="354">Magentic-One: 监督者 / 台账 / 排序</text>
+              <rect class="svg-paper-source violet" x="34" y="414" width="310" height="72"></rect>
+              <text class="svg-node-title" x="54" y="444">ACE / AgentMaster / Gym</text>
+              <text class="svg-small" x="54" y="466">上下文 / 协议 / 人类评估</text>
+            </g>
+
+            <g class="paper-mechanisms">
+              <circle class="svg-decision green" cx="570" cy="114" r="70"></circle>
+              <text class="svg-circle-text dark" x="530" y="104">收益边界</text>
+              <text class="svg-circle-small dark" x="520" y="130">先过 R&gt;C</text>
+              <circle class="svg-decision red" cx="570" cy="226" r="70"></circle>
+              <text class="svg-circle-text dark" x="530" y="216">失败边界</text>
+              <text class="svg-circle-small dark" x="518" y="242">合同 / 停止</text>
+              <circle class="svg-decision amber" cx="570" cy="338" r="70"></circle>
+              <text class="svg-circle-text dark" x="528" y="328">团队结构</text>
+              <text class="svg-circle-small dark" x="500" y="354">编排器 + 台账</text>
+              <circle class="svg-decision violet" cx="570" cy="450" r="70"></circle>
+              <text class="svg-circle-text dark" x="528" y="440">持续进化</text>
+              <text class="svg-circle-small dark" x="516" y="466">反馈回灌</text>
+            </g>
+
+            <path class="svg-evidence-flow green" d="M344 114 C410 114, 460 114, 500 114" marker-end="url(#paper-arrow-green)"></path>
+            <path class="svg-evidence-flow red" d="M344 226 C410 226, 460 226, 500 226" marker-end="url(#arrow-red)"></path>
+            <path class="svg-evidence-flow amber" d="M344 338 C410 338, 460 338, 500 338" marker-end="url(#paper-arrow-blue)"></path>
+            <path class="svg-evidence-flow violet" d="M344 450 C410 450, 460 450, 500 450" marker-end="url(#paper-arrow-blue)"></path>
+
+            <rect class="svg-action green" x="828" y="78" width="320" height="72"></rect>
+            <text class="svg-node-title" x="850" y="108">拆分前先做任务拓扑门</text>
+            <text class="svg-small" x="850" y="130">只拆可并行、可验证、可合并任务</text>
+            <rect class="svg-action red" x="828" y="190" width="320" height="72"></rect>
+            <text class="svg-node-title" x="850" y="220">每个 Agent 写类型化合同</text>
+            <text class="svg-small" x="850" y="242">输入、输出、权限、停止条件</text>
+            <rect class="svg-action amber" x="828" y="302" width="320" height="72"></rect>
+            <text class="svg-node-title" x="850" y="332">台账 + 审查作为底座</text>
+            <text class="svg-small" x="850" y="354">不是堆角色提示词</text>
+            <rect class="svg-action violet" x="828" y="414" width="320" height="72"></rect>
+            <text class="svg-node-title" x="850" y="444">失败样本回灌评估</text>
+            <text class="svg-small" x="850" y="466">记忆、协议、回归用例</text>
+
+            <path class="svg-evidence-flow green" d="M640 114 C700 114, 760 114, 828 114" marker-end="url(#paper-arrow-green)"></path>
+            <path class="svg-evidence-flow red" d="M640 226 C700 226, 760 226, 828 226" marker-end="url(#arrow-red)"></path>
+            <path class="svg-evidence-flow amber" d="M640 338 C700 338, 760 338, 828 338" marker-end="url(#paper-arrow-blue)"></path>
+            <path class="svg-evidence-flow violet" d="M640 450 C700 450, 760 450, 828 450" marker-end="url(#paper-arrow-blue)"></path>
+
+            <text class="svg-kicker" x="36" y="548">证据台账</text>
+            <text class="svg-small" x="36" y="574">A 级：Scaling / Failure / AI co-scientist / Magentic-One / AutoGen / ACE / Collaborative Gym</text>
+            <text class="svg-small" x="36" y="596">B 级：AgentMaster 是 A2A + MCP 协议组合的早期信号</text>
+          </svg>
+          <figcaption>读法：左侧是论文来源，中间是它证明的机制，右侧是报告采用的工程动作。</figcaption>
+        </figure>
       </section>
 
       <section class="section" id="community">
-        <div class="section-kicker">05 / Community</div>
+        <div class="section-kicker">06 / Community</div>
         <h2>X / Hacker News / Reddit 信号</h2>
+        <p>
+          社区来源不能当一手事实源。这里把 X、Hacker News、Reddit 分成三种信号：<mark class="hl hl-data">发布监控</mark>、<mark class="hl hl-risk">采用阻力</mark>、<mark class="hl hl-framework">实践痛点</mark>。读法是先看信号强弱和主题聚类，再看具体账号、帖子和 subreddit。
+        </p>
 
-        <div class="split">
-          <article>
-            <h3>X 上值得跟踪的 builder / 项目账号</h3>
-            <ul class="source-list">
-              <li><a href="https://x.com/hwchase17">@hwchase17</a> / <a href="https://x.com/LangChain">@LangChain</a>: LangGraph、agent memory、eval 方向。</li>
-              <li><a href="https://x.com/joaomdmoura">@joaomdmoura</a> / <a href="https://x.com/crewAIInc">@crewAIInc</a>: CrewAI、生产 workflow、企业化。</li>
-              <li><a href="https://x.com/CopilotKit">@CopilotKit</a>: AG-UI、agentic frontend、generative UI。</li>
-              <li><a href="https://x.com/OpenAIDevs">@OpenAIDevs</a>: Agents SDK、Codex、OpenAI agent stack。</li>
-              <li><a href="https://x.com/AnthropicAI">@AnthropicAI</a>: Claude Agent SDK、Claude Code、multi-agent research。</li>
-              <li><a href="https://x.com/googleaidevs">@googleaidevs</a> / <a href="https://x.com/GoogleDeepMind">@GoogleDeepMind</a>: A2A、ADK、Gemini agent research。</li>
-              <li><a href="https://x.com/sh_reya">@sh_reya</a>: evals、LLM systems、agent reliability。</li>
-            </ul>
-            <p class="small">X 平台检索受登录和搜索限制影响，这里按项目归属和可见帖子筛选成监控名单，不把 follower 数当作报告证据。</p>
-          </article>
-          <article>
-            <h3>Hacker News 高价值帖子</h3>
-            <ul class="source-list">
-              <li><a href="https://news.ycombinator.com/item?id=43631381">The Agent2Agent Protocol (A2A)</a>: 450 points / 280 comments，A2A adoption friction 和生态分歧最集中。</li>
-              <li><a href="https://news.ycombinator.com/item?id=43763967">Show HN: Rowboat</a>: 161 points / 51 comments，多 Agent visual builder 的真实兴趣信号。</li>
-              <li><a href="https://news.ycombinator.com/item?id=43974484">Show HN: AG-UI Protocol</a>: 36 points / 5 comments，agent frontend protocol 早期信号。</li>
-              <li><a href="https://news.ycombinator.com/item?id=44408285">OpenAI Agents SDK (TS)</a>: OpenAI TS SDK 多 Agent / voice 方向的 HN 入口。</li>
-            </ul>
-          </article>
-        </div>
+        <figure class="diagram-frame community-signal-diagram" aria-label="社区信号漏斗和主题网络图">
+          <svg viewBox="0 0 1180 620" role="img" aria-labelledby="communityDiagramTitle communityDiagramDesc">
+            <title id="communityDiagramTitle">社区信号漏斗和主题网络图</title>
+            <desc id="communityDiagramDesc">Hacker News、Reddit 和 X 按证据强度分级，并连接到四个反复出现的主题聚类。</desc>
+            <defs>
+              <marker id="community-arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#285f91"></path>
+              </marker>
+              <marker id="community-arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#3d7651"></path>
+              </marker>
+              <marker id="community-arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#9f3f34"></path>
+              </marker>
+            </defs>
+            <text class="svg-kicker" x="38" y="48">信号强度</text>
+            <polygon class="funnel-strong" points="48,82 380,82 336,176 92,176"></polygon>
+            <text class="svg-title small-white" x="146" y="126">Hacker News</text>
+            <text class="svg-funnel-copy" x="130" y="150">B / 采用阻力</text>
+            <polygon class="funnel-medium" points="92,202 336,202 296,292 132,292"></polygon>
+            <text class="svg-title small-white" x="190" y="242">Reddit</text>
+            <text class="svg-funnel-copy" x="154" y="266">B-C / 实践痛点</text>
+            <polygon class="funnel-weak" points="132,318 296,318 262,404 166,404"></polygon>
+            <text class="svg-title small-white" x="202" y="356">X</text>
+            <text class="svg-funnel-copy" x="170" y="380">C / 仅监控</text>
+            <text class="svg-small" x="72" y="456">分数 / 评论数只代表关注</text>
+            <text class="svg-small" x="72" y="480">subreddit 重复主题 = 实践信号</text>
+            <text class="svg-small" x="72" y="504">builder 账号 = 后续追踪线索</text>
 
-        <h3 class="subhead">Reddit 社区和讨论主题</h3>
-        <div class="community-grid">
-          <article>
-            <h4><a href="https://www.reddit.com/r/AI_Agents/">r/AI_Agents</a></h4>
-            <p>最直接的 agent builder 社区；近期核心争论是“multi-agent 是否只是复杂度”。</p>
-          </article>
-          <article>
-            <h4><a href="https://www.reddit.com/r/LLMDevs/">r/LLMDevs</a></h4>
-            <p>更偏工程经验，常出现 typed contract、eval、生产维护成本讨论。</p>
-          </article>
-          <article>
-            <h4><a href="https://www.reddit.com/r/LangChain/">r/LangChain</a></h4>
-            <p>LangGraph multi-agent、shared state、workflow graph 问题密集。</p>
-          </article>
-          <article>
-            <h4><a href="https://www.reddit.com/r/AutoGenAI/">r/AutoGenAI</a></h4>
-            <p>AutoGen / Microsoft Agent Framework 迁移、Studio、multi-agent samples。</p>
-          </article>
-          <article>
-            <h4><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a></h4>
-            <p>本地模型、coding agent、Claude/OpenAI/Codex 替代实现和性能讨论。</p>
-          </article>
-          <article>
-            <h4><a href="https://www.reddit.com/r/ClaudeAI/">r/ClaudeAI</a> / <a href="https://www.reddit.com/r/ClaudeCode/">r/ClaudeCode</a></h4>
-            <p>Claude Code、subagent、Agent SDK、并行 coding agent 的实践讨论。</p>
-          </article>
-        </div>
+            <text class="svg-kicker" x="500" y="48">主题网络</text>
+            <circle class="topic-node protocol" cx="610" cy="172" r="72"></circle>
+            <text class="svg-circle-text dark" x="570" y="164">协议摩擦</text>
+            <text class="svg-circle-small dark" x="548" y="188">A2A / AG-UI / MCP</text>
+            <circle class="topic-node workflow" cx="850" cy="172" r="72"></circle>
+            <text class="svg-circle-text dark" x="810" y="164">流程可靠</text>
+            <text class="svg-circle-small dark" x="796" y="188">状态 / 停止 / 评估</text>
+            <circle class="topic-node frontend" cx="610" cy="414" r="72"></circle>
+            <text class="svg-circle-text dark" x="570" y="406">前端呈现</text>
+            <text class="svg-circle-small dark" x="558" y="430">可见协作状态</text>
+            <circle class="topic-node coding" cx="850" cy="414" r="72"></circle>
+            <text class="svg-circle-text dark" x="810" y="406">代码 Agent</text>
+            <text class="svg-circle-small dark" x="792" y="430">diff / 测试 / 上下文</text>
+
+            <line class="topic-link" x1="670" y1="214" x2="790" y2="372"></line>
+            <line class="topic-link" x1="790" y1="214" x2="670" y2="372"></line>
+            <line class="topic-link strong" x1="682" y1="172" x2="778" y2="172"></line>
+            <line class="topic-link strong" x1="682" y1="414" x2="778" y2="414"></line>
+            <line class="topic-link" x1="610" y1="244" x2="610" y2="342"></line>
+            <line class="topic-link" x1="850" y1="244" x2="850" y2="342"></line>
+
+            <path class="community-flow blue" d="M380 126 C450 126, 500 142, 542 164" marker-end="url(#community-arrow-blue)"></path>
+            <path class="community-flow red" d="M336 246 C470 246, 640 205, 778 176" marker-end="url(#community-arrow-red)"></path>
+            <path class="community-flow green" d="M296 362 C430 404, 470 414, 538 414" marker-end="url(#community-arrow-green)"></path>
+            <path class="community-flow amber" d="M296 362 C500 496, 680 492, 792 438" marker-end="url(#community-arrow-blue)"></path>
+
+            <rect class="svg-action blue" x="948" y="112" width="200" height="70"></rect>
+            <text class="svg-small bold" x="970" y="144">HN A2A / AG-UI</text>
+            <text class="svg-small" x="970" y="164">采用阻力</text>
+            <rect class="svg-action red" x="948" y="220" width="200" height="70"></rect>
+            <text class="svg-small bold" x="970" y="252">r/LLMDevs</text>
+            <text class="svg-small" x="970" y="272">类型化合同</text>
+            <rect class="svg-action amber" x="948" y="328" width="200" height="70"></rect>
+            <text class="svg-small bold" x="970" y="360">Rowboat / CopilotKit</text>
+            <text class="svg-small" x="970" y="380">可见状态</text>
+            <rect class="svg-action green" x="948" y="436" width="200" height="70"></rect>
+            <text class="svg-small bold" x="970" y="462">ClaudeCode</text>
+            <text class="svg-small bold" x="970" y="480">LocalLLaMA</text>
+            <text class="svg-small" x="970" y="498">代码 Agent 实践</text>
+          </svg>
+          <figcaption>读法：先看平台信号强度，再看信号汇聚到哪些主题；X/HN/Reddit 的具体链接只作为证据台账明细。</figcaption>
+        </figure>
+
+        <details class="evidence-drawer">
+          <summary>社区来源明细</summary>
+          <p><a href="https://news.ycombinator.com/item?id=43631381">HN A2A</a>、<a href="https://news.ycombinator.com/item?id=43763967">HN Rowboat</a>、<a href="https://news.ycombinator.com/item?id=43974484">HN AG-UI</a>；Reddit 监控 r/AI_Agents、r/LLMDevs、r/LangChain、r/ClaudeCode；X 监控 LangChain、CrewAI、CopilotKit、OpenAI、Anthropic、Google AI Devs。</p>
+        </details>
       </section>
 
       <section class="section" id="courses">
-        <div class="section-kicker">06 / Courses</div>
+        <div class="section-kicker">07 / Courses</div>
         <h2>国外高校课程</h2>
         <p>
           课程这部分不要只看“有没有 multi-agent”四个字。更有用的读法是：这些课分别覆盖 Agent Teams 的不同能力层。Stanford 更偏系统构建和自我进化，Berkeley 更偏 agent 研究谱系和高级能力，CMU 更偏 autonomous agents 的工程框架，MIT 更偏企业应用架构。
         </p>
 
-        <div class="course-guide">
-          <article>
-            <span class="guide-tag">先学这门</span>
-            <h3><a href="https://web.stanford.edu/class/cs224g/">Stanford CS224G</a></h3>
-            <p>这门课最像“怎么把 LLM 应用真的做出来”。它关注 building 和 scaling，所以适合理解 agentic workflow 为什么不能只靠 prompt，而要有数据、评估、部署、状态和成本控制。</p>
-            <p><b>对应 Agent Teams:</b> 从单 Agent 应用升级到可维护 workflow 的底座。</p>
-          </article>
-          <article>
-            <span class="guide-tag">进化机制</span>
-            <h3><a href="https://cs329a.stanford.edu/">Stanford CS329A</a></h3>
-            <p>这门课看的是 self-improving agents：agent 如何通过 verifier、memory、test-time compute、feedback loop 变得更强。它回答的是“Agent Teams 运行一段时间后，怎么不只是重复犯错”。</p>
-            <p><b>对应 Agent Teams:</b> eval、memory、skill 更新、失败样本回灌。</p>
-          </article>
-          <article>
-            <span class="guide-tag">全景入门</span>
-            <h3><a href="https://rdi.berkeley.edu/llm-agents/f24">UC Berkeley LLM Agents</a></h3>
-            <p>这门课覆盖 LLM agents 的大图景：planning、tool use、memory、multi-agent collaboration、evaluation 和 safety。它适合建立“agent 到底有哪些模块”的完整地图。</p>
-            <p><b>对应 Agent Teams:</b> 角色分工、工具调用、协作模式、评估和安全边界。</p>
-          </article>
-          <article>
-            <span class="guide-tag">高级能力</span>
-            <h3><a href="https://rdi.berkeley.edu/adv-llm-agents/sp25">UC Berkeley Advanced LLM Agents</a></h3>
-            <p>这门课更进阶，重点是 reasoning、planning、tool use 和 program verification。它适合用来判断一个 multi-agent 系统是否真的有复杂任务能力，而不是只会把任务拆成多个聊天窗口。</p>
-            <p><b>对应 Agent Teams:</b> 复杂推理、计划修正、工具可靠性、可验证输出。</p>
-          </article>
-          <article>
-            <span class="guide-tag">工程框架</span>
-            <h3><a href="https://www.cmu-agents.com/">CMU 11-768</a></h3>
-            <p>CMU 这门课直接叫 AI Agents，重点是 autonomous agents、frameworks 和 training methods。它更像从系统角度看 agent：环境、行动、反馈、学习和部署。</p>
-            <p><b>对应 Agent Teams:</b> agent 生命周期、环境交互、框架设计和可靠性。</p>
-          </article>
-          <article>
-            <span class="guide-tag">应用架构</span>
-            <h3><a href="https://professional.mit.edu/course-catalog/ai-system-architecture-and-large-language-model-applications">MIT AI System Architecture</a></h3>
-            <p>MIT 这门更偏企业应用和系统架构，不是纯研究课。它适合看 LLM/agent 如何落进真实组织：需求、架构、集成、治理和交付。</p>
-            <p><b>对应 Agent Teams:</b> 从 demo 到组织级应用的架构和治理。</p>
-          </article>
-        </div>
+        <figure class="diagram-frame course-path-diagram" aria-label="Agent Teams 课程学习路径图">
+          <svg viewBox="0 0 1180 640" role="img" aria-labelledby="courseDiagramTitle courseDiagramDesc">
+            <title id="courseDiagramTitle">Agent Teams 课程学习路径图</title>
+            <desc id="courseDiagramDesc">六门国外高校课程组成从 LLM 应用构建到企业架构的学习路径，右下角覆盖条说明每类能力的覆盖强度。</desc>
+            <defs>
+              <marker id="course-arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#3d7651"></path>
+              </marker>
+            </defs>
+            <text class="svg-kicker" x="36" y="50">学习路径</text>
+            <path class="course-path-line" d="M112 150 C260 70, 360 70, 508 150 S760 230, 908 150 C1032 90, 1060 220, 918 294 C760 376, 620 376, 498 294 S260 212, 112 294 C-4 362, 60 518, 214 512 C392 505, 530 456, 664 512 S914 598, 1058 512" marker-end="url(#course-arrow-green)"></path>
+
+            <g class="course-node build">
+              <circle cx="112" cy="150" r="62"></circle>
+              <text class="svg-circle-text dark" x="90" y="138">构建</text>
+              <text class="svg-circle-small dark" x="60" y="162">Stanford CS224G</text>
+              <text class="svg-circle-small dark" x="66" y="184">工作流底座</text>
+            </g>
+            <g class="course-node map">
+              <circle cx="508" cy="150" r="62"></circle>
+              <text class="svg-circle-text dark" x="486" y="138">全景</text>
+              <text class="svg-circle-small dark" x="440" y="162">Berkeley LLM Agents</text>
+              <text class="svg-circle-small dark" x="456" y="184">模块全景</text>
+            </g>
+            <g class="course-node framework">
+              <circle cx="908" cy="150" r="62"></circle>
+              <text class="svg-circle-text dark" x="886" y="138">框架</text>
+              <text class="svg-circle-small dark" x="862" y="162">CMU 11-768</text>
+              <text class="svg-circle-small dark" x="858" y="184">环境 / 反馈</text>
+            </g>
+            <g class="course-node advanced">
+              <circle cx="918" cy="294" r="62"></circle>
+              <text class="svg-circle-text dark" x="896" y="282">进阶</text>
+              <text class="svg-circle-small dark" x="842" y="306">Berkeley 进阶课程</text>
+              <text class="svg-circle-small dark" x="866" y="328">验证输出</text>
+            </g>
+            <g class="course-node improve">
+              <circle cx="498" cy="294" r="62"></circle>
+              <text class="svg-circle-text dark" x="476" y="282">进化</text>
+              <text class="svg-circle-small dark" x="436" y="306">Stanford CS329A</text>
+              <text class="svg-circle-small dark" x="450" y="328">记忆 / 评估</text>
+            </g>
+            <g class="course-node architecture">
+              <circle cx="214" cy="512" r="62"></circle>
+              <text class="svg-circle-text dark" x="192" y="500">架构</text>
+              <text class="svg-circle-small dark" x="164" y="524">MIT 系统架构</text>
+              <text class="svg-circle-small dark" x="166" y="546">组织级治理</text>
+            </g>
+
+            <text class="svg-kicker" x="650" y="430">能力覆盖</text>
+            <text class="svg-small bold" x="650" y="466">构建与部署</text>
+            <line class="svg-meter-bg" x1="800" y1="462" x2="1110" y2="462"></line>
+            <line class="svg-meter reward" x1="800" y1="462" x2="1090" y2="462"></line>
+            <text class="svg-small bold" x="650" y="500">协作与工具</text>
+            <line class="svg-meter-bg" x1="800" y1="496" x2="1110" y2="496"></line>
+            <line class="svg-meter reward" x1="800" y1="496" x2="1072" y2="496"></line>
+            <text class="svg-small bold" x="650" y="534">评估与安全</text>
+            <line class="svg-meter-bg" x1="800" y1="530" x2="1110" y2="530"></line>
+            <line class="svg-meter reward" x1="800" y1="530" x2="1060" y2="530"></line>
+            <text class="svg-small bold" x="650" y="568">自我进化</text>
+            <line class="svg-meter-bg" x1="800" y1="564" x2="1110" y2="564"></line>
+            <line class="svg-meter cost" x1="800" y1="564" x2="1036" y2="564"></line>
+            <text class="svg-small bold" x="650" y="602">企业架构</text>
+            <line class="svg-meter-bg" x1="800" y1="598" x2="1110" y2="598"></line>
+            <line class="svg-meter cost" x1="800" y1="598" x2="1005" y2="598"></line>
+          </svg>
+          <figcaption>读法：按曲线路径学习；底部覆盖条显示这组课程对 Agent Teams 能力层的覆盖强度。</figcaption>
+        </figure>
 
         <div class="course-table">
           <div class="course-row head">
@@ -828,7 +1081,7 @@
       </section>
 
       <section class="section" id="frontend">
-        <div class="section-kicker">07 / Frontend</div>
+        <div class="section-kicker">08 / Frontend</div>
         <h2>Agent Teams 前端样式参考</h2>
         <p>
           Agent Teams 的前端不应该只是聊天框。用户需要看到<mark class="hl hl-product">谁在做、为什么做、证据是什么</mark>，也需要看到<mark class="hl hl-risk">哪里失败、成本多少、是否需要人介入</mark>。
@@ -913,7 +1166,7 @@
       </section>
 
       <section class="section" id="sources">
-        <div class="section-kicker">08 / Sources</div>
+        <div class="section-kicker">09 / Sources</div>
         <h2>关键证据源</h2>
         <div class="source-columns">
           <div>
