@@ -115,9 +115,44 @@ ETH 的波动不是单因子，至少要分成五层：
 | 内幕/突发事件 | 低 | 监管突袭、黑客、战争、交易所事故 | 只能做风险缓冲，不能稳定预测 |
 | 政策/合规边界 | 低 | 地域限制、市场下架、结算争议 | 写进风险约束，不当 alpha |
 
-## 6. 后续成稿要补的证据缺口
+## 6. 下一步实时数据源层
+
+本轮新增 `scripts/fetch_market_data.mjs`，生成 `content/market-data-snapshot.json`。它不是交易信号，而是把后续研究系统的数据接口先固定下来。
+
+| 数据层 | 当前接入 | 可进入模型的字段 | Caveat |
+| --- | --- | --- | --- |
+| Polymarket CLOB | Gamma public-search + CLOB `/book` | token id、bid、ask、spread、depth、last trade | 市场会关闭，盘口变化快，样本不是推荐 |
+| 永续资金费率 | Binance USD-M ETHUSDT fundingRate / premiumIndex | funding rate、mark price、index price、next funding time | 单交易所 proxy，不代表全市场 |
+| Open interest | Binance USD-M ETHUSDT openInterest | current OI、timestamp | 需要跨交易所单位标准化 |
+| 期权 IV / OI | Deribit ETH options summary | instrument、expiry、mark IV、open interest、volume | Deribit venue bias |
+| ETF flows | Farside / CoinGlass ETF tracker | daily net flow、issuer split、cumulative flow | 本轮不写入未复核数值；需人工或 vendor API |
+| 清算数据 | CoinGlass liquidations / API docs | long/short liquidation、exchange split、time bucket | 历史序列应接 API，不从 dashboard 截图回填 |
+
+当前样本盘口由脚本自动选择 ETH price 相关且可读取 CLOB 的 Polymarket 市场。最新快照选择了 “Will Ethereum reach $2,200 in June?”：
+
+| 盘口项 | 数值 |
+| --- | --- |
+| Yes bid / ask | 0.006 / 0.008 |
+| Yes midpoint | 0.007 |
+| Yes top-5 bid depth | 76,043.34 |
+| Yes top-5 ask depth | 11,465.00 |
+| No bid / ask | 0.992 / 0.994 |
+
+当前 ETH 衍生品快照：
+
+| 指标 | 数值 |
+| --- | --- |
+| Binance ETHUSDT mark / index | 1666.747 / 1667.138 |
+| Latest funding | 0.00000255 |
+| Binance open interest | 2,282,433.678 |
+| Deribit ETH options instruments | 724 |
+| Deribit ETH option open interest | 2,197,614 |
+| Largest expiry IV/OI bucket | 26JUN26 · 111.27% |
+
+## 7. 后续成稿要补的证据缺口
 
 - Polymarket 国际站与 Polymarket US 当前费用、可交易市场范围、地域限制，需要最终成稿前再次刷新官方页面。
-- ETH ETF flows 需要选定固定数据源，不把单日数据写成长期结论。
-- ETH 衍生品因子需要加入一个或多个数据源：资金费率、open interest、期权 IV、清算。
+- ETH ETF flows 需要选定固定 vendor 或人工复核流程，不把单日数据写成长期结论。
+- ETH 衍生品因子已经接入 Binance / Deribit 公共接口，但仍需跨交易所聚合。
+- 清算历史需要接入 CoinGlass 或同类供应商 API；不能从 dashboard 截图反推历史序列。
 - 顶级量化公司流程只能写“公开可观察方法论”和“行业通用 pipeline”，不能冒充内部机密。

@@ -1,0 +1,637 @@
+{
+  "collected_at": "2026-06-24T03:37:11.935Z",
+  "note": "Research snapshot for model input design. Values are live public API observations, not trading advice.",
+  "source_endpoints": {
+    "polymarketSearch": "https://gamma-api.polymarket.com/public-search?q=ethereum%20price&limit_per_type=10&events_status=active&search_profiles=false",
+    "polymarketBook": "https://clob.polymarket.com/book",
+    "binancePremiumIndex": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=ETHUSDT",
+    "binanceOpenInterest": "https://fapi.binance.com/fapi/v1/openInterest?symbol=ETHUSDT",
+    "binanceFundingRate": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ETHUSDT&limit=24",
+    "deribitEthOptions": "https://www.deribit.com/api/v2/public/get_book_summary_by_currency?currency=ETH&kind=option",
+    "farsideEthFlows": "https://farside.co.uk/eth/",
+    "coinglassEthEtf": "https://www.coinglass.com/etf/ethereum",
+    "coinglassEthLiquidations": "https://www.coinglass.com/liquidations/ETH",
+    "coinglassEthLiquidationHeatmap": "https://www.coinglass.com/pro/futures/LiquidationHeatMap?coin=ETH",
+    "coinglassLiquidationApiDocs": "https://docs.coinglass.com/reference/aggregated-liquidation-history"
+  },
+  "polymarket_sample": {
+    "search_query": "ethereum price",
+    "search_total_results": 970,
+    "candidate_count": 126,
+    "selected_market": {
+      "event_id": "548275",
+      "event_slug": "what-price-will-ethereum-hit-in-june-2026",
+      "event_title": "What price will Ethereum hit in June?",
+      "event_volume_24h": 563194.273274,
+      "event_liquidity": 791705.29,
+      "market_id": "2410587",
+      "market_slug": "will-ethereum-reach-2200-in-june-2026",
+      "question": "Will Ethereum reach $2,200 in June?",
+      "active": true,
+      "closed": false,
+      "volume_24h": 73414.935771,
+      "liquidity": 39001.42415,
+      "best_bid": 0.006,
+      "best_ask": 0.008,
+      "spread": 0.002,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "token_ids": [
+        "61808603733483109935415667528997755964163599677843891577138392760589332915215",
+        "98573193064505417307947008681123749943814253332251848843563441363357555073192"
+      ]
+    },
+    "books": [
+      {
+        "outcome": "Yes",
+        "token_id": "61808603733483109935415667528997755964163599677843891577138392760589332915215",
+        "book": {
+          "market": "0x1f3ddc62310927da6bf2840a298d3134903bfa3cbeaeec559ca8956a4ad4be34",
+          "asset_id": "61808603733483109935415667528997755964163599677843891577138392760589332915215",
+          "timestamp": 1782272231707,
+          "timestamp_iso": "2026-06-24T03:37:11.707Z",
+          "hash": "575976e513b23c57830d046d1388dcc280f1f8c1",
+          "min_order_size": 5,
+          "tick_size": 0.001,
+          "neg_risk": false,
+          "last_trade_price": 0.006,
+          "best_bid": 0.006,
+          "best_ask": 0.008,
+          "spread": 0.002,
+          "midpoint": 0.007,
+          "bid_depth_top5": 76043.34,
+          "ask_depth_top5": 11465,
+          "bids_top5": [
+            {
+              "price": 0.006,
+              "size": 14712.78
+            },
+            {
+              "price": 0.005,
+              "size": 6159.26
+            },
+            {
+              "price": 0.004,
+              "size": 10000
+            },
+            {
+              "price": 0.003,
+              "size": 16583.3
+            },
+            {
+              "price": 0.002,
+              "size": 28588
+            }
+          ],
+          "asks_top5": [
+            {
+              "price": 0.008,
+              "size": 2353.57
+            },
+            {
+              "price": 0.009,
+              "size": 1306
+            },
+            {
+              "price": 0.01,
+              "size": 7535.77
+            },
+            {
+              "price": 0.011,
+              "size": 6.43
+            },
+            {
+              "price": 0.012,
+              "size": 263.23
+            }
+          ]
+        }
+      },
+      {
+        "outcome": "No",
+        "token_id": "98573193064505417307947008681123749943814253332251848843563441363357555073192",
+        "book": {
+          "market": "0x1f3ddc62310927da6bf2840a298d3134903bfa3cbeaeec559ca8956a4ad4be34",
+          "asset_id": "98573193064505417307947008681123749943814253332251848843563441363357555073192",
+          "timestamp": 1782272231707,
+          "timestamp_iso": "2026-06-24T03:37:11.707Z",
+          "hash": "ecefb753f2631e101a1d4f1f7486aa61459ea765",
+          "min_order_size": 5,
+          "tick_size": 0.001,
+          "neg_risk": false,
+          "last_trade_price": 0.006,
+          "best_bid": 0.992,
+          "best_ask": 0.994,
+          "spread": 0.0020000000000000018,
+          "midpoint": 0.993,
+          "bid_depth_top5": 11465,
+          "ask_depth_top5": 76043.34,
+          "bids_top5": [
+            {
+              "price": 0.992,
+              "size": 2353.57
+            },
+            {
+              "price": 0.991,
+              "size": 1306
+            },
+            {
+              "price": 0.99,
+              "size": 7535.77
+            },
+            {
+              "price": 0.989,
+              "size": 6.43
+            },
+            {
+              "price": 0.988,
+              "size": 263.23
+            }
+          ],
+          "asks_top5": [
+            {
+              "price": 0.994,
+              "size": 14712.78
+            },
+            {
+              "price": 0.995,
+              "size": 6159.26
+            },
+            {
+              "price": 0.996,
+              "size": 10000
+            },
+            {
+              "price": 0.997,
+              "size": 16583.3
+            },
+            {
+              "price": 0.998,
+              "size": 28588
+            }
+          ]
+        }
+      }
+    ],
+    "caveat": "Polymarket search and CLOB books are live and can change quickly; selected market is an example for microstructure analysis, not a recommendation."
+  },
+  "eth_derivatives": {
+    "binance_usdm_ethusdt": {
+      "premium_index": {
+        "symbol": "ETHUSDT",
+        "markPrice": "1667.12502326",
+        "indexPrice": "1667.58093023",
+        "estimatedSettlePrice": "1663.02853023",
+        "lastFundingRate": "0.00000379",
+        "interestRate": "0.00010000",
+        "nextFundingTime": 1782288000000,
+        "time": 1782272234001,
+        "time_iso": "2026-06-24T03:37:14.001Z",
+        "nextFundingTime_iso": "2026-06-24T08:00:00.000Z"
+      },
+      "open_interest": {
+        "symbol": "ETHUSDT",
+        "openInterest": "2282587.226",
+        "time": 1782272230865,
+        "time_iso": "2026-06-24T03:37:10.865Z"
+      },
+      "recent_funding": [
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781596800000,
+          "fundingRate": "-0.00002070",
+          "markPrice": "1773.26823256",
+          "fundingTime_iso": "2026-06-16T08:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781625600001,
+          "fundingRate": "0.00003160",
+          "markPrice": "1781.55242636",
+          "fundingTime_iso": "2026-06-16T16:00:00.001Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781654400012,
+          "fundingRate": "0.00003038",
+          "markPrice": "1792.32000000",
+          "fundingTime_iso": "2026-06-17T00:00:00.012Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781683200000,
+          "fundingRate": "0.00002339",
+          "markPrice": "1784.40000000",
+          "fundingTime_iso": "2026-06-17T08:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781712000000,
+          "fundingRate": "-0.00000737",
+          "markPrice": "1772.66861240",
+          "fundingTime_iso": "2026-06-17T16:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781740800002,
+          "fundingRate": "0.00004630",
+          "markPrice": "1749.84497674",
+          "fundingTime_iso": "2026-06-18T00:00:00.002Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781769600000,
+          "fundingRate": "0.00000687",
+          "markPrice": "1748.88811628",
+          "fundingTime_iso": "2026-06-18T08:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781798400001,
+          "fundingRate": "-0.00000691",
+          "markPrice": "1681.45000000",
+          "fundingTime_iso": "2026-06-18T16:00:00.001Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781827200005,
+          "fundingRate": "0.00006551",
+          "markPrice": "1710.18087597",
+          "fundingTime_iso": "2026-06-19T00:00:00.005Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781856000001,
+          "fundingRate": "-0.00002067",
+          "markPrice": "1695.15000000",
+          "fundingTime_iso": "2026-06-19T08:00:00.001Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781884800001,
+          "fundingRate": "-0.00000027",
+          "markPrice": "1706.91000000",
+          "fundingTime_iso": "2026-06-19T16:00:00.001Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781913600001,
+          "fundingRate": "0.00002505",
+          "markPrice": "1710.32427132",
+          "fundingTime_iso": "2026-06-20T00:00:00.001Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781942400000,
+          "fundingRate": "0.00003170",
+          "markPrice": "1725.16000000",
+          "fundingTime_iso": "2026-06-20T08:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1781971200001,
+          "fundingRate": "0.00003209",
+          "markPrice": "1739.83814729",
+          "fundingTime_iso": "2026-06-20T16:00:00.001Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782000000000,
+          "fundingRate": "0.00002892",
+          "markPrice": "1740.13237209",
+          "fundingTime_iso": "2026-06-21T00:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782028800000,
+          "fundingRate": "0.00002602",
+          "markPrice": "1731.47858140",
+          "fundingTime_iso": "2026-06-21T08:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782057600000,
+          "fundingRate": "0.00000757",
+          "markPrice": "1729.90000000",
+          "fundingTime_iso": "2026-06-21T16:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782086400000,
+          "fundingRate": "0.00003880",
+          "markPrice": "1706.32900962",
+          "fundingTime_iso": "2026-06-22T00:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782115200000,
+          "fundingRate": "0.00001941",
+          "markPrice": "1745.76000000",
+          "fundingTime_iso": "2026-06-22T08:00:00.000Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782144000002,
+          "fundingRate": "0.00000789",
+          "markPrice": "1744.01000000",
+          "fundingTime_iso": "2026-06-22T16:00:00.002Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782172800003,
+          "fundingRate": "0.00002370",
+          "markPrice": "1727.36007752",
+          "fundingTime_iso": "2026-06-23T00:00:00.003Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782201600005,
+          "fundingRate": "0.00000335",
+          "markPrice": "1681.97000000",
+          "fundingTime_iso": "2026-06-23T08:00:00.005Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782230400002,
+          "fundingRate": "-0.00003854",
+          "markPrice": "1658.93058140",
+          "fundingTime_iso": "2026-06-23T16:00:00.002Z"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "fundingTime": 1782259200005,
+          "fundingRate": "0.00004579",
+          "markPrice": "1666.39000000",
+          "fundingTime_iso": "2026-06-24T00:00:00.005Z"
+        }
+      ],
+      "caveat": "Binance ETHUSDT is a single-venue perpetual futures proxy. Cross-venue aggregation requires additional vendors."
+    },
+    "deribit_eth_options": {
+      "instrument_count": 724,
+      "total_open_interest": 2197614,
+      "total_volume": 135185,
+      "expiries": [
+        {
+          "expiry": "26JUN26",
+          "instruments": 138,
+          "open_interest": 1011662,
+          "volume": 25690,
+          "mark_iv_open_interest_weighted": 111.28
+        },
+        {
+          "expiry": "25DEC26",
+          "instruments": 88,
+          "open_interest": 401278,
+          "volume": 3333,
+          "mark_iv_open_interest_weighted": 60.36
+        },
+        {
+          "expiry": "25SEP26",
+          "instruments": 118,
+          "open_interest": 312454,
+          "volume": 10802,
+          "mark_iv_open_interest_weighted": 64.54
+        },
+        {
+          "expiry": "31JUL26",
+          "instruments": 84,
+          "open_interest": 221334,
+          "volume": 15995,
+          "mark_iv_open_interest_weighted": 58.58
+        },
+        {
+          "expiry": "26MAR27",
+          "instruments": 76,
+          "open_interest": 75144,
+          "volume": 2559,
+          "mark_iv_open_interest_weighted": 61.2
+        },
+        {
+          "expiry": "03JUL26",
+          "instruments": 34,
+          "open_interest": 59216,
+          "volume": 14516,
+          "mark_iv_open_interest_weighted": 56.55
+        },
+        {
+          "expiry": "28AUG26",
+          "instruments": 64,
+          "open_interest": 44811,
+          "volume": 11893,
+          "mark_iv_open_interest_weighted": 55.77
+        },
+        {
+          "expiry": "10JUL26",
+          "instruments": 24,
+          "open_interest": 25488,
+          "volume": 5169,
+          "mark_iv_open_interest_weighted": 57.26
+        },
+        {
+          "expiry": "24JUN26",
+          "instruments": 32,
+          "open_interest": 24825,
+          "volume": 25718,
+          "mark_iv_open_interest_weighted": 68.76
+        },
+        {
+          "expiry": "25JUN26",
+          "instruments": 34,
+          "open_interest": 18787,
+          "volume": 16877,
+          "mark_iv_open_interest_weighted": 57.68
+        },
+        {
+          "expiry": "27JUN26",
+          "instruments": 32,
+          "open_interest": 2615,
+          "volume": 2633,
+          "mark_iv_open_interest_weighted": 65.48
+        }
+      ],
+      "top_open_interest": [
+        {
+          "instrument_name": "ETH-26JUN26-2000-C",
+          "expiry": "26JUN26",
+          "open_interest": 82738,
+          "mark_iv": 85.65,
+          "volume": 104,
+          "bid_price": null,
+          "ask_price": 0.0001
+        },
+        {
+          "instrument_name": "ETH-26JUN26-2500-C",
+          "expiry": "26JUN26",
+          "open_interest": 73639,
+          "mark_iv": 112.79,
+          "volume": 0,
+          "bid_price": null,
+          "ask_price": 0.0001
+        },
+        {
+          "instrument_name": "ETH-25DEC26-3200-C",
+          "expiry": "25DEC26",
+          "open_interest": 67297,
+          "mark_iv": 58.9,
+          "volume": 1,
+          "bid_price": 0.015,
+          "ask_price": 0.016
+        },
+        {
+          "instrument_name": "ETH-25DEC26-2200-C",
+          "expiry": "25DEC26",
+          "open_interest": 52180,
+          "mark_iv": 57.25,
+          "volume": 10,
+          "bid_price": 0.0695,
+          "ask_price": 0.0715
+        },
+        {
+          "instrument_name": "ETH-26JUN26-5500-C",
+          "expiry": "26JUN26",
+          "open_interest": 45168,
+          "mark_iv": 152.58,
+          "volume": 0,
+          "bid_price": null,
+          "ask_price": 0.0001
+        },
+        {
+          "instrument_name": "ETH-26JUN26-6500-C",
+          "expiry": "26JUN26",
+          "open_interest": 37620,
+          "mark_iv": 152.58,
+          "volume": 0,
+          "bid_price": null,
+          "ask_price": 0.0001
+        },
+        {
+          "instrument_name": "ETH-26JUN26-1500-P",
+          "expiry": "26JUN26",
+          "open_interest": 32175,
+          "mark_iv": 76.99,
+          "volume": 2198,
+          "bid_price": 0.0008,
+          "ask_price": 0.001
+        },
+        {
+          "instrument_name": "ETH-26JUN26-500-P",
+          "expiry": "26JUN26",
+          "open_interest": 29807,
+          "mark_iv": 183.33,
+          "volume": 0,
+          "bid_price": null,
+          "ask_price": 0.0001
+        },
+        {
+          "instrument_name": "ETH-26JUN26-2000-P",
+          "expiry": "26JUN26",
+          "open_interest": 25239,
+          "mark_iv": 85.65,
+          "volume": 83,
+          "bid_price": 0.19,
+          "ask_price": 0.2125
+        },
+        {
+          "instrument_name": "ETH-25DEC26-3500-C",
+          "expiry": "25DEC26",
+          "open_interest": 24027,
+          "mark_iv": 59.82,
+          "volume": 800,
+          "bid_price": 0.01,
+          "ask_price": 0.011
+        },
+        {
+          "instrument_name": "ETH-26JUN26-1200-P",
+          "expiry": "26JUN26",
+          "open_interest": 23330,
+          "mark_iv": 142.26,
+          "volume": 1,
+          "bid_price": null,
+          "ask_price": 0.0001
+        },
+        {
+          "instrument_name": "ETH-26JUN26-2800-C",
+          "expiry": "26JUN26",
+          "open_interest": 23281,
+          "mark_iv": 115.24,
+          "volume": 0,
+          "bid_price": null,
+          "ask_price": 0.0001
+        }
+      ]
+    }
+  },
+  "etf_flows": {
+    "candidates": [
+      {
+        "name": "Farside Investors Ethereum ETF Flow",
+        "url": "https://farside.co.uk/eth/",
+        "machine_check": {
+          "url": "https://farside.co.uk/eth/",
+          "status": 403,
+          "ok": false,
+          "final_url": "https://farside.co.uk/eth/",
+          "sample": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\""
+        },
+        "role": "Daily US spot ETH ETF flow table; automatic fetch may be blocked by Cloudflare and should be manually verified."
+      },
+      {
+        "name": "CoinGlass Ethereum ETF tracker",
+        "url": "https://www.coinglass.com/etf/ethereum",
+        "machine_check": {
+          "url": "https://www.coinglass.com/etf/ethereum",
+          "status": 200,
+          "ok": true,
+          "final_url": "https://www.coinglass.com/etf/ethereum",
+          "sample": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/><link rel=\"alternate\" hrefLang=\"en\" href=\"https://www.coi"
+        },
+        "role": "ETF flow and net asset tracker page; public web page accessible, no unauthenticated stable JSON endpoint confirmed."
+      }
+    ],
+    "caveat": "ETF flow data is issuer/regulatory-adjacent but commonly consolidated by third-party trackers. For production, choose one vendor and keep reconciliation notes."
+  },
+  "liquidations": {
+    "candidates": [
+      {
+        "name": "CoinGlass ETH liquidations",
+        "url": "https://www.coinglass.com/liquidations/ETH",
+        "machine_check": {
+          "url": "https://www.coinglass.com/liquidations/ETH",
+          "status": 200,
+          "ok": true,
+          "final_url": "https://www.coinglass.com/liquidations/ETH",
+          "sample": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/><link rel=\"alternate\" hrefLang=\"en\" href=\"https://www.coi"
+        },
+        "role": "Public ETH liquidation dashboard; useful as a visual monitor, but not treated as a stable historical API without vendor access."
+      },
+      {
+        "name": "CoinGlass ETH liquidation heatmap",
+        "url": "https://www.coinglass.com/pro/futures/LiquidationHeatMap?coin=ETH",
+        "machine_check": {
+          "url": "https://www.coinglass.com/pro/futures/LiquidationHeatMap?coin=ETH",
+          "status": 200,
+          "ok": true,
+          "final_url": "https://www.coinglass.com/pro/futures/LiquidationHeatMap?coin=ETH",
+          "sample": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/><link rel=\"alternate\" hrefLang=\"en\" href=\"https://www.coi"
+        },
+        "role": "Heatmap page for liquidation pressure zones; suitable for manual monitoring and dashboard evidence."
+      },
+      {
+        "name": "CoinGlass liquidation API documentation",
+        "url": "https://docs.coinglass.com/reference/aggregated-liquidation-history",
+        "machine_check": {
+          "url": "https://docs.coinglass.com/reference/aggregated-liquidation-history",
+          "status": 200,
+          "ok": true,
+          "final_url": "https://docs.coinglass.com/reference/aggregated-liquidation-history",
+          "sample": "<!DOCTYPE html><html lang=\"en\" style=\"\" data-color-mode=\"light\" class=\" useReactApp isRefPage \"><head><meta charset=\"utf-8\"><meta name=\"readme-deploy\" content=\"5.777.0\"><meta name=\"readme-subdomain\" content=\"coinglass-ap"
+        },
+        "role": "Production candidate for historical liquidation data; likely requires API key and plan selection."
+      }
+    ],
+    "caveat": "Liquidation data should not be backfilled from screenshots. Use a vendor API, or clearly label dashboard observations as manual evidence."
+  }
+}

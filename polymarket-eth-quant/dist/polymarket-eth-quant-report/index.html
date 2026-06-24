@@ -27,7 +27,7 @@
         <span><strong>调研者</strong> ziye</span>
         <span><strong>方法</strong> structured-research + official-source refresh</span>
         <span><strong>数据截止</strong> 2026-06-24</span>
-        <span><strong>样本</strong> 19 个来源条目</span>
+        <span><strong>样本</strong> 30 个来源条目 + 1 份市场数据快照</span>
       </div>
     </header>
 
@@ -52,6 +52,11 @@
         <div class="label">模型边界</div>
         <div class="sub">可模型化、半模型化、不可稳定模型化。</div>
       </div>
+      <div class="metric">
+        <div class="num">5</div>
+        <div class="label">实时数据层</div>
+        <div class="sub">CLOB、funding、OI、option IV、ETF/liquidation vendor 源。</div>
+      </div>
     </div>
   </div>
 
@@ -59,7 +64,7 @@
     <div class="wrap">
       <div class="viz-atlas-head">
         <h2>阅读索引</h2>
-        <p>报告按交易纪律、市场结构、ETH 因子、数学体系、量化 pipeline 和落地边界展开。Polymarket 当前事实使用官方文档、监管文件和协议规范刷新。</p>
+        <p>报告按交易纪律、市场结构、ETH 因子、数学体系、量化 pipeline、落地边界和实时数据源展开。Polymarket 当前事实使用官方文档、监管文件、协议规范和公共 API 刷新。</p>
       </div>
       <nav class="jump-grid" aria-label="章节导航">
         <a class="jump" href="#thesis"><span class="vj-num">§ 00</span><span class="vj-name">核心判断</span><span class="vj-type">Editorial</span></a>
@@ -69,7 +74,8 @@
         <a class="jump" href="#math-domains"><span class="vj-num">§ 04</span><span class="vj-name">数学领域</span><span class="vj-type">Matrix</span></a>
         <a class="jump" href="#quant-pipeline"><span class="vj-num">§ 05</span><span class="vj-name">量化流程</span><span class="vj-type">Step Chart</span></a>
         <a class="jump" href="#implementation"><span class="vj-num">§ 06</span><span class="vj-name">落地边界</span><span class="vj-type">Triage</span></a>
-        <a class="jump" href="#methodology"><span class="vj-num">§ 07</span><span class="vj-name">方法来源</span><span class="vj-type">Method</span></a>
+        <a class="jump" href="#market-data"><span class="vj-num">§ 07</span><span class="vj-name">实时数据</span><span class="vj-type">Source Layer</span></a>
+        <a class="jump" href="#methodology"><span class="vj-num">§ 08</span><span class="vj-name">方法来源</span><span class="vj-type">Method</span></a>
       </nav>
     </div>
   </div>
@@ -546,11 +552,123 @@
       </div>
     </section>
 
+    <section id="market-data">
+      <div class="section-num">§ 07 · 实时数据源与样本盘口</div>
+      <h2 class="section-title">先把数据源分层，再谈建模</h2>
+      <p class="section-desc">
+        本轮把“下一步要补的数据”落成一个可复跑快照：Polymarket 用 public-search 选择 ETH price 相关市场，再读 CLOB book；ETH 永续用 Binance ETHUSDT 的 funding、mark price 和 open interest；期权 IV/OI 用 Deribit ETH options summary；ETF flows 和清算历史先作为 vendor / manual-review 源。
+      </p>
+
+      <div class="data-ladder" aria-label="实时数据源分层">
+        <article class="data-node">
+          <span class="tag tag-green">可直接抓取</span>
+          <h3>Polymarket CLOB</h3>
+          <p>Gamma search 定位 ETH 市场，CLOB `/book` 读取 bid/ask、深度、last trade、tick size。</p>
+        </article>
+        <article class="data-node">
+          <span class="tag tag-green">可直接抓取</span>
+          <h3>Funding / OI</h3>
+          <p>Binance USD-M ETHUSDT 提供 latest funding、funding history、open interest、mark/index price。</p>
+        </article>
+        <article class="data-node">
+          <span class="tag tag-green">可直接抓取</span>
+          <h3>Option IV / OI</h3>
+          <p>Deribit ETH options summary 提供 instrument-level open interest、volume、mark IV，可按 expiry 聚合。</p>
+        </article>
+        <article class="data-node">
+          <span class="tag tag-gold">需复核</span>
+          <h3>ETF flows</h3>
+          <p>Farside / CoinGlass 可做入口；本环境 Farside 自动请求遇到 Cloudflare 403，正式值需人工或 vendor API。</p>
+        </article>
+        <article class="data-node">
+          <span class="tag tag-gold">需 vendor</span>
+          <h3>Liquidations</h3>
+          <p>CoinGlass 有 ETH 清算页和 API 文档；历史序列不从截图回填，生产使用应接 API key。</p>
+        </article>
+      </div>
+
+      <div class="book-grid" aria-label="市场数据快照摘要">
+        <div class="book-panel">
+          <h3>样本 Polymarket 市场</h3>
+          <div class="book-stat"><span>Market</span><strong>ETH reach $2,200 in June</strong></div>
+          <div class="book-stat"><span>Yes bid / ask</span><strong>0.006 / 0.008</strong></div>
+          <div class="book-stat"><span>Yes midpoint</span><strong>0.007</strong></div>
+          <div class="book-stat"><span>Yes top-5 bid depth</span><strong>76,043.34</strong></div>
+          <div class="book-stat"><span>Yes top-5 ask depth</span><strong>11,465.00</strong></div>
+          <div class="book-stat"><span>No bid / ask</span><strong>0.992 / 0.994</strong></div>
+        </div>
+        <div class="book-panel">
+          <h3>ETH 衍生品快照</h3>
+          <div class="book-stat"><span>Binance ETHUSDT mark / index</span><strong>1666.747 / 1667.138</strong></div>
+          <div class="book-stat"><span>Latest funding</span><strong>0.00000255</strong></div>
+          <div class="book-stat"><span>Open interest</span><strong>2,282,433.678</strong></div>
+          <div class="book-stat"><span>Deribit ETH options</span><strong>724 instruments</strong></div>
+          <div class="book-stat"><span>Deribit option OI</span><strong>2,197,614</strong></div>
+          <div class="book-stat"><span>Largest expiry IV/OI</span><strong>26JUN26 · 111.27%</strong></div>
+        </div>
+      </div>
+
+      <div class="matrix-wrap" style="margin-top:24px" role="region" aria-label="实时数据源接入矩阵" tabindex="0">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>数据层</th>
+              <th>本轮使用源</th>
+              <th>进入模型的字段</th>
+              <th>主要 caveat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Polymarket 盘口</td>
+              <td><a href="https://docs.polymarket.com/api-reference/market-data/get-order-book" target="_blank" rel="noopener">CLOB book</a> + public-search</td>
+              <td>bid、ask、spread、depth、last trade、token id。</td>
+              <td>市场会快速关闭或切换流动性；样本不是推荐。</td>
+            </tr>
+            <tr>
+              <td>永续资金费率</td>
+              <td><a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History" target="_blank" rel="noopener">Binance fundingRate</a></td>
+              <td>funding rate、funding time、mark price。</td>
+              <td>单交易所 proxy；全市场需要 OKX/Bybit/Deribit/Hyperliquid 等聚合。</td>
+            </tr>
+            <tr>
+              <td>Open interest</td>
+              <td><a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest" target="_blank" rel="noopener">Binance openInterest</a></td>
+              <td>current OI、timestamp、symbol。</td>
+              <td>不能代表全市场 OI；需要跨 venue 标准化单位。</td>
+            </tr>
+            <tr>
+              <td>期权 IV / OI</td>
+              <td><a href="https://docs.deribit.com/api-reference/market-data/public-get_book_summary_by_currency" target="_blank" rel="noopener">Deribit options summary</a></td>
+              <td>instrument、expiry、mark IV、open interest、volume。</td>
+              <td>Deribit 是主流期权场所，但仍有 venue bias。</td>
+            </tr>
+            <tr>
+              <td>ETF flows</td>
+              <td><a href="https://farside.co.uk/eth/" target="_blank" rel="noopener">Farside</a> / <a href="https://www.coinglass.com/etf/ethereum" target="_blank" rel="noopener">CoinGlass ETF</a></td>
+              <td>daily net flow、cumulative flow、issuer split。</td>
+              <td>本轮不写入未复核数值；正式使用要固定 vendor 并记录校验。</td>
+            </tr>
+            <tr>
+              <td>清算数据</td>
+              <td><a href="https://www.coinglass.com/liquidations/ETH" target="_blank" rel="noopener">CoinGlass liquidations</a> / <a href="https://docs.coinglass.com/reference/aggregated-liquidation-history" target="_blank" rel="noopener">API docs</a></td>
+              <td>long/short liquidation、exchange split、time bucket。</td>
+              <td>历史序列应走 API；不能从 dashboard 截图反推回测数据。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footnote">
+        快照文件：<code>content/market-data-snapshot.json</code>。复跑命令：<code>node polymarket-eth-quant/scripts/fetch_market_data.mjs</code>。快照值只用于说明数据接入方式，不构成交易建议。
+      </div>
+    </section>
+
     <section id="methodology">
-      <div class="section-num">§ 07 · 方法、来源和限制</div>
+      <div class="section-num">§ 08 · 方法、来源和限制</div>
       <h2 class="section-title">公开来源能支撑框架，不能替代实盘数据</h2>
       <p class="section-desc">
-        本版把官方文档、监管文件、协议规范和经典论文作为强来源；公司内部模型流程仅按公开资料和行业通用流程推断，不声称掌握任何专有细节。
+        本版把官方文档、监管文件、协议规范、经典论文和公共 API 文档作为强来源；公司内部模型流程仅按公开资料和行业通用流程推断，不声称掌握任何专有细节。
       </p>
 
       <div class="method-grid">
@@ -559,13 +677,15 @@
           <ul class="method-list">
             <li>使用 structured-research 建任务书、问题树、覆盖地图和来源台账。</li>
             <li>对 Polymarket、ETH、SEC、EIP 和量化论文来源做 2026-06-24 刷新。</li>
+            <li>新增 <code>fetch_market_data.mjs</code> 生成 Polymarket / Binance / Deribit / ETF / liquidation 数据源快照。</li>
             <li>用 visual-html-report 输出可维护 HTML 源码包，并进行三端渲染验证。</li>
           </ul>
         </div>
         <div class="method-panel">
           <h3>未解决限制</h3>
           <ul class="method-list">
-            <li>尚未接入实时 ETH ETF flows、衍生品资金费率、OI、IV 和清算数据。</li>
+            <li>ETF flows 和清算历史仍需固定 vendor/API；当前只记录可访问性和来源入口。</li>
+            <li>Binance 与 Deribit 数据是 venue-specific，不等于全市场聚合指标。</li>
             <li>Polymarket 费用、地域限制和产品规则可能变化，使用前需重新核对官方页面。</li>
             <li>自动外链检查可能被监管、交易所和数据站点反爬拦截，关键来源需要人工复核。</li>
           </ul>
@@ -632,6 +752,36 @@
           <div class="source-id">PUBLIC_QUANT_COMPANIES</div>
           <h3><a href="https://www.janestreet.com/what-we-do/overview/" target="_blank" rel="noopener">Jane Street</a> / <a href="https://www.twosigma.com/careers/quantitative-research-data-science/" target="_blank" rel="noopener">Two Sigma</a></h3>
           <p>只用于公开方法论背景，不用于声称内部专有流程。</p>
+        </article>
+        <article class="source">
+          <div class="source-id">POLY_CLOB_BOOK_API</div>
+          <h3><a href="https://docs.polymarket.com/api-reference/market-data/get-order-book" target="_blank" rel="noopener">Polymarket CLOB Get order book</a></h3>
+          <p>支持盘口样本、bid / ask、depth、last trade 和 token-level CLOB 分析。</p>
+        </article>
+        <article class="source">
+          <div class="source-id">BINANCE_MARK_FUNDING_OI</div>
+          <h3><a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Mark-Price" target="_blank" rel="noopener">Mark Price</a> / <a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest" target="_blank" rel="noopener">Open Interest</a></h3>
+          <p>支持 ETHUSDT 永续的 mark/index price、latest funding 和当前 open interest；单 venue proxy。</p>
+        </article>
+        <article class="source">
+          <div class="source-id">BINANCE_FUNDING_HISTORY</div>
+          <h3><a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History" target="_blank" rel="noopener">Binance Funding Rate History</a></h3>
+          <p>支持最近 funding rate 序列，用于观察杠杆方向和资金成本。</p>
+        </article>
+        <article class="source">
+          <div class="source-id">DERIBIT_OPTIONS_SUMMARY</div>
+          <h3><a href="https://docs.deribit.com/api-reference/market-data/public-get_book_summary_by_currency" target="_blank" rel="noopener">Deribit ETH options summary</a></h3>
+          <p>支持 instrument-level option IV、open interest、volume 和 expiry 聚合。</p>
+        </article>
+        <article class="source">
+          <div class="source-id">ETF_FLOW_TRACKERS</div>
+          <h3><a href="https://farside.co.uk/eth/" target="_blank" rel="noopener">Farside ETH ETF Flow</a> / <a href="https://www.coinglass.com/etf/ethereum" target="_blank" rel="noopener">CoinGlass ETF</a></h3>
+          <p>用于 ETF flows 入口；本版只记录来源和可访问性，不写入未复核流量数值。</p>
+        </article>
+        <article class="source">
+          <div class="source-id">LIQUIDATION_DATA</div>
+          <h3><a href="https://www.coinglass.com/liquidations/ETH" target="_blank" rel="noopener">CoinGlass ETH liquidations</a> / <a href="https://docs.coinglass.com/reference/aggregated-liquidation-history" target="_blank" rel="noopener">API docs</a></h3>
+          <p>用于清算数据源规划；历史回测需要稳定 API，不从 dashboard 截图回填。</p>
         </article>
       </div>
     </section>

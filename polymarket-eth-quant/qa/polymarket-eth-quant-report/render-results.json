@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T03:27:43.966Z",
+  "generated_at": "2026-06-24T03:46:00.085Z",
   "report": "dist/polymarket-eth-quant-report/index.html",
   "summary": {
     "total": 3,
@@ -27,8 +27,8 @@
         "viewportWidth": 1440,
         "horizontalOverflow": false,
         "canvasCount": 0,
-        "sectionCount": 8,
-        "sourceLinkCount": 13,
+        "sectionCount": 9,
+        "sourceLinkCount": 22,
         "stylesheets": [
           {
             "href": "styles/theme-fonts.css",
@@ -81,8 +81,8 @@
         "viewportWidth": 820,
         "horizontalOverflow": false,
         "canvasCount": 0,
-        "sectionCount": 8,
-        "sourceLinkCount": 13,
+        "sectionCount": 9,
+        "sourceLinkCount": 22,
         "stylesheets": [
           {
             "href": "styles/theme-fonts.css",
@@ -135,8 +135,8 @@
         "viewportWidth": 390,
         "horizontalOverflow": false,
         "canvasCount": 0,
-        "sectionCount": 8,
-        "sourceLinkCount": 13,
+        "sectionCount": 9,
+        "sourceLinkCount": 22,
         "stylesheets": [
           {
             "href": "styles/theme-fonts.css",

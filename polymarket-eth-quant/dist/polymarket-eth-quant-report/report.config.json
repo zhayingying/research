@@ -1,7 +1,7 @@
 {
   "project_slug": "polymarket-eth-quant",
   "report_slug": "polymarket-eth-quant-report",
-  "run_id": "20260624-visual-draft",
+  "run_id": "20260624-live-data-snapshot",
   "workspace_root": "/Users/zhayingying/Documents/project_person/research/polymarket-eth-quant",
   "generated_at": "2026-06-24T00:00:00+08:00",
   "style": "editorial-paper",
@@ -14,7 +14,9 @@
     "feature-heatmap",
     "annotated-timeline",
     "step-chart",
-    "methodology-limits"
+    "methodology-limits",
+    "market-data-source-ladder",
+    "orderbook-snapshot"
   ],
   "responsive_viewports": {
     "desktop": {
@@ -32,6 +34,7 @@
   },
   "content_source": "../../content/content.json",
   "source_ledger": "../../content/sources.json",
+  "market_data_snapshot": "../../content/market-data-snapshot.json",
   "bundled": false,
   "external_runtime": "none"
 }

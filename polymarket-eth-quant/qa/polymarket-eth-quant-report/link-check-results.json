@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-24T03:26:11.537Z",
+  "generated_at": "2026-06-24T03:42:30.103Z",
   "report": "dist/polymarket-eth-quant-report/index.html",
   "source_ledger": "content/sources.json",
   "summary": {
-    "total": 19,
-    "ok": 19,
-    "manual_review": 0,
+    "total": 29,
+    "ok": 28,
+    "manual_review": 1,
     "bad": 0
   },
   "results": [
@@ -42,6 +42,86 @@
       ]
     },
     {
+      "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Mark-Price",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Mark-Price",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Mark-Price"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.coinglass.com/reference/aggregated-liquidation-history",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.coinglass.com/reference/aggregated-liquidation-history",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.coinglass.com/reference/aggregated-liquidation-history"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.deribit.com/api-reference/market-data/public-get_book_summary_by_currency",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.deribit.com/api-reference/market-data/public-get_book_summary_by_currency",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.deribit.com/api-reference/market-data/public-get_book_summary_by_currency"
+        }
+      ]
+    },
+    {
       "url": "https://docs.polymarket.com/",
       "status": "ok",
       "http_status": 200,
@@ -70,6 +150,22 @@
           "status": 200,
           "statusText": "",
           "finalUrl": "https://docs.polymarket.com/api-reference/geoblock"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.polymarket.com/api-reference/market-data/get-order-book",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.polymarket.com/api-reference/market-data/get-order-book",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.polymarket.com/api-reference/market-data/get-order-book"
         }
       ]
     },
@@ -170,6 +266,45 @@
       ]
     },
     {
+      "url": "https://farside.co.uk/eth/",
+      "status": "manual_review",
+      "http_status": 403,
+      "final_url": "https://farside.co.uk/eth/",
+      "method": "GET",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": false,
+          "status": 403,
+          "statusText": "",
+          "finalUrl": "https://farside.co.uk/eth/"
+        },
+        {
+          "method": "GET",
+          "ok": false,
+          "status": 403,
+          "statusText": "",
+          "finalUrl": "https://farside.co.uk/eth/"
+        }
+      ]
+    },
+    {
+      "url": "https://gamma-api.polymarket.com/public-search?q=ethereum%20price&limit_per_type=10&events_status=active&search_profiles=false",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://gamma-api.polymarket.com/public-search?q=ethereum%20price&limit_per_type=10&events_status=active&search_profiles=false",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://gamma-api.polymarket.com/public-search?q=ethereum%20price&limit_per_type=10&events_status=active&search_profiles=false"
+        }
+      ]
+    },
+    {
       "url": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum",
       "status": "ok",
       "http_status": 200,
@@ -214,6 +349,38 @@
           "status": 200,
           "statusText": "",
           "finalUrl": "https://www.cftc.gov/PressRoom/PressReleases/8478-22"
+        }
+      ]
+    },
+    {
+      "url": "https://www.coinglass.com/etf/ethereum",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.coinglass.com/etf/ethereum",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.coinglass.com/etf/ethereum"
+        }
+      ]
+    },
+    {
+      "url": "https://www.coinglass.com/liquidations/ETH",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.coinglass.com/liquidations/ETH",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.coinglass.com/liquidations/ETH"
         }
       ]
     },

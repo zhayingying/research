@@ -10,7 +10,7 @@
     "researcher": "ziye",
     "method": "structured-research + official-source refresh + public-method inference",
     "data_cutoff": "2026-06-24",
-    "sample": "19 个来源条目，覆盖官方文档、监管文件、协议规范和经典论文"
+    "sample": "30 个来源条目，覆盖官方文档、监管文件、协议规范、经典论文和实时市场数据接口"
   },
   "coreThesis": "顶级交易不是预测最准，而是把有限可预测性转化为可控风险下的正期望系统；ETH 和 Polymarket 的短周期市场尤其需要把概率、流动性、成本、监管和执行约束同时建模。",
   "kpis": [
@@ -33,6 +33,11 @@
       "value": "3",
       "label": "模型边界",
       "note": "可模型化、半模型化、不可稳定模型化"
+    },
+    {
+      "value": "5",
+      "label": "实时数据层",
+      "note": "Polymarket CLOB、funding、OI、option IV、ETF/liquidation vendor 源"
     }
   ],
   "sections": [
@@ -107,6 +112,19 @@
         "半模型化：事件概率、新闻舆情、监管窗口，需要贝叶斯更新和人工来源审计。",
         "低可模型化：突发黑客、监管突袭、市场下架、地域限制变化，只能进入风险预算。"
       ]
+    },
+    {
+      "id": "market-data-sources",
+      "question": "下一步要补哪些实时数据源，并如何选一个 Polymarket 样本盘口？",
+      "module": "matrix-table + orderbook-snapshot",
+      "title": "先把数据源分层，再谈建模",
+      "summary": "本轮新增了可复跑的数据快照脚本：Polymarket 用 Gamma search + CLOB book，ETH 永续用 Binance USD-M ETHUSDT funding/open interest，ETH 期权用 Deribit option summary，ETF flows 与 liquidation history 先作为第三方 vendor/manual-review 源。",
+      "key_points": [
+        "Polymarket 样本市场由 public-search 自动筛选 active、not closed、ETH price 相关且盘口可用的市场，再读取 Yes/No 两边 CLOB。",
+        "Binance ETHUSDT 是单一交易所永续代理，不能代表全市场衍生品结构。",
+        "Deribit options summary 可形成 expiry-level IV/OI 观察，但仍是 Deribit venue bias。",
+        "ETF flows 和 liquidation history 需要选定供应商或人工复核；本轮不把 Cloudflare/登录页数据伪装成已抓取数据。"
+      ]
     }
   ],
   "methodology": {
@@ -122,12 +140,22 @@
       "DEEPLOB",
       "LOB_PRICE_IMPACT_CFM",
       "WORLDQUANT_101_ALPHAS",
-      "AQR_TSMOM"
+      "AQR_TSMOM",
+      "POLY_CLOB_BOOK_API",
+      "BINANCE_MARK_PRICE_API",
+      "BINANCE_OPEN_INTEREST_API",
+      "BINANCE_FUNDING_HISTORY_API",
+      "DERIBIT_OPTIONS_SUMMARY_API",
+      "FARSIDE_ETH_ETF_FLOW",
+      "COINGLASS_ETH_ETF",
+      "COINGLASS_ETH_LIQUIDATIONS",
+      "COINGLASS_LIQUIDATION_API_DOCS"
     ],
     "limitations": [
       "Polymarket 监管、地域限制和费用可能变化，交付前做了 2026-06-24 刷新，但后续使用仍应重新核对官方页面。",
-      "ETH ETF flows 未纳入实时数值；本版只讨论机构通道作为因子，不给单日流入流出结论。",
-      "衍生品资金费率、open interest、期权 IV 和清算数据尚未接入固定数据源。",
+      "ETH ETF flows 已补入 Farside / CoinGlass 数据源入口，但本环境对 Farside 自动抓取返回 Cloudflare 403；正式数值需要人工复核或供应商 API。",
+      "衍生品资金费率、open interest、期权 IV 已可由 Binance / Deribit 公共接口复跑；它们仍是 venue-specific，不代表全市场。",
+      "清算数据已记录 CoinGlass 页面和 API 文档；历史清算序列尚未接入 API key。",
       "顶级量化公司流程按公开资料和行业通用做法推断，不声称掌握任何公司的内部模型或机密流程。"
     ]
   }

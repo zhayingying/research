@@ -216,6 +216,116 @@
       "supports_questions": ["Q2.3", "Q2.4"],
       "claim_role": "supports",
       "notes": "Fee and rebate schedule for Polymarket US; international fee details may differ."
+    },
+    {
+      "source_id": "POLY_CLOB_BOOK_API",
+      "title": "Polymarket CLOB Get order book",
+      "url": "https://docs.polymarket.com/api-reference/market-data/get-order-book",
+      "source_type": "official_api_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.2", "Q2.4", "Q6.1", "Q6.3"],
+      "claim_role": "supports",
+      "notes": "Official read endpoint for token order book, bids, asks, and last trade price; used by scripts/fetch_market_data.mjs."
+    },
+    {
+      "source_id": "POLY_PUBLIC_SEARCH_API",
+      "title": "Polymarket public search API",
+      "url": "https://gamma-api.polymarket.com/public-search?q=ethereum%20price&limit_per_type=10&events_status=active&search_profiles=false",
+      "source_type": "public_api",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.2", "Q6.3"],
+      "claim_role": "supports",
+      "notes": "Public search endpoint used to find a current ETH-related market sample; endpoint behavior can change and should be treated as live API evidence."
+    },
+    {
+      "source_id": "BINANCE_MARK_PRICE_API",
+      "title": "Binance USD-M Futures Mark Price and Funding Rate",
+      "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Mark-Price",
+      "source_type": "official_api_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.4", "Q6.1", "Q6.3"],
+      "claim_role": "supports",
+      "notes": "Official premiumIndex endpoint for mark price, index price, latest funding rate, and next funding time."
+    },
+    {
+      "source_id": "BINANCE_OPEN_INTEREST_API",
+      "title": "Binance USD-M Futures Open Interest",
+      "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest",
+      "source_type": "official_api_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.4", "Q6.1", "Q6.3"],
+      "claim_role": "supports",
+      "notes": "Official endpoint for present open interest of a symbol; used as a single-venue ETHUSDT perpetual proxy."
+    },
+    {
+      "source_id": "BINANCE_FUNDING_HISTORY_API",
+      "title": "Binance USD-M Futures Funding Rate History",
+      "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History",
+      "source_type": "official_api_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.4", "Q6.1", "Q6.3"],
+      "claim_role": "supports",
+      "notes": "Official fundingRate endpoint for historical funding rate observations; used for recent ETHUSDT funding samples."
+    },
+    {
+      "source_id": "DERIBIT_OPTIONS_SUMMARY_API",
+      "title": "Deribit public/get_book_summary_by_currency",
+      "url": "https://docs.deribit.com/api-reference/market-data/public-get_book_summary_by_currency",
+      "source_type": "official_api_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.4", "Q6.1", "Q6.3"],
+      "claim_role": "supports",
+      "notes": "Official endpoint for instrument summaries including open interest and mark IV; used to aggregate ETH option IV/OI by expiry."
+    },
+    {
+      "source_id": "FARSIDE_ETH_ETF_FLOW",
+      "title": "Farside Investors Ethereum ETF Flow",
+      "url": "https://farside.co.uk/eth/",
+      "source_type": "market_data_tracker",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.2", "Q6.3"],
+      "claim_role": "context",
+      "notes": "Daily US spot ETH ETF flow tracker; automatic fetch returned Cloudflare 403 in this environment, so values require manual review or a vendor feed."
+    },
+    {
+      "source_id": "COINGLASS_ETH_ETF",
+      "title": "CoinGlass Ethereum ETF tracker",
+      "url": "https://www.coinglass.com/etf/ethereum",
+      "source_type": "market_data_tracker",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.2", "Q6.3"],
+      "claim_role": "context",
+      "notes": "Ethereum ETF tracker page; public page is reachable, but no unauthenticated stable JSON endpoint was confirmed."
+    },
+    {
+      "source_id": "COINGLASS_ETH_LIQUIDATIONS",
+      "title": "CoinGlass ETH Liquidations",
+      "url": "https://www.coinglass.com/liquidations/ETH",
+      "source_type": "market_data_tracker",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.4", "Q6.2", "Q6.3"],
+      "claim_role": "context",
+      "notes": "Public ETH liquidations dashboard; useful for monitoring, but production backtests need a stable vendor API."
+    },
+    {
+      "source_id": "COINGLASS_LIQUIDATION_API_DOCS",
+      "title": "CoinGlass Coin Liquidation History API",
+      "url": "https://docs.coinglass.com/reference/aggregated-liquidation-history",
+      "source_type": "vendor_api_docs",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.4", "Q6.3"],
+      "claim_role": "context",
+      "notes": "Production candidate for historical liquidation data; likely requires API key and plan selection."
     }
   ],
   "reflectLoop": [
@@ -236,6 +346,15 @@
       "action_taken": "Added public Jane Street, Two Sigma, WorldQuant, AQR and LOB papers",
       "result": "partial",
       "remaining_risk": "Report must phrase top quant company workflow as public-inference, not confirmed internal secret."
+    },
+    {
+      "loop_id": "R3",
+      "trigger": "Realtime market data gap after first HTML draft",
+      "gap_type": "missing_live_data_source",
+      "delta_query": "Add ETH ETF flows, funding rate, open interest, option IV, liquidation data, and one Polymarket order book sample",
+      "action_taken": "Added fetch_market_data.mjs, generated content/market-data-snapshot.json, and separated public no-auth APIs from vendor/manual-review sources",
+      "result": "partial",
+      "remaining_risk": "Funding/OI/IV are currently single-venue or venue-specific; ETF flows and liquidation history require a chosen vendor/API or manual reconciliation before production backtests."
     }
   ]
 }
