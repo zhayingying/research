@@ -1,0 +1,257 @@
+{
+  "author": "ziye",
+  "report": "公司、股权、融资、退出完整认知框架",
+  "collectedAt": "2026-05",
+  "updatedAt": "2026-06-24",
+  "policy": {
+    "purpose": "从 HTML 附录 B 拆出的可审计来源索引，便于后续维护报告事实、数字、法规和案例。",
+    "gradeScale": {
+      "A": "法规、监管机构、交易所、法院、公司披露、官方税务或政府来源",
+      "B": "可信行业数据库、市场报告、严肃媒体或转引官方发布的二手来源",
+      "C": "背景线索；不能单独支撑重大结论"
+    },
+    "maintenance": [
+      "修改 HTML 附录 B 时同步更新本文件。",
+      "每个涉及数字、日期、法律规则或案例结论的章节要映射到至少一个 source_id。",
+      "自动 link-check 的 403、412、502、503 需要人工打开复核，不直接判定为坏链。"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "CN_COMPANY_LAW",
+      "category": "法规",
+      "title": "中华人民共和国公司法",
+      "url": "https://www.gov.cn/",
+      "grade": "A",
+      "supports_sections": ["Part 1", "Part 8"],
+      "supports_claims": ["公司形态", "股东权利", "查账权", "股东代表诉讼门槛"]
+    },
+    {
+      "source_id": "CN_TAX_2016_101",
+      "category": "税务政策",
+      "title": "财税〔2016〕101号文",
+      "url": "https://www.chinatax.gov.cn/",
+      "grade": "A",
+      "supports_sections": ["Part 2.4"],
+      "supports_claims": ["递延纳税规则", "税负比较"]
+    },
+    {
+      "source_id": "IRS_ISO_NSO_AMT",
+      "category": "税务规则",
+      "title": "IRS 关于 ISO / NSO / AMT 的官方说明",
+      "url": "https://www.irs.gov/",
+      "grade": "A",
+      "supports_sections": ["Part 2.4"],
+      "supports_claims": ["美国持股对照", "ISO", "NSO", "AMT"]
+    },
+    {
+      "source_id": "CSRC_OVERSEAS_LISTING_TRIAL",
+      "category": "证监规则",
+      "title": "境内企业境外发行证券和上市备案管理试行办法",
+      "url": "https://www.csrc.gov.cn/",
+      "grade": "A",
+      "supports_sections": ["Part 6.4"],
+      "supports_claims": ["境外上市备案新规"]
+    },
+    {
+      "source_id": "SAFE_CIRCULAR_37",
+      "category": "外汇规则",
+      "title": "国家外汇管理局37号文",
+      "url": "https://www.safe.gov.cn/",
+      "grade": "A",
+      "supports_sections": ["Part 6.4"],
+      "supports_claims": ["跨境 SPV", "VIE", "居民境外投融资登记"]
+    },
+    {
+      "source_id": "HKEX_18C",
+      "category": "交易所规则",
+      "title": "HKEX Main Board Listing Rules Chapter 18C",
+      "url": "https://www.hkex.com.hk/",
+      "grade": "A",
+      "supports_sections": ["Part 4.1"],
+      "supports_claims": ["港股特专科技上市通道"]
+    },
+    {
+      "source_id": "HKEX_SPAC_SSE_SZSE",
+      "category": "交易所规则",
+      "title": "HKEX SPAC 上市机制 / 上交所、深交所减持与特别表决权规则",
+      "url": "https://www.hkex.com.hk/",
+      "grade": "A",
+      "supports_sections": ["Part 1.5", "Part 4.1"],
+      "supports_claims": ["港股 SPAC", "A 股特别表决权", "解禁", "减持规则"]
+    },
+    {
+      "source_id": "US_SEC_PCAOB_HFCAA",
+      "category": "美国监管",
+      "title": "SEC / PCAOB / HFCAA 官方材料",
+      "url": "https://www.sec.gov/",
+      "grade": "A",
+      "supports_sections": ["Part 4.1"],
+      "supports_claims": ["美股审计监管", "中概股退市与合规风险"]
+    },
+    {
+      "source_id": "HKEX_WVR_HISTORY",
+      "category": "交易所规则",
+      "title": "HKEX Weighted Voting Rights Concept Paper / Conclusions / Chapter 8A Rulebook",
+      "url": "https://en-rules.hkex.com.hk/rulebook/chapter-8a-weighted-voting-rights",
+      "grade": "A",
+      "supports_sections": ["Part 1.5"],
+      "supports_claims": ["港股 WVR / AB 股制度演变"]
+    },
+    {
+      "source_id": "SSE_SZSE_VOTING_RIGHTS",
+      "category": "交易所规则",
+      "title": "上交所创新企业规则 / 深交所创业板表决权差异安排",
+      "url": "https://www.sse.com.cn/assortment/stock/innovative/rules/c/c_20180615_4574528.shtml",
+      "grade": "A",
+      "supports_sections": ["Part 1.5"],
+      "supports_claims": ["A 股窄口径接受特别表决权结构"]
+    },
+    {
+      "source_id": "ZHIPU_HKEXNEWS",
+      "category": "披露文件",
+      "title": "智谱 AI 港股披露文件",
+      "url": "https://www.hkexnews.hk/",
+      "grade": "A",
+      "supports_sections": ["Part 4", "Part 9"],
+      "supports_claims": ["上市时间线", "发行价", "锁定期", "A+H 叙事"]
+    },
+    {
+      "source_id": "MINIMAX_HKEXNEWS",
+      "category": "披露文件",
+      "title": "MiniMax 港股披露文件",
+      "url": "https://www.hkexnews.hk/",
+      "grade": "A",
+      "supports_sections": ["Part 4", "Part 9"],
+      "supports_claims": ["发行价", "超额认购", "上市节奏"]
+    },
+    {
+      "source_id": "GOOGLE_2004_10K",
+      "category": "SEC 披露",
+      "title": "Google 2004 Annual Report",
+      "url": "https://www.sec.gov/Archives/edgar/data/1288776/000119312505058688/d10k.htm",
+      "grade": "A",
+      "supports_sections": ["Part 1.4", "Part 1.5"],
+      "supports_claims": ["preferred to common conversion", "双层股权结构"]
+    },
+    {
+      "source_id": "META_2024_10K",
+      "category": "SEC 披露",
+      "title": "Meta 2024 Annual Report",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000012/meta-20241231.htm",
+      "grade": "A",
+      "supports_sections": ["Part 1.5"],
+      "supports_claims": ["Meta 双层股权结构"]
+    },
+    {
+      "source_id": "SNAP_S1",
+      "category": "SEC 披露",
+      "title": "Snap S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1564408/000119312517029199/d270216ds1.htm",
+      "grade": "A",
+      "supports_sections": ["Part 1.5"],
+      "supports_claims": ["无投票权公众股", "双层股权结构"]
+    },
+    {
+      "source_id": "WENSHU_COURT",
+      "category": "案例数据库",
+      "title": "中国裁判文书网",
+      "url": "https://wenshu.court.gov.cn/",
+      "grade": "A",
+      "supports_sections": ["Part 2.3", "Part 9.1", "Part 9.2"],
+      "supports_claims": ["股权激励纠纷", "口头承诺纠纷检索"]
+    },
+    {
+      "source_id": "SPC_GUIDING_CASE_96",
+      "category": "最高院案例",
+      "title": "指导案例96号：宋文军诉西安市大华餐饮有限公司股东资格确认纠纷案",
+      "url": "https://www.court.gov.cn/shenpan/xiangqing/104292.html",
+      "grade": "A",
+      "supports_sections": ["Part 1.1"],
+      "supports_claims": ["章程约束力", "小股东为何必须看章程"]
+    },
+    {
+      "source_id": "SPC_GAZETTE_NOMINEE_HOLDING",
+      "category": "最高院公报",
+      "title": "张建中诉杨照春股权确认纠纷案；申银万国证券诉上海国宏置业有限公司财产权属纠纷案",
+      "url": "https://gongbao.court.gov.cn/",
+      "grade": "A",
+      "supports_sections": ["Part 1.3"],
+      "supports_claims": ["代持显名", "代持改性", "名义股东风险"]
+    },
+    {
+      "source_id": "BEIJING_FINANCIAL_COURT_OPTION",
+      "category": "法院案例页",
+      "title": "北京金融法院《员工股票期权纠纷中“行权”的法律效果》",
+      "url": "https://bjfc.bjcourt.gov.cn/cac/1719218683836.html",
+      "grade": "A",
+      "supports_sections": ["Part 9.1", "Part 9.2"],
+      "supports_claims": ["授予前", "行权前", "行权后权利强度分层"]
+    },
+    {
+      "source_id": "BEIJING_NO1_INTERMEDIATE_COURT_EQUITY_INCENTIVE",
+      "category": "法院案例页",
+      "title": "北京市第一中级人民法院涉股权激励劳动争议典型案例",
+      "url": "https://www.zwjkey.com/minshangfaxue/minshangfaxue/2023-05-10/10982.html",
+      "grade": "B",
+      "supports_sections": ["Part 9.1", "Part 9.2"],
+      "supports_claims": ["仲裁前置", "涉外管辖", "赠与与对价判断"],
+      "caveat": "该链接为整理转引法院发布内容，后续应优先替换为法院官方稳定入口。"
+    },
+    {
+      "source_id": "ITJUZI_XINIUDATA",
+      "category": "融资数据库",
+      "title": "IT桔子 / 烯牛数据",
+      "url": "https://www.itjuzi.com/",
+      "grade": "B",
+      "supports_sections": ["Part 3"],
+      "supports_claims": ["融资轮次区间", "行业融资节奏", "小红书/B站/知乎时间线"]
+    },
+    {
+      "source_id": "PEDAILY_2025Q1_VC",
+      "category": "市场报告",
+      "title": "Investment World / 中ZERONE《2025Q1中国创投市场洞察》",
+      "url": "https://news.pedaily.cn/202505/549162.shtml",
+      "grade": "B",
+      "supports_sections": ["Part 3.6"],
+      "supports_claims": ["中国一级市场 LP 结构", "国资主导度", "募资回暖判断"]
+    },
+    {
+      "source_id": "NVCA_2026_YEARBOOK",
+      "category": "市场报告",
+      "title": "NVCA 2026 Yearbook / PitchBook-NVCA Venture Monitor",
+      "url": "https://nvca.org/2026-nvca-yearbook/",
+      "grade": "B",
+      "supports_sections": ["Part 3.6"],
+      "supports_claims": ["美国一级市场", "AI 资金集中度", "退出环境"]
+    },
+    {
+      "source_id": "CBINSIGHTS_VENTURE_2025",
+      "category": "市场报告",
+      "title": "CB Insights State of Venture 2025",
+      "url": "https://www.cbinsights.com/research/report/venture-trends-2025/",
+      "grade": "B",
+      "supports_sections": ["Part 3.6"],
+      "supports_claims": ["全球/美国 AI 融资占比", "一级市场分化"]
+    },
+    {
+      "source_id": "CRUNCHBASE_CBINSIGHTS",
+      "category": "国际数据库",
+      "title": "Crunchbase / CB Insights",
+      "url": "https://www.crunchbase.com/",
+      "grade": "B",
+      "supports_sections": ["Part 3", "Part 4"],
+      "supports_claims": ["海外估值对照", "并购", "IPO 时间线"]
+    },
+    {
+      "source_id": "BUSINESS_MEDIA_AI_EQUITY_EVENTS",
+      "category": "媒体",
+      "title": "财新 / 晚点 / Bloomberg / FT 中文",
+      "url": "https://www.caixin.com/",
+      "grade": "B",
+      "supports_sections": ["Part 3", "Part 4", "Part 9"],
+      "supports_claims": ["AI 公司上市", "并购", "赛道叙事", "时间性事件"],
+      "caveat": "媒体来源用于补足背景和时间性事件，不能替代交易所、法院或监管文件。"
+    }
+  ]
+}

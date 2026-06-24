@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-06-24T03:27:43.966Z",
+  "report": "dist/polymarket-eth-quant-report/index.html",
+  "summary": {
+    "total": 3,
+    "page_errors": 0,
+    "console_messages": 0,
+    "request_failures": 0,
+    "horizontal_overflow": [],
+    "overflowing_elements": 0,
+    "blank_svgs": 0
+  },
+  "results": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "desktop.png",
+      "consoleMessages": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "inspection": {
+        "title": "Polymarket / ETH / Quant 交易认知框架",
+        "bodyScrollWidth": 1440,
+        "viewportWidth": 1440,
+        "horizontalOverflow": false,
+        "canvasCount": 0,
+        "sectionCount": 8,
+        "sourceLinkCount": 13,
+        "stylesheets": [
+          {
+            "href": "styles/theme-fonts.css",
+            "loaded": true
+          },
+          {
+            "href": "styles/theme.css",
+            "loaded": true
+          },
+          {
+            "href": "styles/report.css",
+            "loaded": true
+          }
+        ],
+        "scripts": [
+          {
+            "src": "scripts/report.js"
+          }
+        ],
+        "overflowing": [],
+        "svgIssues": [
+          {
+            "aria": "Polymarket CLOB、链上结算和合规边界示意",
+            "width": 1086,
+            "height": 432,
+            "blank": false
+          },
+          {
+            "aria": "顶级量化研究工厂流程",
+            "width": 1086,
+            "height": 449,
+            "blank": false
+          }
+        ]
+      }
+    },
+    {
+      "viewport": {
+        "name": "tablet",
+        "width": 820,
+        "height": 1180
+      },
+      "screenshot": "tablet.png",
+      "consoleMessages": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "inspection": {
+        "title": "Polymarket / ETH / Quant 交易认知框架",
+        "bodyScrollWidth": 820,
+        "viewportWidth": 820,
+        "horizontalOverflow": false,
+        "canvasCount": 0,
+        "sectionCount": 8,
+        "sourceLinkCount": 13,
+        "stylesheets": [
+          {
+            "href": "styles/theme-fonts.css",
+            "loaded": true
+          },
+          {
+            "href": "styles/theme.css",
+            "loaded": true
+          },
+          {
+            "href": "styles/report.css",
+            "loaded": true
+          }
+        ],
+        "scripts": [
+          {
+            "src": "scripts/report.js"
+          }
+        ],
+        "overflowing": [],
+        "svgIssues": [
+          {
+            "aria": "Polymarket CLOB、链上结算和合规边界示意",
+            "width": 860,
+            "height": 342,
+            "blank": false
+          },
+          {
+            "aria": "顶级量化研究工厂流程",
+            "width": 860,
+            "height": 356,
+            "blank": false
+          }
+        ]
+      }
+    },
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "mobile.png",
+      "consoleMessages": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "inspection": {
+        "title": "Polymarket / ETH / Quant 交易认知框架",
+        "bodyScrollWidth": 390,
+        "viewportWidth": 390,
+        "horizontalOverflow": false,
+        "canvasCount": 0,
+        "sectionCount": 8,
+        "sourceLinkCount": 13,
+        "stylesheets": [
+          {
+            "href": "styles/theme-fonts.css",
+            "loaded": true
+          },
+          {
+            "href": "styles/theme.css",
+            "loaded": true
+          },
+          {
+            "href": "styles/report.css",
+            "loaded": true
+          }
+        ],
+        "scripts": [
+          {
+            "src": "scripts/report.js"
+          }
+        ],
+        "overflowing": [],
+        "svgIssues": [
+          {
+            "aria": "Polymarket CLOB、链上结算和合规边界示意",
+            "width": 860,
+            "height": 342,
+            "blank": false
+          },
+          {
+            "aria": "顶级量化研究工厂流程",
+            "width": 860,
+            "height": 356,
+            "blank": false
+          }
+        ]
+      }
+    }
+  ]
+}

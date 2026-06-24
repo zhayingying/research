@@ -1,0 +1,24 @@
+/* editorial-paper theme tokens for this generated report */
+:root {
+  --ink: #14110f;
+  --ink-soft: #3a342f;
+  --ink-mute: #6b6058;
+  --paper: #f6f1e8;
+  --paper-card: #fbf8f1;
+  --paper-warm: #ede5d4;
+  --rule: rgba(20, 17, 15, 0.14);
+  --rule-strong: rgba(20, 17, 15, 0.28);
+  --accent-1: #c84630;
+  --accent-2: #c89a47;
+  --accent-3: #3f6b3a;
+  --accent-4: #2d4a7c;
+  --accent-5: #6b3a5a;
+  --accent-6: #a05a32;
+  --vermillion: var(--accent-1);
+  --ochre: var(--accent-2);
+  --forest: var(--accent-3);
+  --indigo: var(--accent-4);
+  --plum: var(--accent-5);
+  --rust: var(--accent-6);
+  --slate: var(--ink-mute);
+}

@@ -1,11 +1,19 @@
-from playwright.sync_api import sync_playwright
 from pathlib import Path
 import json
 
-ROOT = Path(__file__).resolve().parent
-html = (ROOT / "equity-full-report" / "index.html").resolve()
+try:
+    from playwright.sync_api import sync_playwright
+except ModuleNotFoundError as exc:
+    raise SystemExit(
+        "Python Playwright is required. Install it with `python3 -m pip install playwright` "
+        "and then run `python3 -m playwright install chromium`, or run the equivalent "
+        "Node Playwright check from a Codex runtime that already bundles Playwright."
+    ) from exc
+
+ROOT = Path(__file__).resolve().parents[1]
+html = (ROOT / "report" / "index.html").resolve()
 url = f"file://{html}"
-out_dir = ROOT / "render-check-output"
+out_dir = ROOT / "output"
 out_dir.mkdir(parents=True, exist_ok=True)
 
 targets = [
@@ -15,7 +23,10 @@ targets = [
     ("s10-2", "#s10-2"),
 ]
 
-results = {"url": url, "errors": [], "sections": []}
+results = {"url": url, "html_exists": html.exists(), "errors": [], "sections": []}
+
+if not html.exists():
+    raise FileNotFoundError(f"Report entry not found: {html}")
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)

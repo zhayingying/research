@@ -1,5 +1,6 @@
 {
-  "url": "file:///Users/zhayingying/Desktop/调研/visual-report-workspace/projects/equity-cognition-framework/dist/equity-full-report/index.html",
+  "url": "file:///Users/zhayingying/Documents/project_person/research/equity-analysis/report/index.html",
+  "html_exists": true,
   "errors": [],
   "sections": [
     {
@@ -10,7 +11,7 @@
         "x": 322,
         "y": -0.5,
         "width": 1216,
-        "height": 1368.40625
+        "height": 1312.9375
       }
     },
     {
@@ -19,7 +20,7 @@
       "count": 1,
       "box": {
         "x": 322,
-        "y": -582.03125,
+        "y": -581.734375,
         "width": 1216,
         "height": 2263.65625
       }
@@ -30,7 +31,7 @@
       "count": 1,
       "box": {
         "x": 322,
-        "y": -1097.578125,
+        "y": -1097.28125,
         "width": 1216,
         "height": 3294.734375
       }
@@ -41,7 +42,7 @@
       "count": 1,
       "box": {
         "x": 322,
-        "y": -7959.59375,
+        "y": -7960.296875,
         "width": 1216,
         "height": 17020.109375
       }

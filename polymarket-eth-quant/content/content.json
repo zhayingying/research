@@ -1,0 +1,134 @@
+{
+  "title": "Polymarket / ETH / Quant 交易认知框架",
+  "subtitle": "从交易铁律、ETH 波动因子到顶级量化模型流程",
+  "status": "visual-report-draft",
+  "createdAt": "2026-06-24",
+  "dataCutoff": "2026-06-24",
+  "author": "ziye",
+  "audience": "准备研究 Polymarket / ETH 交易，并希望理解数学模型和顶级量化流程的主动学习者",
+  "byline": {
+    "researcher": "ziye",
+    "method": "structured-research + official-source refresh + public-method inference",
+    "data_cutoff": "2026-06-24",
+    "sample": "19 个来源条目，覆盖官方文档、监管文件、协议规范和经典论文"
+  },
+  "coreThesis": "顶级交易不是预测最准，而是把有限可预测性转化为可控风险下的正期望系统；ETH 和 Polymarket 的短周期市场尤其需要把概率、流动性、成本、监管和执行约束同时建模。",
+  "kpis": [
+    {
+      "value": "10",
+      "label": "交易铁律",
+      "note": "生存、正期望、仓位、退出、成本、流动性、复盘、反马丁格尔、相关性、合规"
+    },
+    {
+      "value": "6",
+      "label": "ETH 因子层",
+      "note": "宏观、ETF、协议供需、扩容、衍生品、事件冲击"
+    },
+    {
+      "value": "12",
+      "label": "数学知识域",
+      "note": "概率统计、时间序列、优化、风控、机器学习、微观结构和因果推断"
+    },
+    {
+      "value": "3",
+      "label": "模型边界",
+      "note": "可模型化、半模型化、不可稳定模型化"
+    }
+  ],
+  "sections": [
+    {
+      "id": "trader-laws",
+      "question": "顶级交易员需要遵守哪些铁律？",
+      "module": "insight-card-grid + matrix-table",
+      "title": "先活下来，再谈预测",
+      "summary": "交易铁律不是口号，而是把账户约束、赔率、成本、执行和复盘写进系统。Polymarket / ETH 这种高噪声市场中，违反纪律比预测错误更致命。",
+      "key_points": [
+        "单笔交易不能决定账户生死；仓位必须服务风险预算。",
+        "胜率必须和赔率、费用、滑点、成交概率一起看。",
+        "预测错误、执行错误和仓位错误要分开复盘。"
+      ]
+    },
+    {
+      "id": "polymarket-structure",
+      "question": "Polymarket 的市场结构会怎样影响交易？",
+      "module": "annotated-topology + matrix-table",
+      "title": "预测市场价格不是免费概率",
+      "summary": "Polymarket 使用 CLOB，显示价格可以解读为市场概率，但真实可成交价格取决于 bid/ask、深度、费用、成交方式、结算和地域合规。",
+      "key_points": [
+        "官方文档说明价格区间为 0 到 1 美元，显示价格代表市场隐含概率。",
+        "CLOB 中吃单、挂单、排队和大单冲击都会改变真实收益。",
+        "地理限制和 Polymarket US / 国际站差异必须作为硬风险约束。"
+      ]
+    },
+    {
+      "id": "eth-factors",
+      "question": "ETH 这个市场受什么因素波动？",
+      "module": "feature-heatmap",
+      "title": "ETH 是六层因子的叠加",
+      "summary": "短线 ETH 更受流动性、衍生品仓位、BTC 联动和新闻冲击影响；中线看 ETF flows、宏观 risk-on/off 与链上使用；长期看协议供需、应用需求、监管定位和竞争链格局。",
+      "key_points": [
+        "EIP-1559 将 base fee 纳入协议并燃烧，链上使用会影响 ETH 供需叙事。",
+        "Dencun / EIP-4844 改变 L2 成本结构，也改变 L1 fee burn 叙事。",
+        "现货 ETH ETF 把机构通道和监管预期变成价格因子。"
+      ]
+    },
+    {
+      "id": "math-domains",
+      "question": "纯数学模型拟合市场预测，需要哪些数学领域？",
+      "module": "matrix-table",
+      "title": "从概率分布到可交易系统",
+      "summary": "市场预测不是单一数学分支。需要用概率表达不确定性，用统计防止噪声幻觉，用时间序列处理状态，用优化转仓位，用微观结构处理成交，用因果推断避免伪相关。",
+      "key_points": [
+        "纯拟合最大风险是非平稳、对抗性、样本少、自由度高和成本遗漏。",
+        "方向预测只是子问题；最终目标是成本后、容量内、风险约束下的期望收益。",
+        "盘口模型、事件模型和组合风控需要不同数学语言协同。"
+      ]
+    },
+    {
+      "id": "quant-pipeline",
+      "question": "顶级量化公司的模型拟合预测模型是怎么做的？",
+      "module": "step-chart + matrix-table",
+      "title": "不是神奇模型，而是研究工厂",
+      "summary": "公开资料只能支持行业方法论轮廓：数据工程、假设、特征、标签、训练、回测、成本、组合、执行、风控、上线监控和衰减检测。不能把任何公司内部细节当成已确认事实。",
+      "key_points": [
+        "样本切分要尊重时间顺序和市场 regime，不能随机切分时间序列。",
+        "回测必须显式纳入 spread、fee、slippage、market impact 和 fill probability。",
+        "上线先小规模灰度，持续监控 alpha decay、模型漂移和执行偏差。"
+      ]
+    },
+    {
+      "id": "implementation",
+      "question": "落到 Polymarket / ETH，什么能模型化，什么不能？",
+      "module": "feature-heatmap + methodology-limits",
+      "title": "模型负责边界内的概率，纪律负责边界外的冲击",
+      "summary": "盘口、价差、深度、历史序列和部分链上/ETF 状态变量较可模型化；新闻、政策、结算争议和突发事故只能做事件检测和风险缓冲，不能当成稳定 alpha。",
+      "key_points": [
+        "可模型化：订单簿、历史价格、资金费率、价差、深度、ETF/链上状态变量。",
+        "半模型化：事件概率、新闻舆情、监管窗口，需要贝叶斯更新和人工来源审计。",
+        "低可模型化：突发黑客、监管突袭、市场下架、地域限制变化，只能进入风险预算。"
+      ]
+    }
+  ],
+  "methodology": {
+    "sources": [
+      "POLY_CLOB_PRICES_ORDERBOOK",
+      "POLY_GEO_RESTRICTIONS",
+      "POLY_US_DCM",
+      "POLY_FEES_US",
+      "ETHEREUM_STAKING",
+      "EIP_1559",
+      "ETHEREUM_DENCUN",
+      "SEC_ETH_ETF_ORDER",
+      "DEEPLOB",
+      "LOB_PRICE_IMPACT_CFM",
+      "WORLDQUANT_101_ALPHAS",
+      "AQR_TSMOM"
+    ],
+    "limitations": [
+      "Polymarket 监管、地域限制和费用可能变化，交付前做了 2026-06-24 刷新，但后续使用仍应重新核对官方页面。",
+      "ETH ETF flows 未纳入实时数值；本版只讨论机构通道作为因子，不给单日流入流出结论。",
+      "衍生品资金费率、open interest、期权 IV 和清算数据尚未接入固定数据源。",
+      "顶级量化公司流程按公开资料和行业通用做法推断，不声称掌握任何公司的内部模型或机密流程。"
+    ]
+  }
+}

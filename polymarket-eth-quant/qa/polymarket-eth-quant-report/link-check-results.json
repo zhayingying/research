@@ -1,0 +1,317 @@
+{
+  "generated_at": "2026-06-24T03:26:11.537Z",
+  "report": "dist/polymarket-eth-quant-report/index.html",
+  "source_ledger": "content/sources.json",
+  "summary": {
+    "total": 19,
+    "ok": 19,
+    "manual_review": 0,
+    "bad": 0
+  },
+  "results": [
+    {
+      "url": "https://arxiv.org/pdf/1601.00991",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://arxiv.org/pdf/1601.00991",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://arxiv.org/pdf/1601.00991"
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/pdf/1808.03668",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://arxiv.org/pdf/1808.03668",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://arxiv.org/pdf/1808.03668"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.polymarket.com/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.polymarket.com/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.polymarket.com/"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.polymarket.com/api-reference/geoblock",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.polymarket.com/api-reference/geoblock",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.polymarket.com/api-reference/geoblock"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.polymarket.com/concepts/prices-orderbook",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.polymarket.com/concepts/prices-orderbook",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.polymarket.com/concepts/prices-orderbook"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.polymarket.us/fees",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.polymarket.us/fees",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://docs.polymarket.us/fees"
+        }
+      ]
+    },
+    {
+      "url": "https://eips.ethereum.org/EIPS/eip-1559",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://eips.ethereum.org/EIPS/eip-1559",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://eips.ethereum.org/EIPS/eip-1559"
+        }
+      ]
+    },
+    {
+      "url": "https://ethereum.org/developers/docs/consensus-mechanisms/pos/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ethereum.org/developers/docs/consensus-mechanisms/pos/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://ethereum.org/developers/docs/consensus-mechanisms/pos/"
+        }
+      ]
+    },
+    {
+      "url": "https://ethereum.org/roadmap/dencun/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ethereum.org/roadmap/dencun/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://ethereum.org/roadmap/dencun/"
+        }
+      ]
+    },
+    {
+      "url": "https://ethereum.org/staking/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ethereum.org/staking/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://ethereum.org/staking/"
+        }
+      ]
+    },
+    {
+      "url": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "OK",
+          "finalUrl": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum"
+        }
+      ]
+    },
+    {
+      "url": "https://www.cfm.com/wp-content/uploads/2022/12/281-2010-the-price-impact-of-order-book-events-market-orders-limit-orders-and-cancellations.pdf",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.cfm.com/wp-content/uploads/2022/12/281-2010-the-price-impact-of-order-book-events-market-orders-limit-orders-and-cancellations.pdf",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.cfm.com/wp-content/uploads/2022/12/281-2010-the-price-impact-of-order-book-events-market-orders-limit-orders-and-cancellations.pdf"
+        }
+      ]
+    },
+    {
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/8478-22",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.cftc.gov/PressRoom/PressReleases/8478-22",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.cftc.gov/PressRoom/PressReleases/8478-22"
+        }
+      ]
+    },
+    {
+      "url": "https://www.eecs.harvard.edu/cs286r/courses/fall10/papers/mktscore.pdf",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://wayback.archive-it.org/5456/20240920155724/https://www.eecs.harvard.edu/cs286r/courses/fall10/papers/mktscore.pdf",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://wayback.archive-it.org/5456/20240920155724/https://www.eecs.harvard.edu/cs286r/courses/fall10/papers/mktscore.pdf"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf"
+        }
+      ]
+    },
+    {
+      "url": "https://www.janestreet.com/what-we-do/overview/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.janestreet.com/what-we-do/overview/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.janestreet.com/what-we-do/overview/"
+        }
+      ]
+    },
+    {
+      "url": "https://www.polymarketexchange.com/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.polymarketexchange.com/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.polymarketexchange.com/"
+        }
+      ]
+    },
+    {
+      "url": "https://www.sec.gov/files/rules/sro/nysearca/2024/34-100224.pdf",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.sec.gov/files/rules/sro/nysearca/2024/34-100224.pdf",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.sec.gov/files/rules/sro/nysearca/2024/34-100224.pdf"
+        }
+      ]
+    },
+    {
+      "url": "https://www.twosigma.com/careers/quantitative-research-data-science/",
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.twosigma.com/careers/quantitative-research-data-science/",
+      "method": "HEAD",
+      "attempts": [
+        {
+          "method": "HEAD",
+          "ok": true,
+          "status": 200,
+          "statusText": "",
+          "finalUrl": "https://www.twosigma.com/careers/quantitative-research-data-science/"
+        }
+      ]
+    }
+  ]
+}

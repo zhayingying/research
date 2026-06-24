@@ -1,0 +1,241 @@
+{
+  "author": "ziye",
+  "createdAt": "2026-06-24",
+  "topic": "Polymarket / ETH / Quant trading research",
+  "evidencePolicy": {
+    "strong": "official documentation, regulator filings, official protocol specs, issuer pages, peer-reviewed or canonical papers",
+    "medium": "institutional research, reputable data providers, serious media used as context",
+    "weak": "blogs, tutorials, community posts used only as leads"
+  },
+  "sources": [
+    {
+      "source_id": "POLY_DOCS_OVERVIEW",
+      "title": "Polymarket Documentation",
+      "url": "https://docs.polymarket.com/",
+      "source_type": "official_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.1", "Q2.2", "Q2.4"],
+      "claim_role": "supports",
+      "notes": "Official developer documentation for market data, orders, and CLOB interactions."
+    },
+    {
+      "source_id": "POLY_CLOB_PRICES_ORDERBOOK",
+      "title": "Polymarket Prices & Orderbook",
+      "url": "https://docs.polymarket.com/concepts/prices-orderbook",
+      "source_type": "official_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.1", "Q2.2"],
+      "claim_role": "supports",
+      "notes": "States that Polymarket uses a Central Limit Order Book and prices emerge from supply and demand."
+    },
+    {
+      "source_id": "POLY_GEO_RESTRICTIONS",
+      "title": "Polymarket Geographic Restrictions",
+      "url": "https://docs.polymarket.com/api-reference/geoblock",
+      "source_type": "official_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.3"],
+      "claim_role": "supports",
+      "notes": "Official API guidance on geoblock checks and rejected orders from blocked regions."
+    },
+    {
+      "source_id": "POLY_US_DCM",
+      "title": "Polymarket US",
+      "url": "https://www.polymarketexchange.com/",
+      "source_type": "official_site",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.3"],
+      "claim_role": "supports",
+      "notes": "Polymarket US describes itself as a CFTC-regulated Designated Contract Market."
+    },
+    {
+      "source_id": "CFTC_POLY_2022_ORDER",
+      "title": "CFTC Orders Event-Based Binary Options Markets Operator to Pay $1.4 Million Penalty",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/8478-22",
+      "source_type": "regulator",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.3"],
+      "claim_role": "supports",
+      "notes": "CFTC enforcement release for Polymarket's 2022 order."
+    },
+    {
+      "source_id": "ETHEREUM_STAKING",
+      "title": "Ethereum staking",
+      "url": "https://ethereum.org/staking/",
+      "source_type": "official_protocol_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.3"],
+      "claim_role": "supports",
+      "notes": "Official staking overview, including 32 ETH validator deposit."
+    },
+    {
+      "source_id": "ETHEREUM_POS",
+      "title": "Proof-of-stake (PoS)",
+      "url": "https://ethereum.org/developers/docs/consensus-mechanisms/pos/",
+      "source_type": "official_protocol_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.3"],
+      "claim_role": "supports",
+      "notes": "Official proof-of-stake mechanism and validator responsibilities."
+    },
+    {
+      "source_id": "EIP_1559",
+      "title": "EIP-1559: Fee market change",
+      "url": "https://eips.ethereum.org/EIPS/eip-1559",
+      "source_type": "protocol_spec",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.3"],
+      "claim_role": "supports",
+      "notes": "Protocol specification for base fee adjustment and fee burn mechanics."
+    },
+    {
+      "source_id": "ETHEREUM_DENCUN",
+      "title": "Cancun-Deneb (Dencun) FAQ",
+      "url": "https://ethereum.org/roadmap/dencun/",
+      "source_type": "official_protocol_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.3"],
+      "claim_role": "supports",
+      "notes": "Official Dencun / EIP-4844 explanation focused on L2 fee reduction via blobs."
+    },
+    {
+      "source_id": "SEC_ETH_ETF_ORDER",
+      "title": "SEC Release No. 34-100224 spot Ether ETF approval order",
+      "url": "https://www.sec.gov/files/rules/sro/nysearca/2024/34-100224.pdf",
+      "source_type": "regulator",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.2"],
+      "claim_role": "supports",
+      "notes": "SEC order approving spot Ether exchange-traded product rule changes."
+    },
+    {
+      "source_id": "ISHARES_ETHA",
+      "title": "iShares Ethereum Trust ETF",
+      "url": "https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf",
+      "source_type": "issuer",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q3.2"],
+      "claim_role": "supports",
+      "notes": "Issuer page for spot ETH ETF exposure and current fund data."
+    },
+    {
+      "source_id": "HANSEN_LMSR",
+      "title": "Logarithmic Market Scoring Rules for Modular Combinatorial Information Aggregation",
+      "url": "https://www.eecs.harvard.edu/cs286r/courses/fall10/papers/mktscore.pdf",
+      "source_type": "paper",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.1", "Q4.5"],
+      "claim_role": "context",
+      "notes": "Canonical market scoring rule reference; useful for prediction market math even though Polymarket uses CLOB."
+    },
+    {
+      "source_id": "DEEPLOB",
+      "title": "DeepLOB: Deep Convolutional Neural Networks for Limit Order Books",
+      "url": "https://arxiv.org/pdf/1808.03668",
+      "source_type": "paper",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q4.4", "Q5.3"],
+      "claim_role": "supports",
+      "notes": "Limit order book deep learning reference for mid-price movement forecasting."
+    },
+    {
+      "source_id": "LOB_PRICE_IMPACT_CFM",
+      "title": "The price impact of order book events",
+      "url": "https://www.cfm.com/wp-content/uploads/2022/12/281-2010-the-price-impact-of-order-book-events-market-orders-limit-orders-and-cancellations.pdf",
+      "source_type": "paper",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q1.3", "Q5.3"],
+      "claim_role": "supports",
+      "notes": "Empirical market microstructure paper on order book event impact."
+    },
+    {
+      "source_id": "WORLDQUANT_101_ALPHAS",
+      "title": "101 Formulaic Alphas",
+      "url": "https://arxiv.org/pdf/1601.00991",
+      "source_type": "paper",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q4.1", "Q5.1", "Q5.2"],
+      "claim_role": "context",
+      "notes": "Open glimpse into formulaic alpha construction and backtesting concerns."
+    },
+    {
+      "source_id": "AQR_TSMOM",
+      "title": "Time Series Momentum",
+      "url": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum",
+      "source_type": "paper_institution",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q4.2", "Q5.1"],
+      "claim_role": "context",
+      "notes": "Cross-asset momentum predictability paper and dataset reference."
+    },
+    {
+      "source_id": "JANE_STREET_OVERVIEW",
+      "title": "Jane Street Trading, Research, Tech",
+      "url": "https://www.janestreet.com/what-we-do/overview/",
+      "source_type": "official_company",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q5.1", "Q5.4"],
+      "claim_role": "context",
+      "notes": "Public company description of quantitative analysis and market mechanics."
+    },
+    {
+      "source_id": "TWO_SIGMA_QR_DS",
+      "title": "Two Sigma Quantitative Research & Data Science",
+      "url": "https://www.twosigma.com/careers/quantitative-research-data-science/",
+      "source_type": "official_company",
+      "grade": "medium",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q5.1"],
+      "claim_role": "context",
+      "notes": "Public company page describing scientific approach and data-driven research roles."
+    },
+    {
+      "source_id": "POLY_FEES_US",
+      "title": "Polymarket US Fee Schedule",
+      "url": "https://docs.polymarket.us/fees",
+      "source_type": "official_docs",
+      "grade": "strong",
+      "collected_on": "2026-06-24",
+      "supports_questions": ["Q2.3", "Q2.4"],
+      "claim_role": "supports",
+      "notes": "Fee and rebate schedule for Polymarket US; international fee details may differ."
+    }
+  ],
+  "reflectLoop": [
+    {
+      "loop_id": "R1",
+      "trigger": "Initial task construction",
+      "gap_type": "stale_fact",
+      "delta_query": "Refresh Polymarket regulatory status, fee schedule, ETH ETF current status, Ethereum protocol docs",
+      "action_taken": "Searched official docs, CFTC, Polymarket US, Ethereum docs, SEC and issuer pages",
+      "result": "partial",
+      "remaining_risk": "Polymarket regulatory and fee status can change; refresh again before final HTML delivery."
+    },
+    {
+      "loop_id": "R2",
+      "trigger": "Closed-source quant company process",
+      "gap_type": "unverifiable_internal_process",
+      "delta_query": "Use public company pages and canonical papers instead of claiming proprietary model details",
+      "action_taken": "Added public Jane Street, Two Sigma, WorldQuant, AQR and LOB papers",
+      "result": "partial",
+      "remaining_risk": "Report must phrase top quant company workflow as public-inference, not confirmed internal secret."
+    }
+  ]
+}
