@@ -417,6 +417,72 @@ main.wrap > section:first-child {
   font-weight: 650;
 }
 
+.model-stack,
+.research-roadmap,
+.evidence-lanes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--rule);
+  margin-bottom: 24px;
+}
+
+.stack-step,
+.road-step,
+.evidence-lane {
+  min-width: 0;
+  padding: 22px;
+  background: var(--paper-card);
+}
+
+.step-num {
+  color: var(--vermillion);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.stack-step h3,
+.road-step h3,
+.evidence-lane h3 {
+  margin: 8px 0;
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  line-height: 1.24;
+}
+
+.stack-step p,
+.road-step p,
+.evidence-lane p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.stack-step span {
+  display: block;
+  margin-top: 12px;
+  color: var(--ink-mute);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.research-roadmap {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.evidence-lanes {
+  margin-top: 24px;
+}
+
 .tag {
   display: inline-block;
   padding: 3px 8px;
@@ -803,11 +869,19 @@ footer {
 
   .metrics,
   .claim-strip,
+  .model-stack,
   .modelability,
   .source-grid,
+  .research-roadmap,
+  .evidence-lanes,
   .data-ladder,
   .book-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metrics .metric:last-child:nth-child(odd),
+  .claim-strip .claim:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .jump-grid {
@@ -836,8 +910,11 @@ footer {
   .metrics,
   .claim-strip,
   .insights,
+  .model-stack,
   .modelability,
   .source-grid,
+  .research-roadmap,
+  .evidence-lanes,
   .data-ladder,
   .book-grid {
     grid-template-columns: 1fr;

@@ -80,10 +80,11 @@
     {
       "id": "math-domains",
       "question": "纯数学模型拟合市场预测，需要哪些数学领域？",
-      "module": "matrix-table",
+      "module": "model-stack + matrix-table",
       "title": "从概率分布到可交易系统",
       "summary": "市场预测不是单一数学分支。需要用概率表达不确定性，用统计防止噪声幻觉，用时间序列处理状态，用优化转仓位，用微观结构处理成交，用因果推断避免伪相关。",
       "key_points": [
+        "数学知识域应先映射到观测市场、估计状态、转成决策、验证下线四层，而不是平铺成课程清单。",
         "纯拟合最大风险是非平稳、对抗性、样本少、自由度高和成本遗漏。",
         "方向预测只是子问题；最终目标是成本后、容量内、风险约束下的期望收益。",
         "盘口模型、事件模型和组合风控需要不同数学语言协同。"
@@ -104,13 +105,14 @@
     {
       "id": "implementation",
       "question": "落到 Polymarket / ETH，什么能模型化，什么不能？",
-      "module": "feature-heatmap + methodology-limits",
+      "module": "feature-heatmap + research-roadmap + methodology-limits",
       "title": "模型负责边界内的概率，纪律负责边界外的冲击",
       "summary": "盘口、价差、深度、历史序列和部分链上/ETF 状态变量较可模型化；新闻、政策、结算争议和突发事故只能做事件检测和风险缓冲，不能当成稳定 alpha。",
       "key_points": [
         "可模型化：订单簿、历史价格、资金费率、价差、深度、ETF/链上状态变量。",
         "半模型化：事件概率、新闻舆情、监管窗口，需要贝叶斯更新和人工来源审计。",
-        "低可模型化：突发黑客、监管突袭、市场下架、地域限制变化，只能进入风险预算。"
+        "低可模型化：突发黑客、监管突袭、市场下架、地域限制变化，只能进入风险预算。",
+        "最小研究路线应先固定数据合同和标签 horizon，再跑可解释基线模型，最后设交易门禁。"
       ]
     },
     {
@@ -150,6 +152,12 @@
       "COINGLASS_ETH_ETF",
       "COINGLASS_ETH_LIQUIDATIONS",
       "COINGLASS_LIQUIDATION_API_DOCS"
+    ],
+    "evidence_lanes": [
+      "强证据：Polymarket 文档、SEC order、ethereum.org、EIP 原文，用来确认规则、协议机制和合规边界。",
+      "可复跑数据：Polymarket CLOB、Binance funding/OI、Deribit options summary，可进入脚本和回测，但需记录 venue bias。",
+      "方法参考：DeepLOB、101 Alphas、TSMOM 和量化公司公开页面，只用于方法框架，不声称内部流程。",
+      "需人工复核：ETF flows 和 liquidation history 不从截图或反爬页面回填，正式报告需固定供应商或人工核验。"
     ],
     "limitations": [
       "Polymarket 监管、地域限制和费用可能变化，交付前做了 2026-06-24 刷新，但后续使用仍应重新核对官方页面。",

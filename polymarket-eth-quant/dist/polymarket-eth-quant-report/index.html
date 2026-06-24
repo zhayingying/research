@@ -381,6 +381,33 @@
         市场预测不能靠单一模型堆参数。数学体系要覆盖不确定性表达、噪声识别、非平稳状态、成交机制、风险预算和因果错觉。
       </p>
 
+      <div class="model-stack" aria-label="数学知识域到交易系统的映射">
+        <article class="stack-step">
+          <div class="step-num">Layer 01</div>
+          <h3>观测市场</h3>
+          <p>把价格、盘口、资金费率、OI、IV、ETF flows 和事件流对齐成统一时间轴。</p>
+          <span>时间序列 · 微观结构 · 数据工程</span>
+        </article>
+        <article class="stack-step">
+          <div class="step-num">Layer 02</div>
+          <h3>估计状态</h3>
+          <p>从噪声里估计趋势、波动、流动性、regime 和事件强度，避免把短期偶然当规律。</p>
+          <span>统计推断 · 状态空间 · 随机过程</span>
+        </article>
+        <article class="stack-step">
+          <div class="step-num">Layer 03</div>
+          <h3>转成决策</h3>
+          <p>把预测分布转换成仓位、挂单/吃单选择、止损和组合约束。</p>
+          <span>优化 · Kelly · 博弈论</span>
+        </article>
+        <article class="stack-step">
+          <div class="step-num">Layer 04</div>
+          <h3>验证和下线</h3>
+          <p>用 walk-forward、成本后回测、压力测试和漂移监控决定模型是否还能交易。</p>
+          <span>风险度量 · 因果推断 · 信息论</span>
+        </article>
+      </div>
+
       <div class="matrix-wrap" role="region" aria-label="数学领域与交易模型组件矩阵" tabindex="0">
         <table class="matrix">
           <thead>
@@ -546,6 +573,29 @@
         </article>
       </div>
 
+      <div class="research-roadmap" aria-label="Polymarket ETH 最小研究路线">
+        <article class="road-step">
+          <div class="step-num">Step 01</div>
+          <h3>数据合同</h3>
+          <p>固定字段、时间戳、来源优先级和缺失值规则，先做到每小时可复跑。</p>
+        </article>
+        <article class="road-step">
+          <div class="step-num">Step 02</div>
+          <h3>标签和 horizon</h3>
+          <p>分别定义 5m / 1h / 1d 的可交易收益标签，避免用未来收盘价泄漏。</p>
+        </article>
+        <article class="road-step">
+          <div class="step-num">Step 03</div>
+          <h3>基线模型</h3>
+          <p>先跑 logistic / tree / simple ensemble，对比“市场隐含概率 + 成本”基线。</p>
+        </article>
+        <article class="road-step">
+          <div class="step-num">Step 04</div>
+          <h3>交易门禁</h3>
+          <p>只有当 edge 覆盖 spread、fee、滑点、容量和风险预算时才允许下单。</p>
+        </article>
+      </div>
+
       <div class="note-block" style="margin-top:24px">
         <h3>下一步最小可行研究系统</h3>
         <p>先做 Polymarket 盘口 + ETH 现货/衍生品 + ETF/链上状态的统一时间戳数据表；再定义预测 horizon；最后用 walk-forward 回测验证成本后收益，而不是先上复杂深度模型。</p>
@@ -690,6 +740,29 @@
             <li>自动外链检查可能被监管、交易所和数据站点反爬拦截，关键来源需要人工复核。</li>
           </ul>
         </div>
+      </div>
+
+      <div class="evidence-lanes" aria-label="来源证据强弱分层">
+        <article class="evidence-lane">
+          <span class="tag tag-green">强证据</span>
+          <h3>官方和监管来源</h3>
+          <p>Polymarket 文档、SEC order、ethereum.org、EIP 原文，用来确认规则、协议机制和合规边界。</p>
+        </article>
+        <article class="evidence-lane">
+          <span class="tag tag-green">可复跑数据</span>
+          <h3>公共 API 快照</h3>
+          <p>Polymarket CLOB、Binance funding/OI、Deribit options summary，可进入脚本和回测，但要记录 venue bias。</p>
+        </article>
+        <article class="evidence-lane">
+          <span class="tag tag-gold">方法参考</span>
+          <h3>论文和公开方法</h3>
+          <p>DeepLOB、101 Alphas、TSMOM 和量化公司公开页面，只用于方法框架，不冒充内部流程。</p>
+        </article>
+        <article class="evidence-lane">
+          <span class="tag tag-red">需人工复核</span>
+          <h3>Vendor / dashboard</h3>
+          <p>ETF flows 和 liquidation history 不从截图或反爬页面回填；正式报告需固定供应商或人工核验。</p>
+        </article>
       </div>
 
       <div class="source-grid" style="margin-top:24px" aria-label="关键来源列表">
