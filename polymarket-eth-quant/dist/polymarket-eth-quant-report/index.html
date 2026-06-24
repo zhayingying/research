@@ -21,7 +21,7 @@
       </div>
       <h1 class="title">交易铁律、ETH 因子与 <em>量化预测</em> 的同一张地图</h1>
       <p class="lede">
-        这份报告回答三个问题：顶级交易员要遵守哪些硬规则，ETH 的价格为什么波动，以及纯数学模型怎样从市场数据走到可交易的预测系统。
+        这份报告回答三个问题：顶级交易员到底在守什么底线，ETH 的价格到底被哪些状态变量推动，以及数学模型怎样从“拟合曲线”走到“可下注的概率和仓位”。
       </p>
       <div class="byline" aria-label="报告元信息">
         <span><strong>调研者</strong> ziye</span>
@@ -88,6 +88,29 @@
         顶级交易不是猜中最多次，而是把有限可预测性变成成本后、容量内、风险可控的收益。Polymarket / ETH 这种短周期、高噪声、强事件驱动市场里，模型可以估计概率、流动性和状态变化，但不能替代仓位纪律、来源审计、执行质量和合规边界。
       </p>
 
+      <div class="essence-board" aria-label="报告本质压缩">
+        <article class="essence-card">
+          <div class="eyebrow">Trading</div>
+          <h3>交易的本质不是看对，而是下注条件成立</h3>
+          <p>只有当概率优势大于价差、费用、滑点、冲击、尾部风险和机会成本时，观点才有资格变成仓位。</p>
+        </article>
+        <article class="essence-card">
+          <div class="eyebrow">ETH</div>
+          <h3>ETH 的本质是多层资金流状态机</h3>
+          <p>价格变化来自边际资金流、可用流动性、杠杆挤压、协议供需、机构通道和事件重定价的共同作用。</p>
+        </article>
+        <article class="essence-card">
+          <div class="eyebrow">Math</div>
+          <h3>数学模型的本质是估计条件分布</h3>
+          <p>顶级模型不是输出“明天涨跌”，而是估计在当前状态下的收益分布、置信度、尾部损失和可交易容量。</p>
+        </article>
+        <article class="essence-card">
+          <div class="eyebrow">Quant</div>
+          <h3>量化公司的本质是研究工厂加风控系统</h3>
+          <p>数据、假设、标签、训练、回测、执行、组合和监控形成闭环；任何一环不成立，拟合结果都不能进实盘。</p>
+        </article>
+      </div>
+
       <div class="claim-strip" aria-label="核心结论">
         <article class="claim">
           <div class="eyebrow">Rule</div>
@@ -113,6 +136,57 @@
       <p class="section-desc">
         交易纪律的本质是把情绪性判断改写成约束系统。下面十条不是“建议”，而是任何预测模型进入实盘前必须满足的硬边界。
       </p>
+
+      <div class="gate-board" aria-label="交易铁律四道门">
+        <article class="gate-card">
+          <div class="step-num">Gate 01</div>
+          <h3>生存门</h3>
+          <p>先问这笔交易会不会让账户、策略或合规资格不可逆受损。过不了这一门，胜率再高也不交易。</p>
+        </article>
+        <article class="gate-card">
+          <div class="step-num">Gate 02</div>
+          <h3>期望门</h3>
+          <p>只交易成本后的正期望。隐含概率、盘口深度、费用、滑点、成交概率和结算时间必须一起算。</p>
+        </article>
+        <article class="gate-card">
+          <div class="step-num">Gate 03</div>
+          <h3>仓位门</h3>
+          <p>仓位表达风险预算，不表达情绪强度。相关性、波动率和流动性决定能押多少。</p>
+        </article>
+        <article class="gate-card">
+          <div class="step-num">Gate 04</div>
+          <h3>复盘门</h3>
+          <p>每笔交易拆成预测、执行、仓位和规则四类误差；不能复盘的策略，不能扩大规模。</p>
+        </article>
+      </div>
+
+      <div class="edge-equation" aria-label="从观点到可交易 edge 的判断式">
+        <article class="edge-node edge-belief">
+          <span class="edge-kicker">belief</span>
+          <h3>p_model</h3>
+          <p>先把观点写成概率分布，而不是一句“我看涨”。</p>
+        </article>
+        <article class="edge-node edge-market">
+          <span class="edge-kicker">minus market</span>
+          <h3>p_market</h3>
+          <p>和 Polymarket 价格、ETH 隐含状态或盘口中间价比较。</p>
+        </article>
+        <article class="edge-node edge-cost">
+          <span class="edge-kicker">minus friction</span>
+          <h3>cost</h3>
+          <p>扣掉 spread、fee、slippage、impact、结算和机会成本。</p>
+        </article>
+        <article class="edge-node edge-capacity">
+          <span class="edge-kicker">filter</span>
+          <h3>liquidity</h3>
+          <p>用深度、成交概率、波动率和相关性过滤可下注规模。</p>
+        </article>
+        <article class="edge-node edge-action">
+          <span class="edge-kicker">action</span>
+          <h3>size / pass</h3>
+          <p>成本后 edge 为正且风险预算允许，才进入交易动作。</p>
+        </article>
+      </div>
 
       <div class="insights" aria-label="交易铁律摘要">
         <article class="insight">
@@ -316,6 +390,80 @@
         ETH 不是单因子资产。短周期更多由流动性、衍生品仓位和新闻驱动；中周期看 ETF、宏观和链上活动；长期则看协议供需、应用需求、监管定位和竞争链格局。
       </p>
 
+      <div class="driver-board" aria-label="ETH 价格四个核心驱动器">
+        <article class="driver-card driver-flow">
+          <span>01</span>
+          <h3>边际资金流</h3>
+          <p>宏观 risk-on/off、ETF flows、BTC beta 和稳定币流动性决定“有没有新钱进来”。</p>
+        </article>
+        <article class="driver-card driver-leverage">
+          <span>02</span>
+          <h3>杠杆和流动性</h3>
+          <p>funding、OI、basis、清算和盘口深度决定“同样一笔钱能推动多远”。</p>
+        </article>
+        <article class="driver-card driver-structure">
+          <span>03</span>
+          <h3>协议供需和叙事</h3>
+          <p>staking、burn、gas、L2/blob demand 和应用需求决定“ETH 被长期如何定价”。</p>
+        </article>
+        <article class="driver-card driver-event">
+          <span>04</span>
+          <h3>事件重定价</h3>
+          <p>升级、监管、安全事故、交易所风险和政策窗口会让原有分布瞬间失效。</p>
+        </article>
+      </div>
+
+      <div class="horizon-rail" aria-label="ETH 因子按时间尺度的主导关系">
+        <article class="horizon-lane horizon-short">
+          <span class="horizon-dot"></span>
+          <div class="horizon-time">分钟-日内</div>
+          <h3>挤压和新闻主导</h3>
+          <p>价格更像流动性和仓位的反身性结果，预测重点是是否会触发强制成交。</p>
+          <div class="chip-row">
+            <span>funding</span>
+            <span>OI</span>
+            <span>liquidation</span>
+            <span>BTC beta</span>
+          </div>
+        </article>
+        <article class="horizon-lane horizon-swing">
+          <span class="horizon-dot"></span>
+          <div class="horizon-time">数日-数周</div>
+          <h3>资金流改变边际需求</h3>
+          <p>ETF flows、监管预期、basis 和事件后 repricing 会推动仓位再平衡。</p>
+          <div class="chip-row">
+            <span>ETF flows</span>
+            <span>basis</span>
+            <span>IV skew</span>
+            <span>news</span>
+          </div>
+        </article>
+        <article class="horizon-lane horizon-month">
+          <span class="horizon-dot"></span>
+          <div class="horizon-time">月度</div>
+          <h3>状态变量重定价</h3>
+          <p>宏观流动性、链上 activity、staking 和 burn 会改变市场对 ETH 的估值锚。</p>
+          <div class="chip-row">
+            <span>macro</span>
+            <span>gas</span>
+            <span>burn</span>
+            <span>staking</span>
+          </div>
+        </article>
+        <article class="horizon-lane horizon-long">
+          <span class="horizon-dot"></span>
+          <div class="horizon-time">季度以上</div>
+          <h3>协议经济和监管定位</h3>
+          <p>长期更接近协议供需、应用需求、竞争链格局和合规边界的共同定价。</p>
+          <div class="chip-row">
+            <span>protocol</span>
+            <span>L2 demand</span>
+            <span>regulation</span>
+            <span>apps</span>
+          </div>
+        </article>
+      </div>
+
       <div class="heatmap" role="region" aria-label="ETH 因子热力图" tabindex="0">
         <div class="heat-grid">
           <div class="heat-cell heat-head">因子层</div>
@@ -378,7 +526,7 @@
       <div class="section-num">§ 04 · 纯数学模型需要的知识域</div>
       <h2 class="section-title">从概率分布到可交易系统</h2>
       <p class="section-desc">
-        市场预测不能靠单一模型堆参数。数学体系要覆盖不确定性表达、噪声识别、非平稳状态、成交机制、风险预算和因果错觉。
+        市场预测不能靠单一模型堆参数。数学体系要覆盖不确定性表达、噪声识别、非平稳状态、成交机制、风险预算和因果错觉。核心不是“学多少数学”，而是把概率、状态、决策、执行和验证接成同一套系统。
       </p>
 
       <div class="model-stack" aria-label="数学知识域到交易系统的映射">
@@ -405,6 +553,34 @@
           <h3>验证和下线</h3>
           <p>用 walk-forward、成本后回测、压力测试和漂移监控决定模型是否还能交易。</p>
           <span>风险度量 · 因果推断 · 信息论</span>
+        </article>
+      </div>
+
+      <div class="math-system" aria-label="数学领域如何组合成预测和交易系统">
+        <article class="math-node math-data">
+          <span>inputs</span>
+          <h3>市场观测</h3>
+          <p>价格、盘口、funding、OI、IV、ETF flows、链上和事件流先进入同一时间轴。</p>
+        </article>
+        <article class="math-node math-state">
+          <span>state</span>
+          <h3>状态估计</h3>
+          <p>用统计、时间序列、随机过程和状态空间识别趋势、波动、流动性和 regime。</p>
+        </article>
+        <article class="math-node math-core-node">
+          <span>target</span>
+          <h3>条件收益分布</h3>
+          <p>模型要输出方向、幅度、尾部、置信度和容量，而不是单一价格点。</p>
+        </article>
+        <article class="math-node math-decision">
+          <span>decision</span>
+          <h3>动作策略</h3>
+          <p>优化、Kelly、风险预算和博弈论把预测转成仓位、挂单/吃单和退出规则。</p>
+        </article>
+        <article class="math-node math-validation">
+          <span>validation</span>
+          <h3>验证和下线</h3>
+          <p>walk-forward、因果审计、信息增益和压力测试决定模型是否还能交易。</p>
         </article>
       </div>
 
@@ -447,6 +623,29 @@
       <p class="section-desc">
         Jane Street、Two Sigma 等公司的公开页面只展示方法论轮廓，不揭示内部秘密。可写成公开可观察的行业通用 pipeline：数据治理、假设、特征、标签、训练、回测、成本、组合、执行、风控、上线监控和迭代下线。
       </p>
+
+      <div class="quant-core" aria-label="顶级量化模型拟合的核心对象">
+        <article class="quant-card">
+          <div class="step-num">Fit 01</div>
+          <h3>拟合的不是价格点位</h3>
+          <p>目标是条件收益分布：方向、幅度、波动、尾部和置信度，而不是一个孤立预测价。</p>
+        </article>
+        <article class="quant-card">
+          <div class="step-num">Fit 02</div>
+          <h3>预测必须变成 action</h3>
+          <p>模型输出要能决定买/卖/不动、挂单/吃单、仓位大小、止损条件和撤单规则。</p>
+        </article>
+        <article class="quant-card">
+          <div class="step-num">Fit 03</div>
+          <h3>回测必须模拟真实市场</h3>
+          <p>spread、fee、slippage、impact、fill probability、延迟和容量是模型的一部分，不是事后扣分项。</p>
+        </article>
+        <article class="quant-card">
+          <div class="step-num">Fit 04</div>
+          <h3>上线后默认会衰减</h3>
+          <p>市场 regime 会变，edge 会拥挤，模型要有漂移监控、kill switch、重训和下线标准。</p>
+        </article>
+      </div>
 
       <div class="svg-scroll" role="img" aria-label="顶级量化研究工厂流程">
         <svg class="wide-svg" viewBox="0 0 1040 430" xmlns="http://www.w3.org/2000/svg">
@@ -637,6 +836,36 @@
         </article>
       </div>
 
+      <div class="orderbook-visual" aria-label="Polymarket 样本盘口深度可视化">
+        <div class="orderbook-summary">
+          <span class="edge-kicker">sample market</span>
+          <h3>ETH reach $2,200 in June</h3>
+          <p>显示概率很低不等于容易成交；盘口深度、价差和退出容量决定这是不是可交易 edge。</p>
+          <div class="quote-strip">
+            <div><span>Yes bid</span><strong>0.006</strong></div>
+            <div><span>Yes ask</span><strong>0.008</strong></div>
+            <div><span>Mid</span><strong>0.007</strong></div>
+            <div><span>No spread</span><strong>0.992 / 0.994</strong></div>
+          </div>
+        </div>
+        <div class="depth-board">
+          <div class="depth-row depth-bid" style="--bar: 100%">
+            <span>Yes bid top-5</span>
+            <div class="depth-meter"><i></i></div>
+            <strong>76,043.34</strong>
+          </div>
+          <div class="depth-row depth-ask" style="--bar: 15.1%">
+            <span>Yes ask top-5</span>
+            <div class="depth-meter"><i></i></div>
+            <strong>11,465.00</strong>
+          </div>
+          <div class="depth-read">
+            <h3>盘口读法</h3>
+            <p>bid 侧深、ask 侧浅，说明小额买入和大额退出看到的是两套成交条件；回测若按 midpoint 成交，会高估真实容量。</p>
+          </div>
+        </div>
+      </div>
+
       <div class="book-grid" aria-label="市场数据快照摘要">
         <div class="book-panel">
           <h3>样本 Polymarket 市场</h3>
@@ -722,15 +951,6 @@
       </p>
 
       <div class="method-grid">
-        <div class="method-panel">
-          <h3>本版方法</h3>
-          <ul class="method-list">
-            <li>使用 structured-research 建任务书、问题树、覆盖地图和来源台账。</li>
-            <li>对 Polymarket、ETH、SEC、EIP 和量化论文来源做 2026-06-24 刷新。</li>
-            <li>新增 <code>fetch_market_data.mjs</code> 生成 Polymarket / Binance / Deribit / ETF / liquidation 数据源快照。</li>
-            <li>用 visual-html-report 输出可维护 HTML 源码包，并进行三端渲染验证。</li>
-          </ul>
-        </div>
         <div class="method-panel">
           <h3>未解决限制</h3>
           <ul class="method-list">

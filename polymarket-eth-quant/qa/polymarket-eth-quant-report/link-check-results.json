@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T03:53:15.350Z",
+  "generated_at": "2026-06-24T06:10:05.020Z",
   "report": "dist/polymarket-eth-quant-report/index.html",
   "source_ledger": "content/sources.json",
   "summary": {
@@ -206,10 +206,14 @@
       "status": "ok",
       "http_status": 200,
       "final_url": "https://eips.ethereum.org/EIPS/eip-1559",
-      "method": "HEAD",
+      "method": "GET",
       "attempts": [
         {
           "method": "HEAD",
+          "error": "fetch failed"
+        },
+        {
+          "method": "GET",
           "ok": true,
           "status": 200,
           "statusText": "",

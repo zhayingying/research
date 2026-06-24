@@ -12,7 +12,13 @@
     "data_cutoff": "2026-06-24",
     "sample": "30 个来源条目，覆盖官方文档、监管文件、协议规范、经典论文和实时市场数据接口"
   },
-  "coreThesis": "顶级交易不是预测最准，而是把有限可预测性转化为可控风险下的正期望系统；ETH 和 Polymarket 的短周期市场尤其需要把概率、流动性、成本、监管和执行约束同时建模。",
+  "coreThesis": "顶级交易不是预测最准，而是判断下注条件是否成立：概率优势必须覆盖成本、流动性、尾部风险和合规约束。ETH 的价格不是单因子函数，而是边际资金流、杠杆流动性、协议供需和事件重定价共同驱动的状态机。顶级量化模型拟合的不是价格点位，而是条件收益分布、成本后期望和可执行动作。",
+  "essence": [
+    "交易的本质不是看对，而是当概率优势、赔率、成本、容量和风险预算同时成立时才下注。",
+    "ETH 的本质是多层资金流状态机，短线看流动性和杠杆，中线看 ETF/宏观/链上状态，长期看协议供需和监管定位。",
+    "数学模型的本质是估计条件分布、置信度、尾部损失和可交易容量，不是做价格曲线拟合。",
+    "顶级量化公司的本质是研究工厂加风控系统，数据、标签、回测、执行、组合和监控缺一不可。"
+  ],
   "kpis": [
     {
       "value": "10",
@@ -44,10 +50,12 @@
     {
       "id": "trader-laws",
       "question": "顶级交易员需要遵守哪些铁律？",
-      "module": "insight-card-grid + matrix-table",
+      "module": "decision-gates + edge-equation + insight-card-grid + matrix-table",
       "title": "先活下来，再谈预测",
       "summary": "交易铁律不是口号，而是把账户约束、赔率、成本、执行和复盘写进系统。Polymarket / ETH 这种高噪声市场中，违反纪律比预测错误更致命。",
       "key_points": [
+        "十条铁律可以压缩为四道门：生存门、期望门、仓位门、复盘门。",
+        "可交易 edge 的判断式是 p_model - p_market - cost，再经过流动性和风险预算过滤。",
         "单笔交易不能决定账户生死；仓位必须服务风险预算。",
         "胜率必须和赔率、费用、滑点、成交概率一起看。",
         "预测错误、执行错误和仓位错误要分开复盘。"
@@ -68,10 +76,12 @@
     {
       "id": "eth-factors",
       "question": "ETH 这个市场受什么因素波动？",
-      "module": "feature-heatmap",
+      "module": "driver-board + horizon-rail + feature-heatmap",
       "title": "ETH 是六层因子的叠加",
       "summary": "短线 ETH 更受流动性、衍生品仓位、BTC 联动和新闻冲击影响；中线看 ETF flows、宏观 risk-on/off 与链上使用；长期看协议供需、应用需求、监管定位和竞争链格局。",
       "key_points": [
+        "ETH 的四个核心驱动器是边际资金流、杠杆和流动性、协议供需叙事、事件重定价。",
+        "分钟级到日内更看 funding、OI、清算和新闻；月度以上更看协议经济、应用需求和监管定位。",
         "EIP-1559 将 base fee 纳入协议并燃烧，链上使用会影响 ETH 供需叙事。",
         "Dencun / EIP-4844 改变 L2 成本结构，也改变 L1 fee burn 叙事。",
         "现货 ETH ETF 把机构通道和监管预期变成价格因子。"
@@ -80,11 +90,12 @@
     {
       "id": "math-domains",
       "question": "纯数学模型拟合市场预测，需要哪些数学领域？",
-      "module": "model-stack + matrix-table",
+      "module": "model-stack + math-system-map + matrix-table",
       "title": "从概率分布到可交易系统",
       "summary": "市场预测不是单一数学分支。需要用概率表达不确定性，用统计防止噪声幻觉，用时间序列处理状态，用优化转仓位，用微观结构处理成交，用因果推断避免伪相关。",
       "key_points": [
         "数学知识域应先映射到观测市场、估计状态、转成决策、验证下线四层，而不是平铺成课程清单。",
+        "系统图的中心不是价格点位，而是条件收益分布和 action policy。",
         "纯拟合最大风险是非平稳、对抗性、样本少、自由度高和成本遗漏。",
         "方向预测只是子问题；最终目标是成本后、容量内、风险约束下的期望收益。",
         "盘口模型、事件模型和组合风控需要不同数学语言协同。"
@@ -93,10 +104,11 @@
     {
       "id": "quant-pipeline",
       "question": "顶级量化公司的模型拟合预测模型是怎么做的？",
-      "module": "step-chart + matrix-table",
+      "module": "quant-core + step-chart + matrix-table",
       "title": "不是神奇模型，而是研究工厂",
       "summary": "公开资料只能支持行业方法论轮廓：数据工程、假设、特征、标签、训练、回测、成本、组合、执行、风控、上线监控和衰减检测。不能把任何公司内部细节当成已确认事实。",
       "key_points": [
+        "顶级量化模型拟合的核心对象是条件收益分布、成本后期望和 action policy，而不是单一价格点。",
         "样本切分要尊重时间顺序和市场 regime，不能随机切分时间序列。",
         "回测必须显式纳入 spread、fee、slippage、market impact 和 fill probability。",
         "上线先小规模灰度，持续监控 alpha decay、模型漂移和执行偏差。"
@@ -118,11 +130,12 @@
     {
       "id": "market-data-sources",
       "question": "下一步要补哪些实时数据源，并如何选一个 Polymarket 样本盘口？",
-      "module": "matrix-table + orderbook-snapshot",
+      "module": "market-data-source-ladder + orderbook-depth-visual + matrix-table + orderbook-snapshot",
       "title": "先把数据源分层，再谈建模",
       "summary": "本轮新增了可复跑的数据快照脚本：Polymarket 用 Gamma search + CLOB book，ETH 永续用 Binance USD-M ETHUSDT funding/open interest，ETH 期权用 Deribit option summary，ETF flows 与 liquidation history 先作为第三方 vendor/manual-review 源。",
       "key_points": [
         "Polymarket 样本市场由 public-search 自动筛选 active、not closed、ETH price 相关且盘口可用的市场，再读取 Yes/No 两边 CLOB。",
+        "样本盘口用 bid/ask 和 top-5 depth 条形图表达容量，而不是只列价格数字。",
         "Binance ETHUSDT 是单一交易所永续代理，不能代表全市场衍生品结构。",
         "Deribit options summary 可形成 expiry-level IV/OI 观察，但仍是 Deribit venue bias。",
         "ETF flows 和 liquidation history 需要选定供应商或人工复核；本轮不把 Cloudflare/登录页数据伪装成已抓取数据。"
