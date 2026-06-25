@@ -33,112 +33,112 @@
     {
       "path": "README.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/README.md",
-      "localPath": "input/google-design-md/README.md",
+      "localPath": "official/google-design-md/README.md",
       "lineCount": 351,
       "byteCount": 12194
     },
     {
       "path": "PHILOSOPHY.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/PHILOSOPHY.md",
-      "localPath": "input/google-design-md/PHILOSOPHY.md",
+      "localPath": "official/google-design-md/PHILOSOPHY.md",
       "lineCount": 110,
       "byteCount": 6415
     },
     {
       "path": "docs/spec.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/docs/spec.md",
-      "localPath": "input/google-design-md/spec.md",
+      "localPath": "official/google-design-md/spec.md",
       "lineCount": 365,
       "byteCount": 14743
     },
     {
       "path": "package.json",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/package.json",
-      "localPath": "input/google-design-md/package.json",
+      "localPath": "official/google-design-md/package.json",
       "lineCount": 20,
       "byteCount": 407
     },
     {
       "path": "examples/atmospheric-glass/DESIGN.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/DESIGN.md",
-      "localPath": "input/google-design-md/examples/atmospheric-glass/DESIGN.md",
+      "localPath": "official/google-design-md/examples/atmospheric-glass/DESIGN.md",
       "lineCount": 210,
       "byteCount": 8659
     },
     {
       "path": "examples/atmospheric-glass/README.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/README.md",
-      "localPath": "input/google-design-md/examples/atmospheric-glass/README.md",
+      "localPath": "official/google-design-md/examples/atmospheric-glass/README.md",
       "lineCount": 11,
       "byteCount": 1190
     },
     {
       "path": "examples/atmospheric-glass/design_tokens.json",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/design_tokens.json",
-      "localPath": "input/google-design-md/examples/atmospheric-glass/design_tokens.json",
+      "localPath": "official/google-design-md/examples/atmospheric-glass/design_tokens.json",
       "lineCount": 909,
       "byteCount": 17324
     },
     {
       "path": "examples/atmospheric-glass/tailwind.config.js",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/tailwind.config.js",
-      "localPath": "input/google-design-md/examples/atmospheric-glass/tailwind.config.js",
+      "localPath": "official/google-design-md/examples/atmospheric-glass/tailwind.config.js",
       "lineCount": 141,
       "byteCount": 4114
     },
     {
       "path": "examples/paws-and-paths/DESIGN.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/DESIGN.md",
-      "localPath": "input/google-design-md/examples/paws-and-paths/DESIGN.md",
+      "localPath": "official/google-design-md/examples/paws-and-paths/DESIGN.md",
       "lineCount": 219,
       "byteCount": 8413
     },
     {
       "path": "examples/paws-and-paths/README.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/README.md",
-      "localPath": "input/google-design-md/examples/paws-and-paths/README.md",
+      "localPath": "official/google-design-md/examples/paws-and-paths/README.md",
       "lineCount": 11,
       "byteCount": 1116
     },
     {
       "path": "examples/paws-and-paths/design_tokens.json",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/design_tokens.json",
-      "localPath": "input/google-design-md/examples/paws-and-paths/design_tokens.json",
+      "localPath": "official/google-design-md/examples/paws-and-paths/design_tokens.json",
       "lineCount": 876,
       "byteCount": 16943
     },
     {
       "path": "examples/paws-and-paths/tailwind.config.js",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/tailwind.config.js",
-      "localPath": "input/google-design-md/examples/paws-and-paths/tailwind.config.js",
+      "localPath": "official/google-design-md/examples/paws-and-paths/tailwind.config.js",
       "lineCount": 160,
       "byteCount": 4573
     },
     {
       "path": "examples/totality-festival/DESIGN.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/DESIGN.md",
-      "localPath": "input/google-design-md/examples/totality-festival/DESIGN.md",
+      "localPath": "official/google-design-md/examples/totality-festival/DESIGN.md",
       "lineCount": 210,
       "byteCount": 9045
     },
     {
       "path": "examples/totality-festival/README.md",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/README.md",
-      "localPath": "input/google-design-md/examples/totality-festival/README.md",
+      "localPath": "official/google-design-md/examples/totality-festival/README.md",
       "lineCount": 11,
       "byteCount": 1155
     },
     {
       "path": "examples/totality-festival/design_tokens.json",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/design_tokens.json",
-      "localPath": "input/google-design-md/examples/totality-festival/design_tokens.json",
+      "localPath": "official/google-design-md/examples/totality-festival/design_tokens.json",
       "lineCount": 911,
       "byteCount": 17457
     },
     {
       "path": "examples/totality-festival/tailwind.config.js",
       "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/tailwind.config.js",
-      "localPath": "input/google-design-md/examples/totality-festival/tailwind.config.js",
+      "localPath": "official/google-design-md/examples/totality-festival/tailwind.config.js",
       "lineCount": 144,
       "byteCount": 4251
     }
