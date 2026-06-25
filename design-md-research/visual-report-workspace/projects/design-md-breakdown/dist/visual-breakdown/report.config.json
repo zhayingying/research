@@ -1,0 +1,24 @@
+{
+  "project_slug": "design-md-breakdown",
+  "report_slug": "visual-breakdown",
+  "run_id": "20260625-2042-visual-report",
+  "workspace_root": "research/design-md-research/visual-report-workspace/projects/design-md-breakdown",
+  "style": "editorial-paper",
+  "engine": "token-report",
+  "theme_css": "styles/themes/editorial-paper.css",
+  "modules": [
+    "kpi-tile-grid",
+    "matrix-table",
+    "feature-heatmap",
+    "insight-card-grid",
+    "annotated-timeline",
+    "methodology-limits"
+  ],
+  "responsive_viewports": {
+    "desktop": "1440x900",
+    "tablet": "820x1180",
+    "mobile": "390x844"
+  },
+  "bundled": false,
+  "created_at": "2026-06-25T20:42:00+08:00"
+}

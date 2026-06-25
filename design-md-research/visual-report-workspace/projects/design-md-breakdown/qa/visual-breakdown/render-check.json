@@ -1,0 +1,68 @@
+[
+  {
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    "screenshotPath": "/Users/zhayingying/Documents/project_person/research/design-md-research/visual-report-workspace/projects/design-md-breakdown/qa/visual-breakdown/desktop.png",
+    "consoleErrors": [],
+    "pageErrors": [],
+    "metrics": {
+      "title": "DESIGN.md 拆解地图 · 可视化报告",
+      "scrollX": 0,
+      "bodyScrollWidth": 1440,
+      "docScrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyHeight": 5919,
+      "ready": true,
+      "sectionCount": 6,
+      "stylesheetCount": 4
+    },
+    "horizontalOverflow": false
+  },
+  {
+    "viewport": {
+      "name": "tablet",
+      "width": 820,
+      "height": 1180
+    },
+    "screenshotPath": "/Users/zhayingying/Documents/project_person/research/design-md-research/visual-report-workspace/projects/design-md-breakdown/qa/visual-breakdown/tablet.png",
+    "consoleErrors": [],
+    "pageErrors": [],
+    "metrics": {
+      "title": "DESIGN.md 拆解地图 · 可视化报告",
+      "scrollX": 0,
+      "bodyScrollWidth": 820,
+      "docScrollWidth": 820,
+      "clientWidth": 820,
+      "bodyHeight": 7499,
+      "ready": true,
+      "sectionCount": 6,
+      "stylesheetCount": 4
+    },
+    "horizontalOverflow": false
+  },
+  {
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "screenshotPath": "/Users/zhayingying/Documents/project_person/research/design-md-research/visual-report-workspace/projects/design-md-breakdown/qa/visual-breakdown/mobile.png",
+    "consoleErrors": [],
+    "pageErrors": [],
+    "metrics": {
+      "title": "DESIGN.md 拆解地图 · 可视化报告",
+      "scrollX": 0,
+      "bodyScrollWidth": 403,
+      "docScrollWidth": 390,
+      "clientWidth": 390,
+      "bodyHeight": 8982,
+      "ready": true,
+      "sectionCount": 6,
+      "stylesheetCount": 4
+    },
+    "horizontalOverflow": false
+  }
+]
