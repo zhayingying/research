@@ -1,6 +1,6 @@
 # Verification
 
-验证时间：2026-06-25 20:36 +0800
+验证时间：2026-06-25 20:42 +0800
 
 ## 命令与结果
 
@@ -23,6 +23,7 @@ find research/design-md-research -type f | sort
 ```text
 research/design-md-research/README.md
 research/design-md-research/analysis/README.md
+research/design-md-research/analysis/daily-development-usage.md
 research/design-md-research/analysis/official-design-md-breakdown.md
 research/design-md-research/analysis/sources.json
 research/design-md-research/analysis/verification.md
@@ -49,6 +50,7 @@ research/design-md-research/official/google-design-md/spec.md
 ```bash
 wc -l -c research/design-md-research/README.md \
   research/design-md-research/analysis/README.md \
+  research/design-md-research/analysis/daily-development-usage.md \
   research/design-md-research/analysis/official-design-md-breakdown.md \
   research/design-md-research/analysis/sources.json \
   research/design-md-research/analysis/verification.md \
@@ -70,7 +72,7 @@ wc -l -c research/design-md-research/README.md \
   research/design-md-research/official/google-design-md/spec.md
 ```
 
-结果：完整目录总计 5038 行、145879 bytes；其中 Google 官方仓库快照部分总计 4659 行、127999 bytes。三个官方 `DESIGN.md` 样例分别为：
+结果：完整目录总计 5196 行、152577 bytes；其中 Google 官方仓库快照部分总计 4659 行、127999 bytes。三个官方 `DESIGN.md` 样例分别为：
 
 - `examples/atmospheric-glass/DESIGN.md`：210 行、8659 bytes。
 - `examples/paws-and-paths/DESIGN.md`：219 行、8413 bytes。

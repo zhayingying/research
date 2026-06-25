@@ -45,6 +45,32 @@
 7. `Components`
 8. `Do's and Don'ts`
 
+## 拆解方法
+
+我按“事实源 -> 结构契约 -> 官方样例 -> 工程落地 -> 验证”的顺序拆：
+
+| 步骤 | 输入 | 拆解动作 | 产出 |
+| --- | --- | --- | --- |
+| 1. 定事实源 | `../official/google-design-md/spec.md` | 先确认什么是规范要求，避免把社区约定误当官方规范 | DESIGN.md 的两层结构和章节顺序 |
+| 2. 拆 token schema | `spec.md` 的 Schema / Token Types | 把 YAML front matter 中可机器读取的字段拆出来 | `name`、`description`、`colors`、`typography`、`rounded`、`spacing`、`components` |
+| 3. 拆 prose sections | `spec.md` 的 Sections | 把正文 `##` 章节按语义分类 | 品牌气质、色彩语义、排版策略、布局原则、深度、形状、组件、禁忌 |
+| 4. 对照 examples | `examples/*/DESIGN.md` | 检查官方样例是否按同一结构写，记录实际章节和 token 起始位置 | 三个官方样例的横向对照表 |
+| 5. 看导出产物 | `design_tokens.json`、`tailwind.config.js` | 判断 DESIGN.md 如何进入工程配置 | token -> JSON -> Tailwind 的映射链路 |
+| 6. 跑 CLI 验证 | `npx -y @google/design.md lint ...` | 用官方 CLI 检查样例是否符合规范 | 0 errors；记录 warning，不手改官方原文 |
+
+这个顺序的原因：先用 `spec.md` 锁定官方契约，再读 examples，避免直接从样例归纳出错误规则。examples 是“官方怎么写”的证据，但 `spec.md` 才是判断字段和章节是否规范的主事实源。
+
+## Agent 可读结构
+
+面向 Codex / Cursor 这类编码 agent，DESIGN.md 最有价值的不是“漂亮文案”，而是把视觉决策分成两类：
+
+| 类型 | agent 怎么用 | 例子 |
+| --- | --- | --- |
+| 精确 token | 直接用于代码、样式变量、Tailwind theme、组件 token | `colors.primary`、`typography.body-md`、`spacing.md`、`rounded.sm` |
+| 设计理由 | 当没有精确 token 覆盖时，用来判断风格方向 | “这个品牌应该显得安静、专业、技术感强” |
+
+日常开发时，应让 agent 先读 token，再读 rationale：先保证值不乱，再保证风格不跑偏。
+
 ## 官方 examples 对照
 
 Google 官方仓库没有根目录单独命名为 `DESIGN.md` 的品牌文件；官方可拆解样例位于：
@@ -54,6 +80,29 @@ Google 官方仓库没有根目录单独命名为 `DESIGN.md` 的品牌文件；
 | Atmospheric Glass | `../official/google-design-md/examples/atmospheric-glass/DESIGN.md` | Brand & Style, Colors, Typography, Layout & Spacing, Elevation & Depth, Shapes, Components |
 | Paws & Paths | `../official/google-design-md/examples/paws-and-paths/DESIGN.md` | Brand & Style, Colors, Typography, Layout & Spacing, Elevation & Depth, Shapes, Components |
 | Totality Festival | `../official/google-design-md/examples/totality-festival/DESIGN.md` | Brand & Style, Colors, Typography, Layout & Spacing, Elevation & Depth, Shapes, Components |
+
+三个官方样例的 YAML front matter 都包含同一组核心 token 分区：
+
+| Example | Token 分区 | 正文起点 |
+| --- | --- | --- |
+| Atmospheric Glass | `colors`, `typography`, `rounded`, `spacing`, `components` | `## Brand & Style` at line 144 |
+| Paws & Paths | `colors`, `typography`, `rounded`, `spacing`, `components` | `## Brand & Style` at line 159 |
+| Totality Festival | `colors`, `typography`, `rounded`, `spacing`, `components` | `## Brand & Style` at line 148 |
+
+这说明官方 examples 的核心模式是稳定的：前半段给机器 token，后半段给人和 agent 解释这些 token 应该如何被使用。
+
+## 日常项目拆解模板
+
+把官方模式迁移到自己的业务项目时，可以按这个模板写项目根目录 `DESIGN.md`：
+
+1. `name` / `description`：这个产品或子系统的视觉定位。
+2. `colors`：只放可复用 token，不把一次性颜色散落在代码里。
+3. `typography`：定义展示、正文、标签、代码等层级。
+4. `rounded` / `spacing`：定义半径和间距尺度，避免魔法值。
+5. `components`：定义按钮、卡片、表单、导航等稳定组件 token。
+6. `## Brand & Style`：说明整体气质和适用场景。
+7. `## Colors` 到 `## Components`：解释 token 的用途和组合方式。
+8. `## Do's and Don'ts`：写明 agent 不能做什么，例如不要新增未定义颜色、不要随意换字体。
 
 ## 当前结论
 

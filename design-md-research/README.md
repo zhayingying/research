@@ -39,6 +39,7 @@ design-md-research/
 │       └── spec.md
 └── analysis/
     ├── README.md
+    ├── daily-development-usage.md
     ├── official-design-md-breakdown.md
     ├── sources.json
     └── verification.md
@@ -50,8 +51,9 @@ design-md-research/
 
 1. 原始官方资料：`official/google-design-md/spec.md`、`official/google-design-md/examples/*/DESIGN.md`。
 2. 本地拆解入口：`analysis/official-design-md-breakdown.md`。
-3. 来源校验：`analysis/sources.json`。
-4. 验证记录：`analysis/verification.md`。
+3. 日常开发落地：`analysis/daily-development-usage.md`。
+4. 来源校验：`analysis/sources.json`。
+5. 验证记录：`analysis/verification.md`。
 
 ## 验证
 

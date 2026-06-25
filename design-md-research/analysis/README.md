@@ -5,6 +5,7 @@
 ## 文件
 
 - `official-design-md-breakdown.md`：对 Google 官方 DESIGN.md 规范和 examples 的拆解入口。
+- `daily-development-usage.md`：把 DESIGN.md 放进日常 Codex / Cursor 项目的建议结构。
 - `sources.json`：来源、commit、release、raw file URL、本地路径和尺寸台账。
 - `verification.md`：本地校验命令与结果。
 
