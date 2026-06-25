@@ -1,0 +1,42 @@
+{
+  "project_slug": "design-md-breakdown",
+  "report_slug": "eight-layer-framework",
+  "title": "DESIGN.md 八层结构契约报告",
+  "generated_at": "2026-06-25T21:17:00+08:00",
+  "source_root": "research/design-md-research/official/google-design-md",
+  "analysis_root": "research/design-md-research/analysis/design-system-contract-deep-dive.md",
+  "selected_modules": [
+    "full-toc",
+    "inverted-pyramid",
+    "matrix-table",
+    "feature-heatmap",
+    "insight-card-grid",
+    "methodology-limits"
+  ],
+  "framework_layers": [
+    "结构拆解",
+    "设计系统思想拆解",
+    "Token体系拆解",
+    "Dark Mode拆解",
+    "组件拆解",
+    "工程化拆解",
+    "隐藏问题挖掘",
+    "专家级追问"
+  ],
+  "official_schema_boundary": {
+    "official_top_level_tokens": [
+      "colors",
+      "typography",
+      "rounded",
+      "spacing",
+      "components"
+    ],
+    "engineering_extension_tokens": [
+      "borders",
+      "shadows",
+      "motion",
+      "opacity",
+      "zIndex"
+    ]
+  }
+}

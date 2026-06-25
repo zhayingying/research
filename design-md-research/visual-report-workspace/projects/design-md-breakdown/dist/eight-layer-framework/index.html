@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DESIGN.md 八层结构契约报告</title>
+  <link rel="stylesheet" href="styles/theme-fonts.css">
+  <link rel="stylesheet" href="styles/report.css">
+  <link id="report-theme" rel="stylesheet" href="styles/themes/editorial-paper.css">
+  <link rel="stylesheet" href="styles/report-custom.css">
+  <script defer src="scripts/report.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <div class="mast-top">
+        <span class="report-badge">Eight-layer visual report</span>
+        <span>2026-06-25</span>
+        <span>Google Labs Code / design.md</span>
+      </div>
+      <h1 class="title">DESIGN.md<br><em>八层结构契约</em></h1>
+      <p class="lede">这份报告把 Google 官方 DESIGN.md 规范拆成 8 层：结构、思想、token、暗色模式、组件、工程化、隐藏问题和专家追问。重点不是“它是什么”，而是每个结构为什么存在，删掉会坏在哪里。</p>
+      <div class="byline">
+        <span><strong>事实源</strong> official/google-design-md/spec.md</span>
+        <span><strong>分析源</strong> analysis/design-system-contract-deep-dive.md</span>
+        <span><strong>边界</strong> 官方契约 + 工程扩展契约分开标注</span>
+      </div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="num">8<small>层</small></div>
+        <div class="label">拆解框架</div>
+        <div class="sub">从标题结构拆到底层原则</div>
+      </div>
+      <div class="metric">
+        <div class="num">5</div>
+        <div class="label">官方顶层 token</div>
+        <div class="sub">colors / typography / rounded / spacing / components</div>
+      </div>
+      <div class="metric">
+        <div class="num">5</div>
+        <div class="label">工程扩展 token</div>
+        <div class="sub">border / shadow / motion / opacity / z-index</div>
+      </div>
+      <div class="metric">
+        <div class="num">30</div>
+        <div class="label">专家追问</div>
+        <div class="sub">下一步 Staff Design Engineer 会继续问什么</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="toc">
+      <div class="section-num">总览 · 怎么读</div>
+      <h2 class="section-title">这不是普通总结，<em>而是一张拆解地图</em></h2>
+      <p class="section-desc">先看 8 层目录，再按顺序读。前四层解释 DESIGN.md 的结构和 token；后四层解释如何落地到组件、工程、风险和下一轮追问。</p>
+
+      <div class="layer-toc" aria-label="八层框架目录">
+        <a href="#layer-1"><span class="layer-index">Layer 01</span><h3>结构拆解</h3><p>标题层级、章节输入输出、依赖关系。</p></a>
+        <a href="#layer-2"><span class="layer-index">Layer 02</span><h3>设计系统思想</h3><p>为什么 token、语义、禁止写死值。</p></a>
+        <a href="#layer-3"><span class="layer-index">Layer 03</span><h3>Token 体系</h3><p>primitive、alias、semantic、component 分层。</p></a>
+        <a href="#layer-4"><span class="layer-index">Layer 04</span><h3>Dark Mode</h3><p>不是白变黑，而是语义映射切换。</p></a>
+        <a href="#layer-5"><span class="layer-index">Layer 05</span><h3>组件拆解</h3><p>树、状态机、token 依赖关系。</p></a>
+        <a href="#layer-6"><span class="layer-index">Layer 06</span><h3>工程化落地</h3><p>Figma 到 React Component 的流水线。</p></a>
+        <a href="#layer-7"><span class="layer-index">Layer 07</span><h3>隐藏问题</h3><p>官方没写但生产系统必须考虑的坑。</p></a>
+        <a href="#layer-8"><span class="layer-index">Layer 08</span><h3>专家追问</h3><p>继续追问为什么、成本和扩展风险。</p></a>
+      </div>
+    </section>
+
+    <section id="layer-1">
+      <div class="section-num">Layer 01 · 结构拆解</div>
+      <h2 class="section-title">DESIGN.md 的结构，<em>先分机器读和人读</em></h2>
+      <p class="section-desc">官方规范把 DESIGN.md 拆成两大部分：YAML front matter 是机器读的 token，Markdown body 是人和 agent 读的设计理由。标题层级存在的目的，是让 agent 能定位规则，而不是在散文里猜。</p>
+
+      <div class="contract-stack">
+        <div class="contract-row">
+          <div><strong>YAML front matter</strong><span>机器可读事实层</span></div>
+          <div><p>输入：品牌色、字体、间距、圆角、组件样式。输出：可解析 token map。</p></div>
+          <div><p>删除后：工具、CLI、Codex、Cursor 失去精确值，只能读 prose 猜样式。</p></div>
+        </div>
+        <div class="contract-row">
+          <div><strong>H2 sections</strong><span>设计语义分区</span></div>
+          <div><p>输入：token 和产品语境。输出：颜色、排版、布局、组件等使用规则。</p></div>
+          <div><p>删除后：token 还在，但不知道为什么这样用，也不知道边界在哪里。</p></div>
+        </div>
+        <div class="contract-row">
+          <div><strong>H3 subsections</strong><span>局部规则拆分</span></div>
+          <div><p>输入：复杂组件或复杂机制。输出：按钮、输入、卡片、状态等局部约束。</p></div>
+          <div><p>删除后：组件规则堆成一团，后续 agent 很难准确定位。</p></div>
+        </div>
+      </div>
+
+      <div class="matrix-wrap" style="margin-top:24px">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>章节名称</th>
+              <th>目的</th>
+              <th>输入</th>
+              <th>输出</th>
+              <th>依赖项</th>
+              <th>设计原因</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>colors</td><td>定义颜色 token</td><td>品牌色、语义色、状态色</td><td>可引用颜色值</td><td>Colors / components</td><td>防止 agent 随手新增颜色</td></tr>
+            <tr><td>typography</td><td>定义文本层级</td><td>字体族、字号、字重、行高</td><td>文本角色 token</td><td>Typography / components</td><td>让信息层级稳定</td></tr>
+            <tr><td>rounded</td><td>定义形状尺度</td><td>品牌形状语言</td><td>radius scale</td><td>Shapes / components</td><td>圆角决定 UI 性格</td></tr>
+            <tr><td>spacing</td><td>定义空间节奏</td><td>栅格、留白、密度</td><td>spacing scale</td><td>Layout / components</td><td>避免随机魔法间距</td></tr>
+            <tr><td>components</td><td>绑定组件级样式</td><td>基础 token、变体、状态</td><td>component token map</td><td>所有基础 token</td><td>让代码实现有最终消费入口</td></tr>
+            <tr><td>Do's and Don'ts</td><td>定义禁止事项</td><td>常见漂移、可访问性要求</td><td>agent guardrail</td><td>所有章节</td><td>阻止 AI 自行补风格</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="layer-2">
+      <div class="section-num">Layer 02 · 设计系统思想拆解</div>
+      <h2 class="section-title">设计系统不是好看，<em>是降低变化成本</em></h2>
+      <p class="section-desc">这一层回答“为什么”。为什么需要 Design Token，为什么不能写死颜色、字号、圆角，为什么不能在组件里直接用 HEX。</p>
+
+      <div class="insights">
+        <div class="insight">
+          <div class="num">Why 01</div>
+          <h4>Design Token 把隐性经验变成数据</h4>
+          <p>颜色、字号、间距和圆角如果只存在于截图或口头描述里，工具不能 diff，agent 不能稳定复用，工程也不能自动导出。</p>
+        </div>
+        <div class="insight">
+          <div class="num">Why 02</div>
+          <h4>不能写死颜色，因为写死值会切断语义</h4>
+          <p>`#855300` 只是一个值；`primary` 才告诉组件这是主要行动色。暗色、多品牌和状态色都依赖这个语义层。</p>
+        </div>
+        <div class="insight">
+          <div class="num">Why 03</div>
+          <h4>不能写死字体大小，因为字号代表内容角色</h4>
+          <p>`body-md`、`label-sm`、`headline-lg` 不是尺寸别名，而是信息层级。国际化和响应式都要靠这个层级调整。</p>
+        </div>
+        <div class="insight">
+          <div class="num">Why 04</div>
+          <h4>不能写死圆角，因为圆角是品牌形状语言</h4>
+          <p>4px、12px、9999px 分别传达技术感、友好感和胶囊操作。圆角失控时，组件会像来自不同系统。</p>
+        </div>
+      </div>
+
+      <div class="mini-note">关键原则：DESIGN.md 不是为了增加文档，而是把设计决策外置成可验证契约。token 管值，prose 管理由，guardrail 管边界。</div>
+    </section>
+
+    <section id="layer-3">
+      <div class="section-num">Layer 03 · Token 体系拆解</div>
+      <h2 class="section-title">Token 要分层，<em>否则后期一定耦合</em></h2>
+      <p class="section-desc">官方 examples 主要展示了 `colors`、`typography`、`rounded`、`spacing`、`components`。工程上还要理解 primitive、alias、semantic、component 四层，不然暗色、多品牌和组件状态会混在一起。</p>
+
+      <div class="token-ladder" aria-label="Token层级图">
+        <div class="token-rung">
+          <span class="tag">Layer A</span>
+          <h3>Primitive Token</h3>
+          <p>原始材料层，例如色阶、尺寸阶梯、字体原料。它保存事实值，但不直接告诉组件怎么用。</p>
+        </div>
+        <div class="token-rung">
+          <span class="tag">Layer B</span>
+          <h3>Alias Token</h3>
+          <p>品牌别名层，例如 brand-primary、font-display。它隔离品牌资产和原始材料。</p>
+        </div>
+        <div class="token-rung">
+          <span class="tag">Layer C</span>
+          <h3>Semantic Token</h3>
+          <p>角色层，例如 surface、on-surface、primary、error。暗色模式主要切这一层。</p>
+        </div>
+        <div class="token-rung">
+          <span class="tag">Layer D</span>
+          <h3>Component Token</h3>
+          <p>落地层，例如 button-primary.backgroundColor。组件最终只消费自己的 token。</p>
+        </div>
+      </div>
+
+      <div class="heatmap" style="margin-top:28px">
+        <table class="heat">
+          <thead>
+            <tr>
+              <th>Token 类型</th>
+              <th>官方顶层 schema</th>
+              <th>examples 出现</th>
+              <th>适合工程生产</th>
+              <th>不分层的风险</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Color</td><td class="h-yes">是</td><td class="h-yes">是</td><td class="h-yes">高</td><td class="h-yes">主题无法切换</td></tr>
+            <tr><td>Typography</td><td class="h-yes">是</td><td class="h-yes">是</td><td class="h-yes">高</td><td class="h-yes">层级失控</td></tr>
+            <tr><td>Spacing</td><td class="h-yes">是</td><td class="h-yes">是</td><td class="h-yes">高</td><td class="h-yes">页面节奏随机</td></tr>
+            <tr><td>Radius</td><td class="h-yes">rounded</td><td class="h-yes">是</td><td class="h-yes">高</td><td class="h-yes">组件形状漂移</td></tr>
+            <tr><td>Border</td><td class="h-no">否</td><td class="h-partial">prose</td><td class="h-yes">应补</td><td class="h-partial">focus/divider 散落</td></tr>
+            <tr><td>Shadow</td><td class="h-no">否</td><td class="h-partial">prose</td><td class="h-yes">应补</td><td class="h-partial">弹层深度不一致</td></tr>
+            <tr><td>Motion</td><td class="h-no">否</td><td class="h-partial">prose</td><td class="h-yes">应补</td><td class="h-partial">交互动效碎片化</td></tr>
+            <tr><td>Opacity</td><td class="h-no">否</td><td class="h-partial">rgba</td><td class="h-yes">应补</td><td class="h-partial">disabled/overlay 失控</td></tr>
+            <tr><td>Z-index</td><td class="h-no">否</td><td class="h-no">否</td><td class="h-yes">应补</td><td class="h-yes">弹层互相盖错</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="layer-4">
+      <div class="section-num">Layer 04 · Dark Mode 拆解</div>
+      <h2 class="section-title">暗色模式不是反色，<em>是语义映射切换</em></h2>
+      <p class="section-desc">官方 examples 有暗色风格和浅色风格，但当前 schema 没有正式定义 `modes.light/dark`。生产系统里，组件不应该知道现在是亮色还是暗色，它只应该引用 semantic token。</p>
+
+      <div class="dark-mode-board">
+        <div class="mode-card">
+          <h3>Light Mode</h3>
+          <div class="mode-token"><strong>Primitive</strong><div class="swatch-line"><span class="swatch-box" style="background:#ffffff"></span><span class="swatch-box" style="background:#f9f9ff"></span><span class="swatch-box" style="background:#855300"></span></div></div>
+          <div class="mode-token"><strong>Semantic</strong><span>surface -> light neutral; on-surface -> deep charcoal; primary -> brand action</span></div>
+          <div class="mode-token"><strong>Component</strong><span>card / input / button 仍引用 surface、on-surface、primary</span></div>
+        </div>
+        <div class="mode-card dark">
+          <h3>Dark Mode</h3>
+          <div class="mode-token"><strong>Primitive</strong><div class="swatch-line"><span class="swatch-box" style="background:#121318"></span><span class="swatch-box" style="background:#1e1f25"></span><span class="swatch-box" style="background:#ffd700"></span></div></div>
+          <div class="mode-token"><strong>Semantic</strong><span>surface -> dark neutral; on-surface -> warm text; primary -> brighter accent</span></div>
+          <div class="mode-token"><strong>Component</strong><span>组件结构尽量不变，只接受 semantic token 的新映射</span></div>
+        </div>
+      </div>
+
+      <div class="mini-note">不能直接白变黑：对比度、层级、透明度、状态色、图表色都不是对称关系。暗色模式应该从 semantic token 切换，而不是在每个组件里写 if dark。</div>
+    </section>
+
+    <section id="layer-5">
+      <div class="section-num">Layer 05 · 组件拆解</div>
+      <h2 class="section-title">组件不是一个盒子，<em>它有树、状态机和 token 依赖</em></h2>
+      <p class="section-desc">官方 `components` 是灵活 map。生产项目要继续把 Button、Input、Card、Modal、Tabs、Dropdown、Toast、Dialog 拆成 Root、Container、Content、Action、State。</p>
+
+      <div class="component-grid">
+        <div class="component-card">
+          <h3>Button</h3>
+          <ul class="component-tree"><li>Root</li><li>Icon</li><li>Label</li><li>Spinner</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Input</h3>
+          <ul class="component-tree"><li>Root</li><li>Label</li><li>Control</li><li>Helper / Error</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Card</h3>
+          <ul class="component-tree"><li>Root</li><li>Header</li><li>Content</li><li>Actions</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Modal</h3>
+          <ul class="component-tree"><li>Overlay</li><li>Container</li><li>Content</li><li>Close Action</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Tabs</h3>
+          <ul class="component-tree"><li>TabList</li><li>Trigger</li><li>Indicator</li><li>Panel</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Dropdown</h3>
+          <ul class="component-tree"><li>Trigger</li><li>Popover</li><li>MenuList</li><li>MenuItem</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Toast</h3>
+          <ul class="component-tree"><li>Root</li><li>Icon</li><li>Message</li><li>Close</li></ul>
+        </div>
+        <div class="component-card">
+          <h3>Dialog</h3>
+          <ul class="component-tree"><li>Scrim</li><li>Title</li><li>Description</li><li>Actions</li></ul>
+        </div>
+      </div>
+
+      <div class="chart-card" style="margin-top:28px">
+        <h3>通用状态机</h3>
+        <p class="sub">组件至少要覆盖 default、hover、focus、pressed、disabled、loading、error。状态缺失时，agent 会临时写样式。</p>
+        <div class="state-flow">
+          <span>Default</span><span class="arrow">-></span><span>Hover</span><span class="arrow">-></span><span>Pressed</span>
+          <span>Focus</span><span>Disabled</span><span>Loading</span><span>Error</span>
+        </div>
+      </div>
+
+      <div class="matrix-wrap" style="margin-top:24px">
+        <table class="matrix">
+          <thead>
+            <tr><th>组件</th><th>Root</th><th>Container</th><th>Content</th><th>Action</th><th>关键 token</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Button</td><td>button</td><td>height / radius / padding</td><td>label / icon</td><td>click / submit</td><td>backgroundColor, textColor, typography, rounded</td></tr>
+            <tr><td>Input</td><td>field</td><td>border / surface</td><td>control / helper</td><td>clear / reveal</td><td>backgroundColor, textColor, typography, padding</td></tr>
+            <tr><td>Card</td><td>article / div</td><td>surface / shadow</td><td>header / body</td><td>link / menu</td><td>surface, rounded, padding, elevation</td></tr>
+            <tr><td>Modal</td><td>dialog</td><td>overlay / panel</td><td>title / body</td><td>close / confirm</td><td>scrim, zIndex, motion, surface</td></tr>
+            <tr><td>Toast</td><td>status</td><td>floating layer</td><td>message</td><td>dismiss</td><td>status color, zIndex, motion</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="layer-6">
+      <div class="section-num">Layer 06 · 工程化拆解</div>
+      <h2 class="section-title">设计系统要落到代码，<em>必须经过转换链</em></h2>
+      <p class="section-desc">DESIGN.md 的位置在设计语义和工程实现之间。它既能承接 Figma / 设计审计，也能输出给 JSON、CSS Variables、Tailwind 和组件。</p>
+
+      <div class="engineering-chain" aria-label="设计系统工程化链路">
+        <div class="chain-node"><strong>Figma</strong><span>设计变量和组件源头</span></div>
+        <div class="chain-node"><strong>Design Token</strong><span>把视觉决策数据化</span></div>
+        <div class="chain-node"><strong>JSON</strong><span>版本控制、diff、CI 可读</span></div>
+        <div class="chain-node"><strong>Style Dictionary</strong><span>跨平台转换</span></div>
+        <div class="chain-node"><strong>CSS Variables</strong><span>运行时主题切换</span></div>
+        <div class="chain-node"><strong>Tailwind</strong><span>把 token 接进 utility 约束</span></div>
+        <div class="chain-node"><strong>React Component</strong><span>最终用户界面</span></div>
+      </div>
+
+      <div class="matrix-wrap" style="margin-top:28px">
+        <table class="matrix">
+          <thead>
+            <tr><th>步骤</th><th>存在原因</th><th>如果跳过</th><th>DESIGN.md 的作用</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Figma</td><td>设计事实源之一</td><td>设计稿和代码漂移</td><td>承接变量、风格和组件说明</td></tr>
+            <tr><td>JSON</td><td>工具和 CI 可读</td><td>无法自动校验和导出</td><td>YAML tokens 可转换为 JSON</td></tr>
+            <tr><td>CSS Variables</td><td>浏览器运行时消费</td><td>主题切换困难</td><td>semantic token 映射到 CSS var</td></tr>
+            <tr><td>Tailwind</td><td>约束 utility class</td><td>前端继续写魔法值</td><td>token 进入 theme 配置</td></tr>
+            <tr><td>Component</td><td>最终交付 UI</td><td>token 停在文档里</td><td>components token 指导实现</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="layer-7">
+      <div class="section-num">Layer 07 · 隐藏问题挖掘</div>
+      <h2 class="section-title">官方没写完的地方，<em>生产项目也必须考虑</em></h2>
+      <p class="section-desc">这层不是挑刺，而是提前发现设计系统长期维护会遇到的问题。很多问题在 demo 里不明显，到了多页面、多主题、多品牌、多语言时会爆出来。</p>
+
+      <div class="risk-board">
+        <div class="risk-chip"><strong>圆角体系</strong><span>是否有角色约束，还是只有 sm/md/lg 数值。</span></div>
+        <div class="risk-chip"><strong>Spacing Scale</strong><span>是否区分组件内距、页面外距、网格 gutter。</span></div>
+        <div class="risk-chip"><strong>Typography Scale</strong><span>是否支持响应式、中文、数字和代码。</span></div>
+        <div class="risk-chip"><strong>Contrast</strong><span>`on-*` 与背景是否全部通过 WCAG 检查。</span></div>
+        <div class="risk-chip"><strong>Dark Mode</strong><span>是否有 mode schema，而不是暗色样例。</span></div>
+        <div class="risk-chip"><strong>Token 耦合</strong><span>组件是否直接写字面量，绕开基础 token。</span></div>
+        <div class="risk-chip"><strong>多品牌</strong><span>是否能替换 alias，而不是复制整套组件。</span></div>
+        <div class="risk-chip"><strong>国际化</strong><span>长文本、RTL、字体 fallback 是否有规则。</span></div>
+        <div class="risk-chip"><strong>主题切换</strong><span>是否支持运行时切换，还是只能构建时替换。</span></div>
+        <div class="risk-chip"><strong>弹层层级</strong><span>z-index 缺失会导致 modal、toast、dropdown 互相盖错。</span></div>
+      </div>
+
+      <div class="mini-note">隐藏问题的判断标准：不是“官方有没有写”，而是“如果业务项目长期维护，这个维度会不会导致漂移、不可访问、不可扩展或不可验证”。</div>
+    </section>
+
+    <section id="layer-8">
+      <div class="section-num">Layer 08 · 专家级追问</div>
+      <h2 class="section-title">Staff Design Engineer 不会停在“是什么”，<em>会继续问代价</em></h2>
+      <p class="section-desc">下面是报告里最该反复看的部分：每个问题都在逼近底层原则。只要这些问题没有答案，设计系统就还不是稳定契约。</p>
+
+      <div class="questions-grid">
+        <div class="question-card"><div class="qno">Q01</div><h3>当前 token 是按品牌组织，还是按产品功能组织？</h3><p>重要：决定多品牌扩展方式。不解决：每加一个品牌都要重构。</p></div>
+        <div class="question-card"><div class="qno">Q02</div><h3>`colors.primary` 是品牌色，还是主操作色？</h3><p>重要：品牌色和操作色不一定相同。不解决：CTA、logo、链接混用。</p></div>
+        <div class="question-card"><div class="qno">Q03</div><h3>是否需要完整四层 token？</h3><p>重要：决定暗色和多品牌成本。不解决：组件直接依赖原始值。</p></div>
+        <div class="question-card"><div class="qno">Q04</div><h3>暗色模式是 mode，还是独立主题？</h3><p>重要：决定覆盖策略。不解决：light/dark 文件长期漂移。</p></div>
+        <div class="question-card"><div class="qno">Q05</div><h3>`on-*` 颜色是否全部通过 contrast 检查？</h3><p>重要：文字和背景必须成对可读。不解决：无障碍失败。</p></div>
+        <div class="question-card"><div class="qno">Q06</div><h3>shadow 是否要提升为顶层 token？</h3><p>重要：elevation 跨组件共享。不解决：modal、card、dropdown 深度不一致。</p></div>
+        <div class="question-card"><div class="qno">Q07</div><h3>border 是否要提升为顶层 token？</h3><p>重要：focus、divider、outline 都依赖边框。不解决：可访问性散落。</p></div>
+        <div class="question-card"><div class="qno">Q08</div><h3>是否需要 motion token？</h3><p>重要：状态切换要统一节奏。不解决：交互动效碎片化。</p></div>
+        <div class="question-card"><div class="qno">Q09</div><h3>spacing 是尺寸 scale，还是 layout 语义？</h3><p>重要：space 与 gutter 属于不同抽象。不解决：内距外距混用。</p></div>
+        <div class="question-card"><div class="qno">Q10</div><h3>是否需要 responsive typography？</h3><p>重要：移动端和桌面端标题尺度不同。不解决：标题溢出或层级不够。</p></div>
+        <div class="question-card"><div class="qno">Q11</div><h3>Typography 是否支持中文、英文、数字、代码？</h3><p>重要：不同文字系统需要不同 fallback。不解决：中文密度和数字对齐不稳。</p></div>
+        <div class="question-card"><div class="qno">Q12</div><h3>组件状态应平铺还是嵌套？</h3><p>重要：状态机和 token 形态相关。不解决：`button-primary-hover` 这类 key 爆炸。</p></div>
+        <div class="question-card"><div class="qno">Q13</div><h3>Disabled 是 opacity，还是独立颜色？</h3><p>重要：影响可访问性和暗色模式。不解决：disabled 过亮或不可读。</p></div>
+        <div class="question-card"><div class="qno">Q14</div><h3>Focus 是否独立于 Hover？</h3><p>重要：键盘用户必须有明确焦点。不解决：可访问性失败。</p></div>
+        <div class="question-card"><div class="qno">Q15</div><h3>Modal、Dropdown、Toast 的 z-index 谁定义？</h3><p>重要：弹层系统要有全局秩序。不解决：层级互相盖错。</p></div>
+        <div class="question-card"><div class="qno">Q16</div><h3>是否需要 density mode？</h3><p>重要：后台和营销页密度不同。不解决：同一组件无法适配不同场景。</p></div>
+        <div class="question-card"><div class="qno">Q17</div><h3>是否支持运行时品牌主题切换？</h3><p>重要：决定 CSS Variables 架构。不解决：白标成本高。</p></div>
+        <div class="question-card"><div class="qno">Q18</div><h3>token 是从 Figma 同步，还是 DESIGN.md 手工维护？</h3><p>重要：决定 SSOT 和漂移风险。不解决：设计稿和代码互相打架。</p></div>
+        <div class="question-card"><div class="qno">Q19</div><h3>DESIGN.md 与 tokens.json 谁是 SSOT？</h3><p>重要：冲突时必须有裁决规则。不解决：两份事实源互相覆盖。</p></div>
+        <div class="question-card"><div class="qno">Q20</div><h3>CLI lint 能否进入 CI？</h3><p>重要：设计系统要自动验证。不解决：文档坏了也能合并。</p></div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="section-num">附录 · 方法与边界</div>
+      <h2 class="section-title">这版报告怎么来的</h2>
+      <div class="grid-2">
+        <div class="chart-card">
+          <h3>使用的事实源</h3>
+          <ul class="token-list">
+            <li>官方规范：official/google-design-md/spec.md</li>
+            <li>官方样例：examples/*/DESIGN.md</li>
+            <li>深拆文本：analysis/design-system-contract-deep-dive.md</li>
+            <li>来源台账：analysis/sources.json</li>
+          </ul>
+        </div>
+        <div class="chart-card">
+          <h3>边界说明</h3>
+          <ul class="token-list">
+            <li>官方顶层 token：colors、typography、rounded、spacing、components。</li>
+            <li>border、shadow、motion、opacity、z-index 是工程扩展建议，不冒充官方 schema。</li>
+            <li>Dark Mode 当前来自设计系统工程推导，官方没有正式 mode schema。</li>
+            <li>组件拆解是对官方 component map 的生产级补全。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <div class="colophon">— END OF EIGHT-LAYER REPORT —</div>
+      <div class="sig">Compiled from Google Labs Code design.md research · 2026-06-25</div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -4,13 +4,17 @@
 
 ## 目录边界
 
-- `content/content.json`：报告内容源，记录报告标题、来源目录、分析目录和选用模块。
+- `content/content.json`：第一版报告内容源，记录报告标题、来源目录、分析目录和选用模块。
+- `content/eight-layer-framework.content.json`：8 层框架版报告内容源。
 - `dist/visual-breakdown/`：可直接打开的 HTML 报告包，由 `visual-html-report` 的 `token-report` 引擎和 `editorial-paper` 风格组装。
+- `dist/eight-layer-framework/`：按“结构、思想、token、dark mode、组件、工程化、隐藏问题、专家追问”八层框架重制的 HTML 报告包。
 - `qa/visual-breakdown/`：报告渲染验证记录，包含桌面、平板、手机截图和检查结果。
+- `qa/eight-layer-framework/`：8 层框架版报告渲染验证记录。
 
 ## 报告入口
 
-打开 `dist/visual-breakdown/index.html` 查看可视化报告。
+- 打开 `dist/eight-layer-framework/index.html` 查看 8 层框架版可视化报告。
+- 打开 `dist/visual-breakdown/index.html` 查看第一版可视化报告。
 
 ## 事实源
 
