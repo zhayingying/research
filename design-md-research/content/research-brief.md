@@ -1,42 +1,38 @@
 # DESIGN.md 调研简报
 
-采集时间：2026-06-25 18:26:55 +0800
+采集时间：2026-06-25 20:19:52 +0800
 
 ## 目标
 
-为后续拆解 Vercel 风格的 `DESIGN.md` 准备可追溯材料，先把规范源头、社区集合、Vercel 条目和 Vercel 官方相邻项目分开保存。
+为后续拆解 Google Labs Code 官方开源仓库 `google-labs-code/design.md` 准备可追溯材料。当前口径不再使用社区 Vercel 条目。
 
 ## 来源关系
 
 | 层级 | 来源 | 本地文件 | 判断 |
 | --- | --- | --- | --- |
-| 规范源头 | `google-labs-code/design.md` | `input/google-design-md/README.md`, `input/google-design-md/spec.md` | Google 开源的 DESIGN.md 格式规范和 CLI 仓库 |
-| 社区集合 | `VoltAgent/awesome-design-md` | `input/awesome-design-md/README.md` | 社区整理的 Awesome DESIGN.md 集合 |
-| 本次目标 | `VoltAgent/awesome-design-md/design-md/vercel/DESIGN.md` | `input/vercel/DESIGN.md` | 后续拆解 Vercel 风格的直接输入 |
-| 相关但非目标 | `vercel-labs/design-systems-to-agent-skills` | `input/vercel-labs-design-systems-to-agent-skills/README.md` | Vercel 官方相邻项目，但不是 DESIGN.md 文件来源 |
+| 规范源头 | `google-labs-code/design.md` | `input/google-design-md/spec.md` | Google 开源的 DESIGN.md 格式规范 |
+| 仓库说明 | `google-labs-code/design.md` | `input/google-design-md/README.md`, `input/google-design-md/PHILOSOPHY.md`, `input/google-design-md/package.json` | Google 官方仓库说明、理念和包信息 |
+| 官方样例 | `google-labs-code/design.md/examples/*` | `input/google-design-md/examples/*/DESIGN.md` | Google 官方仓库内的 DESIGN.md 示例文件 |
+| 样例产物 | `google-labs-code/design.md/examples/*` | `design_tokens.json`, `tailwind.config.js` | 官方样例导出的 token 和 Tailwind 配置 |
 
-## Vercel DESIGN.md 结构锚点
+## 官方 DESIGN.md 样例
 
-`input/vercel/DESIGN.md` 当前共 736 行，结构如下：
+Google 官方仓库没有根目录单独命名为 `DESIGN.md` 的品牌文件；官方可拆解样例位于：
 
-- YAML front matter：第 1 行开始，包含 `version`、`name`、`description`、`colors`、`typography`、`rounded`、`spacing`、`components`。
-- `## Overview`：第 393 行。
-- `## Colors`：第 409 行。
-- `## Typography`：第 449 行。
-- `## Layout`：第 489 行。
-- `## Elevation & Depth`：第 538 行。
-- `## Shapes`：第 556 行。
-- `## Components`：第 579 行。
-- `## Do's and Don'ts`：第 718 行。
+- `input/google-design-md/examples/atmospheric-glass/DESIGN.md`
+- `input/google-design-md/examples/paws-and-paths/DESIGN.md`
+- `input/google-design-md/examples/totality-festival/DESIGN.md`
+
+三个样例都包含 YAML front matter，并在正文使用 `## Brand & Style`、`## Colors`、`## Typography`、`## Layout & Spacing`、`## Elevation & Depth`、`## Shapes`、`## Components` 等章节。
 
 ## 后续拆解建议
 
-1. 先拆 YAML tokens：抽出色彩角色、字体层级、间距半径、组件 token 表。
-2. 再拆正文规则：把 Vercel 的视觉气质、布局原则、组件模式和禁忌项转成中文研究表。
-3. 最后与 Google `spec.md` 对照：确认社区文件哪些字段是规范字段，哪些是社区扩展或代理提示。
-4. 拆解时保留“非官方”标记：该文件是社区独立分析，不应写成 Vercel 官方发布的 DESIGN.md。
+1. 先读 `spec.md`：抽出规范结构、token schema、章节顺序、未知字段处理规则。
+2. 再拆 3 个官方 `examples/*/DESIGN.md`：比较它们如何表达 YAML token 和 Markdown rationale。
+3. 对照每个 example 的 `design_tokens.json` 与 `tailwind.config.js`：确认 DESIGN.md 如何映射到机器可用 token 和工程配置。
+4. 输出时明确：本目录研究的是 Google 官方 DESIGN.md 格式与官方 examples，不包含 Vercel 社区条目。
 
 ## 待确认点
 
-- 如果调研报告要表述为“Vercel 刚刚开源”，需要再找 Vercel 官方发布源；当前证据只支持“社区 awesome-design-md 中有 Vercel 条目”。
-- 如果要研究 Vercel 官方设计系统到 agent skill 的路线，则另开分支材料分析 `vercel-labs/design-systems-to-agent-skills`，不要和 `DESIGN.md` 文件混写。
+- 若后续仍要研究 Vercel 风格，需要重新单独建立社区来源目录，并在报告中标注非官方。
+- 若要引用 Google 官方仓库状态，以 `content/sources.json` 的 commit、release 和 raw file URL 为准。

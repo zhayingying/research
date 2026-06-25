@@ -1,172 +1,146 @@
 {
-  "capturedAt": "2026-06-25T18:26:55+08:00",
-  "scope": "DESIGN.md origin, community collection, Vercel community entry, and related official Vercel agent-skill project",
-  "primaryConclusion": "The saved Vercel DESIGN.md is a community entry from VoltAgent/awesome-design-md. The DESIGN.md format origin is google-labs-code/design.md. No official Vercel DESIGN.md source was confirmed in this pass.",
-  "sources": [
+  "capturedAt": "2026-06-25T20:19:52+08:00",
+  "scope": "Official Google Labs Code DESIGN.md repository snapshot",
+  "primaryConclusion": "This folder now targets the official google-labs-code/design.md repository only. The repository has no root-level standalone DESIGN.md brand file; the official DESIGN.md examples are under examples/*/DESIGN.md, and the normative format reference is docs/spec.md.",
+  "repo": {
+    "id": "google-design-md",
+    "kind": "origin_spec_repo",
+    "publisher": "Google Labs Code",
+    "repo": "google-labs-code/design.md",
+    "repoUrl": "https://github.com/google-labs-code/design.md",
+    "homepage": "https://stitch.withgoogle.com/docs/design-md/specification",
+    "description": "A format specification for describing a visual identity to coding agents. DESIGN.md gives agents a persistent, structured understanding of a design system.",
+    "license": "Apache-2.0",
+    "defaultBranch": "main",
+    "createdAt": "2026-04-10T17:54:59Z",
+    "updatedAt": "2026-06-25T12:18:33Z",
+    "pushedAt": "2026-06-15T22:22:46Z",
+    "starsAtCapture": 18081,
+    "forksAtCapture": 1600,
+    "latestMainCommit": {
+      "sha": "2a19f5dd97ab887971b417ebdf1e7e8fda0c7f79",
+      "date": "2026-06-15T20:27:02Z",
+      "author": "Matt Van Horn",
+      "messageFirstLine": "feat: add token-like-ignored lint rule for silently dropped frontmatter keys (#105)"
+    },
+    "latestRelease": {
+      "tag": "0.3.0",
+      "publishedAt": "2026-06-15T22:22:47Z",
+      "url": "https://github.com/google-labs-code/design.md/releases/tag/0.3.0"
+    }
+  },
+  "rawFiles": [
     {
-      "id": "google-design-md",
-      "kind": "origin_spec_repo",
-      "publisher": "Google Labs Code",
-      "repo": "google-labs-code/design.md",
-      "repoUrl": "https://github.com/google-labs-code/design.md",
-      "homepage": "https://stitch.withgoogle.com/docs/design-md/specification",
-      "description": "A format specification for describing a visual identity to coding agents. DESIGN.md gives agents a persistent, structured understanding of a design system.",
-      "license": "Apache-2.0",
-      "defaultBranch": "main",
-      "createdAt": "2026-04-10T17:54:59Z",
-      "updatedAt": "2026-06-25T10:24:59Z",
-      "pushedAt": "2026-06-15T22:22:46Z",
-      "starsAtCapture": 17870,
-      "forksAtCapture": 1592,
-      "latestMainCommit": {
-        "sha": "2a19f5dd97ab887971b417ebdf1e7e8fda0c7f79",
-        "date": "2026-06-15T20:27:02Z",
-        "author": "Matt Van Horn",
-        "messageFirstLine": "feat: add token-like-ignored lint rule for silently dropped frontmatter keys (#105)"
-      },
-      "latestRelease": {
-        "tag": "0.3.0",
-        "publishedAt": "2026-06-15T22:22:47Z",
-        "url": "https://github.com/google-labs-code/design.md/releases/tag/0.3.0"
-      },
-      "rawFiles": [
-        {
-          "path": "README.md",
-          "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/README.md",
-          "localPath": "input/google-design-md/README.md",
-          "lineCount": 351,
-          "byteCount": 12194
-        },
-        {
-          "path": "docs/spec.md",
-          "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/docs/spec.md",
-          "localPath": "input/google-design-md/spec.md",
-          "lineCount": 365,
-          "byteCount": 14743
-        }
-      ]
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/README.md",
+      "localPath": "input/google-design-md/README.md",
+      "lineCount": 351,
+      "byteCount": 12194
     },
     {
-      "id": "awesome-design-md",
-      "kind": "community_collection_repo",
-      "publisher": "VoltAgent",
-      "repo": "VoltAgent/awesome-design-md",
-      "repoUrl": "https://github.com/VoltAgent/awesome-design-md",
-      "description": "A collection of DESIGN.md files analysis by popular brand design systems. Drop one into your project and let coding agents generate a matching UI.",
-      "license": "MIT",
-      "defaultBranch": "main",
-      "createdAt": "2026-03-31T16:37:01Z",
-      "updatedAt": "2026-06-25T10:24:25Z",
-      "pushedAt": "2026-06-16T14:21:08Z",
-      "starsAtCapture": 92987,
-      "forksAtCapture": 11043,
-      "latestMainCommit": {
-        "sha": "664b3e78fd1a298ba11973822da988483256d4b4",
-        "date": "2026-06-16T14:21:08Z",
-        "author": "Necati Ozmen",
-        "messageFirstLine": "Update launchkit banner image in README"
-      },
-      "rawFiles": [
-        {
-          "path": "README.md",
-          "url": "https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/README.md",
-          "localPath": "input/awesome-design-md/README.md",
-          "lineCount": 239,
-          "byteCount": 15390
-        }
-      ],
-      "targetPath": "design-md/vercel/DESIGN.md"
+      "path": "PHILOSOPHY.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/PHILOSOPHY.md",
+      "localPath": "input/google-design-md/PHILOSOPHY.md",
+      "lineCount": 110,
+      "byteCount": 6415
     },
     {
-      "id": "vercel-design-md-community-entry",
-      "kind": "target_design_md",
-      "publisher": "VoltAgent",
-      "upstreamRepo": "VoltAgent/awesome-design-md",
-      "upstreamPath": "design-md/vercel/DESIGN.md",
-      "repoFileUrl": "https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/vercel/DESIGN.md",
-      "rawUrl": "https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/design-md/vercel/DESIGN.md",
-      "getdesignUrl": "https://getdesign.md/vercel/design-md",
-      "localPath": "input/vercel/DESIGN.md",
-      "lineCount": 736,
-      "byteCount": 41405,
-      "firstHeadingAnchors": [
-        {
-          "heading": "Overview",
-          "line": 393
-        },
-        {
-          "heading": "Colors",
-          "line": 409
-        },
-        {
-          "heading": "Typography",
-          "line": 449
-        },
-        {
-          "heading": "Layout",
-          "line": 489
-        },
-        {
-          "heading": "Elevation & Depth",
-          "line": 538
-        },
-        {
-          "heading": "Shapes",
-          "line": 556
-        },
-        {
-          "heading": "Components",
-          "line": 579
-        },
-        {
-          "heading": "Do's and Don'ts",
-          "line": 718
-        }
-      ],
-      "affiliationNote": "The getdesign.md page states this is an independent analysis of publicly observable patterns and is not affiliated with or endorsed by Vercel."
+      "path": "docs/spec.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/docs/spec.md",
+      "localPath": "input/google-design-md/spec.md",
+      "lineCount": 365,
+      "byteCount": 14743
     },
     {
-      "id": "vercel-design-md-community-readme",
-      "kind": "target_readme",
-      "publisher": "VoltAgent",
-      "upstreamRepo": "VoltAgent/awesome-design-md",
-      "upstreamPath": "design-md/vercel/README.md",
-      "repoFileUrl": "https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/vercel/README.md",
-      "rawUrl": "https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/design-md/vercel/README.md",
-      "localPath": "input/vercel/README.md",
-      "lineCount": 5,
-      "byteCount": 209
+      "path": "package.json",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/package.json",
+      "localPath": "input/google-design-md/package.json",
+      "lineCount": 20,
+      "byteCount": 407
     },
     {
-      "id": "vercel-labs-design-systems-to-agent-skills",
-      "kind": "related_official_vercel_repo",
-      "publisher": "Vercel Labs",
-      "repo": "vercel-labs/design-systems-to-agent-skills",
-      "repoUrl": "https://github.com/vercel-labs/design-systems-to-agent-skills",
-      "description": "A repository to transform design systems into agent skills using the agent skill specification",
-      "license": "MIT",
-      "defaultBranch": "main",
-      "createdAt": "2026-05-01T05:55:15Z",
-      "updatedAt": "2026-06-22T15:45:00Z",
-      "pushedAt": "2026-05-01T07:34:25Z",
-      "starsAtCapture": 26,
-      "forksAtCapture": 2,
-      "latestMainCommit": {
-        "sha": "0e541bc7a8eb8e86e6b1c93fac7cf21588d487da",
-        "date": "2026-05-01T07:32:12Z",
-        "author": "Diego de M.",
-        "messageFirstLine": "feat: introduce optional Stage 2b for usage analysis in consuming codebases"
-      },
-      "rawFiles": [
-        {
-          "path": "README.md",
-          "url": "https://raw.githubusercontent.com/vercel-labs/design-systems-to-agent-skills/main/README.md",
-          "localPath": "input/vercel-labs-design-systems-to-agent-skills/README.md",
-          "lineCount": 178,
-          "byteCount": 10127
-        }
-      ],
-      "scopeNote": "Related official Vercel project, but not the source of the saved Vercel DESIGN.md file."
+      "path": "examples/atmospheric-glass/DESIGN.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/DESIGN.md",
+      "localPath": "input/google-design-md/examples/atmospheric-glass/DESIGN.md",
+      "lineCount": 210,
+      "byteCount": 8659
+    },
+    {
+      "path": "examples/atmospheric-glass/README.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/README.md",
+      "localPath": "input/google-design-md/examples/atmospheric-glass/README.md",
+      "lineCount": 11,
+      "byteCount": 1190
+    },
+    {
+      "path": "examples/atmospheric-glass/design_tokens.json",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/design_tokens.json",
+      "localPath": "input/google-design-md/examples/atmospheric-glass/design_tokens.json",
+      "lineCount": 909,
+      "byteCount": 17324
+    },
+    {
+      "path": "examples/atmospheric-glass/tailwind.config.js",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/atmospheric-glass/tailwind.config.js",
+      "localPath": "input/google-design-md/examples/atmospheric-glass/tailwind.config.js",
+      "lineCount": 141,
+      "byteCount": 4114
+    },
+    {
+      "path": "examples/paws-and-paths/DESIGN.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/DESIGN.md",
+      "localPath": "input/google-design-md/examples/paws-and-paths/DESIGN.md",
+      "lineCount": 219,
+      "byteCount": 8413
+    },
+    {
+      "path": "examples/paws-and-paths/README.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/README.md",
+      "localPath": "input/google-design-md/examples/paws-and-paths/README.md",
+      "lineCount": 11,
+      "byteCount": 1116
+    },
+    {
+      "path": "examples/paws-and-paths/design_tokens.json",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/design_tokens.json",
+      "localPath": "input/google-design-md/examples/paws-and-paths/design_tokens.json",
+      "lineCount": 876,
+      "byteCount": 16943
+    },
+    {
+      "path": "examples/paws-and-paths/tailwind.config.js",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/paws-and-paths/tailwind.config.js",
+      "localPath": "input/google-design-md/examples/paws-and-paths/tailwind.config.js",
+      "lineCount": 160,
+      "byteCount": 4573
+    },
+    {
+      "path": "examples/totality-festival/DESIGN.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/DESIGN.md",
+      "localPath": "input/google-design-md/examples/totality-festival/DESIGN.md",
+      "lineCount": 210,
+      "byteCount": 9045
+    },
+    {
+      "path": "examples/totality-festival/README.md",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/README.md",
+      "localPath": "input/google-design-md/examples/totality-festival/README.md",
+      "lineCount": 11,
+      "byteCount": 1155
+    },
+    {
+      "path": "examples/totality-festival/design_tokens.json",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/design_tokens.json",
+      "localPath": "input/google-design-md/examples/totality-festival/design_tokens.json",
+      "lineCount": 911,
+      "byteCount": 17457
+    },
+    {
+      "path": "examples/totality-festival/tailwind.config.js",
+      "url": "https://raw.githubusercontent.com/google-labs-code/design.md/main/examples/totality-festival/tailwind.config.js",
+      "localPath": "input/google-design-md/examples/totality-festival/tailwind.config.js",
+      "lineCount": 144,
+      "byteCount": 4251
     }
   ]
 }
