@@ -16,6 +16,12 @@
 - 打开 `dist/eight-layer-framework/index.html` 查看 8 层框架版可视化报告。
 - 打开 `dist/visual-breakdown/index.html` 查看第一版可视化报告。
 
+## 保留策略
+
+- `dist/visual-breakdown/` 是第一版“DESIGN.md 拆解地图”，保留作为快速阅读入口，不删除、不覆盖。
+- `dist/eight-layer-framework/` 是后续按 8 层框架重制的深拆版，只能作为新增版本存在，不能替代第一版目录。
+- 如需继续迭代报告，新增独立 `dist/{report-slug}/` 和对应 `qa/{report-slug}/`，不要复用或清空已有报告目录。
+
 ## 事实源
 
 - 官方原文区：`design-md-research/official/google-design-md/`
